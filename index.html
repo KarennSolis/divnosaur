@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <p>Menu por adjuntar</p>
+
+    </nav>
+    <main>
+        <h1>Registrate, es muy fácil</h1>
+        <div class="contenedor-Login">
+            <h2 class="tituloLogin">Login</h2>
+            <div class="contenedor-Form">
+                <form action=""> 
+                    <!-- estos son botoncitos para interactuar, "actuar" -->
+                    <label for="User"></label>
+                    <input type="text" placeholder="User" required><br> 
+                    <label for="Correo"></label>
+                    <input type="text" placeholder="Correo" required><br> 
+                    <!-- cajita para escribir -->
+                    <label for=""></label>
+                     <!-- cajita para poner contraseña oculta -->
+                    <input type="password" name="Contraseña" id="Contraseña" placeholder="Password" required><br>
+                    <label for="Edad"></label>
+                    <input type="text" placeholder="Edad"><br> 
+                    <label for="Telefono"></label>
+                    <input type="text" placeholder="Telefono"><br> 
+                    <div>
+                    <label for="País"></label>
+                    <select name="pais">
+                        <option value"es"  selected="selected"> España</option>
+                        <option value"mx"> México</option>
+                        <option value"co"> Colombia</option>
+                      </select>
+                    </div>
+                    <!-- <input type="text" placeholder="País"><br> -->
+                    <label for="Hobbies"></label>
+                    <input type="text" placeholder="Hobbies"><br>
+                    <div>
+                     <textarea name="Experiencia laboral" id="" cols="30" rows="10" placeholder="Experiencia laboral"></textarea>
+                    </div>
+                    <label for="CV:">CV:</label>
+                    <input type="file" placeholder="CV"><br> 
+                    <div>
+
+                        <label for="foto">Fotografía:</label>
+                        <input type="file" id="fotografia" name="fotografia" /><br>
+                    
+                        <button type="submit">Acceder</button>
+                        <button type="reset">Borrar</button><br>
+                    </div>
+                   
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+</body>
+</html>
