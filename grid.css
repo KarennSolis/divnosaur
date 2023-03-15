@@ -1,0 +1,245 @@
+/*----------MAQUETADO DE NAV---------------------------------------*/
+* {
+    margin: 0 auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.navegacion {
+    width: 100%;
+    height: 140px;
+    position: fixed;
+    top: 0px;
+    background-color: rgb(255, 255, 255);
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+.navLista {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0px 0px 0px;
+    border-bottom: 2px solid rgb(12, 0, 0);
+}
+
+.navLi {
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    background-color: rgb(255, 255, 255);
+    padding-bottom: 20px;
+}
+
+#busqueda {
+    padding-top: 40px;
+}
+
+.barra {
+    width: 400px;
+    height: 50px;
+    padding: 10px 10px 10px 60px;
+    border-radius: 15em;
+    background: url("./img/lupa.png") no-repeat 13px center rgb(236, 237, 237);
+}
+
+#iconos {
+    padding-top: 40px;
+
+}
+
+.notificaciones,
+.mensaje,
+.ajustes,
+.fotoUsuario {
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px 15px 30px;
+    background-color: rgb(255, 255, 255);
+}
+
+.fotoUsuario {
+    border-radius: 50%;
+}
+
+
+main {
+    width: 100%;
+    height: 100vh;
+    margin-top: 175px;
+    background-color: rgb(216, 219, 218);
+    display: flex;
+}
+
+/*-----MAQUETADO DE COLUMNA A -------------------------------------------------------*/
+
+.columnaA {
+    width: 19.6%;
+    margin: 10px 10px;
+}
+
+.newFeeds,
+.account {
+    padding: 40px 20px;
+    border-radius: 1em;
+    margin-bottom: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.feedTit {
+    font-size: 12px;
+    font-weight: bold;
+    color: gray;
+}
+
+.feeds {
+    margin-top: 10px;
+    padding-left: -40px;
+}
+
+.feeds li {
+    margin: 25px 0px;
+
+}
+
+.feeds li p {
+    display: inline-block;
+}
+
+.feedsIcon {
+    width: 20px;
+    height: 20px;
+}
+
+/*-----MAQUETADO DE BARRA DE BUSQUEDA AMIGOS-----------------------------------------*/
+.friends_container {
+    width: 77%;
+
+}
+
+.search_friends {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+    border-radius: 1em;
+}
+
+#nav_friend {
+    width: 30%;
+    border-radius: 0.02em;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    margin-left: 45%;
+    border: none;
+}
+
+.bar_filter {
+    display: flex;
+}
+
+.div_filter {
+    background-color: rgb(236, 237, 237);
+}
+
+.filter {
+    width: 30px;
+    height: 30px;
+}
+
+
+/*-----MAQUETADO DE GRID-------------------------------------------------------------*/
+.container {
+    padding: 10px;
+    margin: 0px -10px;
+    color: rgb(8, 8, 8);
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.item-1 {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.item {
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+    border-radius: 1em;
+    padding-top: 20px;
+}
+
+.item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.add_friend,
+.just_friend {
+    margin-top: 10px;
+    height: 30px;
+    border-radius: 4em;
+    padding: 5px 17px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    border: none;
+}
+
+.add_friend {
+    background-color: rgb(29, 207, 29);
+}
+
+.add_friend:hover {
+    background-color: rgb(14, 105, 14);
+}
+
+.just_friend {
+    background-color: rgb(220, 20, 60);
+}
+
+.just_friend:hover {
+    background-color: rgb(123, 17, 38);
+}
+
+.enviarMsj {
+    width: 150px;
+    height: 40px;
+    background-color: rgb(56, 56, 247);
+    border-radius: 0.5em;
+    color: white;
+    font-weight: bold;
+    position: fixed;
+    bottom: 0px;
+    left: 1300px;
+    margin-bottom: 2px;
+}
+
+.enviarMsj:hover {
+    background-color: rgb(33, 33, 146);
+}
+
+@media screen and (max-width: 872px) {
+
+    .navLista {
+        background-color: rgb(117, 236, 38);
+    }
+
+    .search_friends h2{
+        background-color: deeppink;
+    }
+}
