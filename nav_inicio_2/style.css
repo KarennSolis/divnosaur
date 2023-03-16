@@ -1,0 +1,12 @@
+nav{
+    background: #EAEAE8;
+}
+button.btn{
+    background: #1E50B3;
+}
+div.collapse li a{
+    color: #1E50B3;
+}
+div.collapse li a:hover{
+   size: 155%;
+  }
