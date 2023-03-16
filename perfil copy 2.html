@@ -8,11 +8,12 @@
     <title>Perfil de usuario</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="./navbar.css">
+    
     <link rel="stylesheet" href="./perfil copy 2.css">
+    <link rel="stylesheet" href="./navbar.css">
     <link rel="stylesheet" href="./modal.css">
     <link rel="stylesheet" href="./cv copy.css">
-    
+
 </head>
 
 <body>
@@ -60,30 +61,31 @@
     <header class="header container">
     </header>
     <main>
-        <h1>Perfil de usuari@</h1>
+        <h1 class="tecler-perfil">Perfil de usuari@</h1>
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
-                    <img src="./img/fotoPerfil.jpg" id="chimpance" alt="">
+                <div class="col-lg-4 " >
+                    <img src="https://img.freepik.com/vector-premium/ilustracion-dibujos-animados-dinosaurio-traje-trabajando-computadora_49924-196.jpg?w=2000"
+                       class="perfil-img" id="dinoFoto" alt="">
                     <div>
-                        <a href="" id="enlaceFoto">Editar foto de perfil </a>
+                        <a href="" class="a-perfil" id="enlaceFoto">Editar foto de perfil </a>
                     </div>
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-3 exception">
                     <div>
-                        <img src="./img/usuario.png" alt="">
-                        <p>Cristina Suárez</p>
+                        <img src="./img/usuario.png" class="perfil-img" alt="usuario">
+                        <p class="p-perfil">Tiranius Rexis</p>
                     </div>
                     <div>
-                        <img src="./img/localizacion.png" alt="">
-                        <p>Gijón (Asturias)</p>
+                        <img src="./img/localizacion.png" class="perfil-img" alt="local">
+                        <p class="p-perfil">Gijón (Asturias)</p>
                     </div>
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-3 exception">
-                    <a href="">Editar Nombre de Usuario</a>
-                    <a href="">Editar localización</a>
+                    <a href="" class="a-perfil">Editar Nombre de Usuario</a>
+                    <a href="" class="a-perfil">Editar localización</a>
                 </div>
             </div>
 
@@ -92,12 +94,12 @@
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-3">
-                    <img src="./img/nacimiento.png" alt="">
-                    <p>08-04-1981 (41 años)</p>
+                    <img src="./img/nacimiento.png" class="perfil-img" alt="birthday">
+                    <p class="p-perfil">08-04-1990 (33 años)</p>
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-3">
-                    <a href="">Editar fecha de nacimiento</a>
+                    <a href="" class="a-perfil">Editar fecha de nacimiento</a>
                 </div>
             </div>
             <div class="row">
@@ -106,65 +108,66 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-3">
                     <img src="./img/nacimiento.png" alt="">
-                    <p>Licenciada en Química
-                        Bootcamp de Desarrollo Web
+                    <p class="p-perfil">Ingeniería Informática
+                        Bootcamp de Programación
                     </p>
                     <!--<button type="button" class="btn btn-outline-primary">Ver CV</button>-->
-                    <div class="section full-height">
+                    <div class="section full-height"id="modal-section">
                         <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
                         <label for="modal-btn">VER CV<i class="uil uil-expand-arrows"></i></label>
                         <div class="modal">
                             <div class="modal-wrap">
-                                <div>
-                                    <div class="container cabecera">
+                                <div class="cv-main">
+                                    <div class="container cabecera" id="cv-container">
                                         <div class="row">
                                             <div class="col-12 tecler-cv">
-                                                <img src="https://media.v2.siweb.es/uploaded_thumb_seo/409d16e4bfdd9d56bbcdede012883dd9/-InmaculadaSanz-Madrid,25-junio-2018%28FotografoJosePedroSalinas%29.jpg"
+                                                <img src="https://img.freepik.com/fotos-premium/diversion-trex-ilustracion-3d_183364-111286.jpg"
                                                     class="fotoTecler" alt="fotoTecler">
                                                 <div class="divCabecera">
-                                                    <h1>Mónica <br> Domínguez</h1>
-                                                    <p>FULLSTACK DEVELOPER</p>
+                                                    <h1 id="h1-cabecera">Tiranius <br> Rexis</h1>
+                                                    <p id="p-cabecera">FULLSTACK DEVELOPER</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="container">
+                                    <div class="container" id="cv-container">
                                         <div class="row">
                                             <div class="col-4 par">
-                                                <h4><u>CONT</u>ACTO</h4>
-                                                <div>
+                                                <h4 class="cv-h4"><u>CONT</u>ACTO</h4>
+                                                <div class="cv-contacto">
                                                     <img src="https://w7.pngwing.com/pngs/581/810/png-transparent-graphy-a-large-collection-of-small-telephone-icon-photography-logo-black.png"
-                                                        alt="phone">
+                                                    class="cv-icono" alt="phone">
                                                     <p>(+34) 666777888</p>
                                                 </div>
-                                                <div>
+                                                <div class="cv-contacto">
                                                     <img src="https://w7.pngwing.com/pngs/333/868/png-transparent-mail-computer-icons-email-graphy-e-mail-miscellaneous-angle-rectangle-thumbnail.png"
-                                                        alt="mail">
-                                                    <p>mdominguez@gmail.com</p>
+                                                    class="cv-icono" alt="mail">
+                                                    <p>tiranius@gmail.com</p>
                                                 </div>
-                                                <div>
+                                                <div class="cv-contacto">
                                                     <img src="https://w7.pngwing.com/pngs/555/1002/png-transparent-computer-icons-linkedin-resume-curriculum-vitae-social-media-social-media-template-text-rectangle.png"
-                                                        alt="linkedin">
-                                                    <p>modominguez</p>
+                                                    class="cv-icono" alt="linkedin">
+                                                    <p>tiraniusrex</p>
                                                 </div>
-                                                <div>
+                                                <div class="cv-contacto">
                                                     <img src="https://img2.freepng.es/20180716/tza/kisspng-github-computer-icons-clip-art-gits-5b4d20ab1f4131.145288281531781291128.jpg"
-                                                        alt="github">
-                                                    <p>mondomin</p>
+                                                    class="cv-icono" alt="github">
+                                                    <p>rextex</p>
                                                 </div>
                                             </div>
                                             <div class="col-8 impar">
-                                                <h4><u>ACER</u>CA DE MI</h4>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
-                                                    placeat ratione? Autem dolorem
-                                                    rerum, iure quaerat et suscipit, ut sint a blanditiis harum veniam
-                                                    quidem ad quo eos architecto
-                                                    non!</p>
+                                                <h4 class="cv-h4"><u>ACER</u>CA DE MI</h4>
+                                                <p>Soy Ingeniero Informático desde hace 6 años. He trabajado en
+                                                    diferentes campos, como desarrollo web, analítica digital, ciencia
+                                                    de datos... Me gusta trabajar en ambientes que supongan un desafío
+                                                    intelectual, no tengo miedo a los retos y me adapto bien a los
+                                                    cambios y a las situaciones nuevas.
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-4 par">
-                                                <h4><u>HABI</u>LIDADES</h4>
+                                                <h4 class="cv-h4"><u>HABI</u>LIDADES</h4>
                                                 <ul>
                                                     <li>Liderazgo</li>
                                                     <li>Comunicación asertiva</li>
@@ -174,26 +177,26 @@
                                                 </ul>
                                             </div>
                                             <div class="col-8 impar">
-                                                <h4><u>EXPE</u>RIENCIA LABORAL</h4>
+                                                <h4 class="cv-h4"><u>EXPE</u>RIENCIA LABORAL</h4>
                                                 <ul>
-                                                    <li></li>
-                                                    <li></li>
-                                                    <li></li>
-                                                    <li></li>
+                                                    <li><p><strong>Front-end Developer</strong></p> <p>RURTU S.A. - 2016-2017</p> </li>
+                                                    <li><p><strong>Fullstack Developer</strong></p><p>TRIADADEV - 2017-2019</p></li>
+                                                    <li><p><strong>Data Analyst</strong></p><p>Aliada Consultores - 2019-2021</p></li>
+                                                    <li><p><strong>Data Scientist</strong></p><p>TRIUM SOFT - 2021-2023</p></li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-4 par">
-                                                <h4><u>EDUC</u>ACIÓN</h4>
+                                                <h4 class="cv-h4"><u>EDUC</u>ACIÓN</h4>
                                                 <ul>
                                                     <li>
                                                         <p><strong>Ingeniería en Informática</strong><br>Universidad de
-                                                            Oviedo<br>2010-1014</p>
+                                                            Oviedo<br>2012-2016</p>
                                                     </li>
                                                     <li>
                                                         <p><strong>Bootcamp de Programación</strong><br>Tecla Coding
-                                                            Academy<br>2016-2017</p>
+                                                            Academy<br>2018-2019</p>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -216,8 +219,8 @@
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-3">
-                    <img src="./img/nacimiento.png" alt="">
-                    <p>B1 Inglés</p>
+                    <img src="./img/nacimiento.png" class="perfil-img" alt="lang">
+                    <p class="p-perfil">B1 Inglés</p>
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-3">
@@ -229,12 +232,12 @@
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-3">
-                    <img src="./img/nacimiento.png" alt="">
-                    <p>/in/cristinasuagar</p>
+                    <img src="./img/nacimiento.png" class="perfil-img" alt="linkedin">
+                    <p class="p-perfil">/in/tiraniusrex</p>
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-3">
-                    <a href="">Editar perfil Linkedin</a>
+                    <a href="" class="a-perfil">Editar perfil Linkedin</a>
                 </div>
             </div>
             <div class="row">
@@ -242,12 +245,12 @@
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-3">
-                    <img src="./img/nacimiento.png" alt="">
-                    <p>Patinaje, cine, fotografía</p>
+                    <img src="./img/nacimiento.png" class="perfil-img" alt="hobbies">
+                    <p class="p-perfil">Patinaje, cine, fotografía</p>
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-3">
-                    <a href="">Editar hobbies</a>
+                    <a href="" class="a-perfil">Editar hobbies</a>
                 </div>
             </div>
         </div>

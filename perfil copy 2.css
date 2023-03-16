@@ -1,3 +1,4 @@
+/*
 *{
     background-color: rgb(147, 192, 207);
 }
@@ -5,7 +6,8 @@ main{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     align-items: center;   
 }
-h1 {
+*/
+.tecler-perfil{
     height: 80px;
     font-size: 32px;
     padding-left: 40px;
@@ -25,7 +27,7 @@ h1 {
 .exception{
     flex-direction: column;
 }
-#chimpance{
+#dinoFoto{
     width:200px;
     height: 220px;
     border-radius: 50%;
@@ -33,16 +35,16 @@ h1 {
     border-style: double;
     border-width: 4px;
 }
-img{
+.perfil-img{
     width: 25px;
     height: 25px;
 }
-a{
+.a-perfil{
     text-decoration:none;
     color: blue;
     font-weight: bold;
 }
-p{
+.p-perfil{
     width: 300px;
     height: 20px;
     margin-top: 0px;

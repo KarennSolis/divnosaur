@@ -1,7 +1,8 @@
 /*-------------MODAL----------------------*/
-.section {
+#modal-section {
     position: relative;
     width: 100%;
+    min-height: 100vh;
     display: block;
     display: -ms-flexbox;
     display: flex;
@@ -10,11 +11,11 @@
     -ms-flex-pack: center;
     justify-content: center;
 }
-
+/*
 .full-height {
     min-height: 100vh;
 }
-
+*/
 [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked) {
     position: absolute;
@@ -177,5 +178,3 @@
     }
     */
 }
-
-/*-----------CV---------------------------------------------------------------*/
