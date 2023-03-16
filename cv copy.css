@@ -1,0 +1,64 @@
+main{
+   
+    font-family:'Times New Roman', Times, serif;
+    margin-top: 20px;
+    border: 5px solid black;
+}
+h4{
+    margin-bottom: 10%;
+    color: rgb(51, 51, 147);
+    font-weight: bold;
+}
+u{
+    color: rgb(51, 51, 147);
+    border-bottom: 4px solid rgb(51, 51, 147);
+    padding-bottom: 6px;
+}
+
+/*--------Columna CABECERA------------------------------------------------*/
+
+.tecler-cv{
+    display: flex;
+    justify-content: center;
+    padding: 8% 15%;
+    background-color: rgb(216, 218, 218);
+}
+.fotoTecler{
+    width: 175px;
+    height: 168px;
+    border-radius: 48%;
+}
+.divCabecera{
+    margin-left: 50px;
+}
+.divCabecera h1{
+    font-weight:bolder;
+    font-size: 55px;
+    color:rgb(10, 10, 162) ;
+}
+.divCabecera p{
+    font-weight: bold;
+    font-size: 18px;
+    color:rgb(51, 51, 147)
+}
+
+/*------------Bloque columnas derecha----------------------------------------------------------------*/
+.container{
+    margin-top: 0px 30px;
+}
+.col-4, .col-8{
+   padding: 35px;
+}
+.par{
+    background-color: rgb(235, 242, 244);
+}
+.par div{
+    display: flex;
+}
+
+.par div img{
+    width: 27px;
+    height: 27px;
+    margin-right: 10px;
+}
+/*-----------Bloque columnas izquierda----------------------------------------------------------------------*/
