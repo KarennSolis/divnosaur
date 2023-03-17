@@ -1,39 +1,102 @@
-/*
-*{
-    background-color: rgb(147, 192, 207);
+
+/*----------NAVBAR-----------------------------------------------------------------------------------------------------*/
+.navbar{
+    position: sticky;
+    top: 0px;
 }
-main{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    align-items: center;   
+nav{
+    background: #EAEAE8; 
 }
-*/
-.tecler-perfil{
-    height: 80px;
-    font-size: 32px;
-    padding-left: 40px;
-    padding-top: 20px;
+button.btn{
+    background: #1E50B3;
 }
-.col-lg-4{
+div.collapse li a{
+    color: #1E50B3;
+}
+div.collapse li a:hover{
+   size: 155%;
+  }
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+
+.body-perfil{
+    background-color: #abbfe8;
+}
+
+.perfil-main{
+    display: flex; 
+    margin-top:3%;
+    height: 100vh;
+}
+.perfil-row{
+    background-color: aliceblue;
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+    margin-bottom: 1%;
+    padding-top: 2%;
+}
+.photo-container{
+    width: 40%;
     display: flex;
     flex-direction: column;
-    align-items: center;   
+    align-items: center;
 }
-.col-lg-3{
-    display: flex;    
+.mothership{
+    margin: 4% 0%;
+    width: 55%;
+}
+.tecler-perfil{
+    height: 18%;
+    font-size: 33px;
+    margin-left: 25%;  
+}
+#h1-central{
+    margin: 0%;    
+}
+#h1-dcha{
+    margin-left: 0%;
+}
+.primera{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    background-color: none;
 }
 .first{
     align-items: flex-end;
 }
 .exception{
+    display: flex; 
     flex-direction: column;
+    justify-content: space-between;
+    background-color: aliceblue;
+    border-top-left-radius: 0.4em;
+}
+.name-usu{
+    display: flex;
+}
+.col-central{
+    display: flex;
+    justify-content: center; 
+    background-color: aliceblue;
+}
+.colum-dat-usu{
+    display: flex; 
+    background-color: aliceblue;
+    border-color: aliceblue;   
+    border-top-left-radius: 0.4em;
+    padding-left: 6%;
+}
+.bs-icon{
+    width: 20%;
 }
 #dinoFoto{
     width:200px;
-    height: 220px;
-    border-radius: 50%;
-    margin: 35px 15px 20px 40px ;
+    height: 200px;
+    margin-bottom: 4%;
     border-style: double;
-    border-width: 4px;
+    border-width: 3px;
+    border-radius: 49%;
 }
 .perfil-img{
     width: 25px;
@@ -43,11 +106,33 @@ main{
     text-decoration:none;
     color: blue;
     font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 5%;
 }
 .p-perfil{
     width: 300px;
-    height: 20px;
     margin-top: 0px;
     margin-left: 20px;   
 }
 
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 599px) {
+    .modal-wrap {
+        width: calc(100% - 40px);
+        padding-bottom: 15px;
+    }
+    .perfil-main{
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .cv-container{
+        flex-direction: column;
+    }
+    .perfil-row{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
