@@ -1,7 +1,6 @@
 .cv-main{
    
     font-family:'Times New Roman', Times, serif;
-    margin-top: 20px;
     border: 5px solid black;
 }
 .cv-h4{
@@ -24,12 +23,11 @@ u{
     background-color: rgb(216, 218, 218);
 }
 .fotoTecler{
-    width: 175px;
-    height: 168px;
+    width: 60%;
     border-radius: 48%;
 }
 .divCabecera{
-    margin-left: 50px;
+    margin-left: 15%;
 }
 #h1-cabecera{
     font-weight:bolder;
@@ -41,12 +39,23 @@ u{
     font-size: 18px;
     color:rgb(51, 51, 147)
 }
-
+.cv-row{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 /*------------Bloque columnas derecha----------------------------------------------------------------*/
 #cv-container{
-    margin-top: 0px 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 .par, .impar{
+    width: 100%;
    padding: 35px;
 }
 .par{
@@ -61,4 +70,9 @@ u{
     height: 27px;
     margin-right: 10px;
 }
-/*-----------Bloque columnas izquierda----------------------------------------------------------------------*/
+
+@media screen and (max-width: 599px) {
+    #h1-cabecera{
+        font-size: 45px;
+    }
+    }
