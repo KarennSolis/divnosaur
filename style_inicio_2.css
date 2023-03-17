@@ -2,6 +2,11 @@
     margin: 0px;
     padding: 0;
 } 
+.navfija{
+    position: sticky;
+    top: 0px;
+    z-index: 9999;
+}
 
 nav .col-12, ul.navLista{
     margin: 0;
@@ -10,6 +15,8 @@ nav .col-12, ul.navLista{
 nav ul li, ul li{
     list-style: none;
 }
+
+
 div#nav{
     background: #67CDFE;  
 }
@@ -76,21 +83,49 @@ div#reactions button{
     margin-left: 5px;
 }
 
+.solicitud{
+    margin-top: 20%;
+}
+
 .carousel-control-prev-icon, .carousel-control-next-icon {
     filter: invert(108%);
 }
 
+#rech-button{
+    background-color: red
+}
+#rech-button:hover{
+    background-color: rgb(213, 6, 6)
+}
+#ace-button{
+    background-color: rgb(35, 178, 35);
+}
+#ace-button:hover{
+    background-color: rgb(4, 133, 4);
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    height:30%;
+}
+
 .conectados{
+    width: 50%;
     display: flex;
     justify-content: space-around;
-    position:fixed;
-    bottom: end;
+    /*position:fixed;
+    bottom: end;*/
     left: 25%;
-    width: 50%;
-    height: 20%;
     background-color: #67CDFE;
-    border-radius: 1em;
-    padding-top: 9px;
+    
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+    padding: 9px 0px;
+    position: fixed;
+    bottom: 0;
+    left: 25%;
+    
 }
 
 .dinosConct{
@@ -100,8 +135,30 @@ div#reactions button{
     border: 6px solid rgb(31, 223, 31);
 }
 
+.dinosConct:hover{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 6px solid rgb(31, 223, 31);
+}
+
 .signoMas{
     width: 43px;
     height: 43px;
     margin-top: 6px;
 }
+
+.proyect_text{
+    text-align: center;
+    font-size: 22px;
+}
+
+.col-10 p{
+    font-size: large;
+    color: black; 
+}
+
+.comentarios{
+    margin-top: 2%;
+}
+
