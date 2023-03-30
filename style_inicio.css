@@ -1,62 +1,164 @@
 *{
-    margin: 0;
+    margin: 0px;
     padding: 0;
-}
-div#nav-start img{
-    width: 50px;
-}
-div#nav-start ul li{
-    display: inline-block;
+} 
+.navfija{
+    position: sticky;
+    top: 0px;
+    z-index: 9999;
 }
 
-div#nav-start{
-    position: absolute;
-    top: 0px; 
-    left: 0px;
+nav .col-12, ul.navLista{
+    margin: 0;
+   padding: 5px;
 }
-#footer-start ul li{
-    display: inline-block;
+nav ul li, ul li{
     list-style: none;
 }
-#section-start div a button{
-    width: 450px;
-    margin: 10px;
+
+
+div#nav{
+    background: #67CDFE;  
+}
+
+div.col-12{
+    padding: 0;
+}
+div#nav input#search{
+    width: 350px;
+    margin-left: 15px;
+    border-radius: 0.25rem 0px 0px 0.25rem;
+}
+div#nav input#searchbutton{
+    border-radius: 0px 0.25rem 0.25rem 0px;
+}
+div#sidebar{
+    margin-top: 20px;
+}
+
+img.profile{
+    width: 150px;
+    height: 150px;
+}
+.col-6{
+    background: rgb(215, 215, 215);
+    border-radius: 1em;
+}
+
+.col-6 ul li img{
+    width: 50px;
     height: 50px;
 }
-#section-start div a button img{
-    width: 30px;
-}
-#section-start{
-    margin: 70px;
-}
-#footer-start img{
-    width: 30px;
-}
-a:link, a:visited, a:active {
-    text-decoration:none;
-}
-#section-start #form{
+
+div#miusuario{
+    background: rgb(215, 215, 215);
     padding-top: 30px;
-    margin-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 1em;
 }
-#section-start #form input, #section-start #form label.form-check-label, #section-start div.col-lg-10, #section-start div.col-12 a button{
-    margin:  5px;
-} 
-
-@media only screen and ( max-width: 768px ) {
-
-    #nav-start .col-12 a button{
-       padding: 0;
-        width: 25%;
-    }
-
+div#miusuario ul li img{
+    margin-bottom: 15px;
+}
+div.aceptar-rechazar button{
+    margin-left: 5px;
+}
+.muro1{
+  margin: 30px;
+}
+div.columnaB img.friends{
+    width: 75px;
+    height: 75px;
+}
+div.columnaB button#publication{
+    margin: 10px;
+}
+div.space{
+    margin: 0;
+    margin-top: 15px;
+    padding: 1px;
+    background: grey;
+}
+div#reactions button{
+    width: 40px;
+    margin-left: 5px;
 }
 
-@media only screen and ( max-width: 413x ) {
-
-    #nav-start .col-12 a button{
-        padding: 0;
-        width: 15%;
-    }
-
+.solicitud{
+    margin-top: 20%;
 }
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(108%);
+}
+
+#rech-button{
+    background-color: red
+}
+#rech-button:hover{
+    background-color: rgb(213, 6, 6)
+}
+#ace-button{
+    background-color: rgb(35, 178, 35);
+}
+#ace-button:hover{
+    background-color: rgb(4, 133, 4);
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    height:30%;
+}
+
+.conectados{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    /*position:fixed;
+    bottom: end;*/
+    left: 25%;
+    background-color: #67CDFE;
+    
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+    padding: 9px 0px;
+    position: fixed;
+    bottom: 0;
+    left: 25%;
+    
+}
+
+.dinosConct{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 6px solid rgb(31, 223, 31);
+}
+
+.dinosConct:hover{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 6px solid rgb(31, 223, 31);
+}
+
+.signoMas{
+    width: 43px;
+    height: 43px;
+    margin-top: 6px;
+}
+
+.proyect_text{
+    text-align: center;
+    font-size: 22px;
+}
+
+.col-10 p{
+    font-size: large;
+    color: black; 
+}
+
+.comentarios{
+    margin-top: 2%;
+}
+
