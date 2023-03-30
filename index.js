@@ -21,11 +21,10 @@ form.addEventListener('submit', (e)=>{
         parrafo.innerHTML = warnings
     } else {
         setTimeout(function () {
-            location.href = 'http://127.0.0.1:5500/team-8/inicio_2.html';
+            location.href = 'http://127.0.0.1:5500/team-8/inicio.html';
         }, 1000,);
     };
-})
+});
 
-home = document.getElementById('homeRegBot');
-boton = document.getElementById('regBot');
+
 
