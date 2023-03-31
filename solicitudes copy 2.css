@@ -218,6 +218,26 @@ div.collapse li a:hover {
 }
 
 
+@media (max-width: 996px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 220px);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+  }
+
+@media (max-width: 730px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 220px);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+  }
+
 @media (max-width: 600px) {
     .container {
         display: grid;
@@ -225,6 +245,12 @@ div.collapse li a:hover {
         grid-template-rows: repeat(3, 220px);
         grid-column-gap: 10px;
         grid-row-gap: 10px;
+    }
+    .columnaA ul li p{
+        display: none;
+    }
+    .columnaA ul li i.bi{
+        width: 80px;
     }
   }
 
