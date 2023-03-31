@@ -27,4 +27,18 @@ form.addEventListener('submit', (e)=>{
 });
 
 
+  function handleCredentialResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential);
+  }
+  window.onload = function () {
+    google.accounts.id.initialize({
+      client_id: "950930800316-89b2reruqh07kqvv975hjabjmaq0egrt.apps.googleusercontent.com",
+      callback: handleCredentialResponse
+    });
 
+    google.accounts.id.renderButton(
+      document.getElementById("butGoogle"),
+      { theme: "outline", size: "large" }  // customization attributes
+    );
+    google.accounts.id.prompt(); // also display the One Tap dialog
+  }
