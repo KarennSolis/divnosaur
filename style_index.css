@@ -68,3 +68,14 @@ a:link, a:visited, a:active {
     color: #060606;
     padding-top: 20px;
 }
+
+.butGoogle{
+    margin: 5px;
+    border: 1px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 474px;
+    
+}

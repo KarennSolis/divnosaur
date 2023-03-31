@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style_index.css">
   </head>
 <body>
-      
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -77,8 +77,9 @@
                                 <div class="divider"></div>
                                 <div>
                                     <div class="col-12 d-inline ">
-                                        <a class="d-inline" href=""><button class="btn btn-outline-info d-inline"><h4><img src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" alt=""> Iniciar sesión con google</h4></button></a>
-                                    </div>
+                                        <!-- <a class="d-inline" href=""><button class="btn btn-outline-info d-inline"id="buttonDiv"><h4><img src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" alt=""> Iniciar sesión con google</h4></button></a>
+                                    </div> -->
+                                    <div id="butGoogle" class="butGoogle"></div>
                                     <div class="col-12" id="homeRegBot">
                                       <a href="http://127.0.0.1:5500/team-8/registro.html"><button class="btn btn-outline-info" id="regBot"><h4>Regístrate ahora</h4></button></a>
                                     </div>
@@ -106,13 +107,19 @@
                     </div>
                 </div>
             </div>
-
+            
+            <div id="g_id_onload"
+            data-client_id="950930800316-89b2reruqh07kqvv975hjabjmaq0egrt.apps.googleusercontent.com"
+            data-auto_select="true"
+            data-login_uri="http://127.0.0.1:5500/team-8/index.html">
+            </div>
        
 
 
 
 
-
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="index.js"></script>
+
 </body>
 </html>
