@@ -2,17 +2,18 @@
     margin: 0;
     padding: 0;
 }
-div#nav-start img{
-    width: 50px;
+.navbar img{
+    width: 170px;
 }
-div#nav-start ul li{
-    display: inline-block;
+.navbar{
+    background: #EAEAE8;
 }
-
-div#nav-start{
-    position: absolute;
-    top: 0px; 
-    left: 0px;
+.navbar .btn-light{
+    color: #1E50B3;
+}
+.navbar .nav-buttons{
+    display: block;
+    margin-right:0px auto;
 }
 #footer-start ul li{
     display: inline-block;
