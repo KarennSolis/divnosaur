@@ -162,3 +162,86 @@ div#reactions button{
     margin-top: 2%;
 }
 
+.projTitle{
+    margin-bottom: 0px;
+}
+
+/* -------Botones Ver Detalles de los proyectos---------------------------------- */
+.detailBut{
+    width: 40%;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-radius: 0.3em;
+    border: 1px solid rgb(0, 0, 0);
+}
+.detailBut:hover{
+    background-color: rgb(0, 123, 255);
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
+}
+.projBox{
+    display: none; 
+    position: absolute; 
+    background-color: rgb(250, 247, 247);
+    width: 300px;
+    z-index: 10;
+    border: 3px solid rgb(0, 123, 255) ;
+    border-radius: 0.5em;
+    padding: 8px;
+} 
+#projectBox1{   
+    top: 14%;
+    left:20%;
+}
+#projectBox2{ 
+    top: 40%;
+    left: 20%;
+}
+#projectBox3{   
+    top: 85%;
+    left: 20%;
+}
+#map {
+	height: 250px;
+	width: 100%;
+}
+.closeBox{
+    width: 17px;
+    height: 17px;
+    border: 1px solid rgb(16, 16, 16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: right;
+}
+.xClose{
+    width: 13px;
+    height: 13px; 
+}
+/* --------------Botones de Likes y Comments en publicaciones------------------------------ */
+
+#likeAnch{
+    display: flex;
+}
+
+#totalLikes, #totalLikes2, #totalLikes3 {
+    color:rgb(115, 18, 179);
+    font-weight: bold;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.newComment{
+    display: none;
+    display: flex;
+    margin: 10px 0px 30px 0px;
+}
+.txtAreaCom{
+    display: none;
+    background-color: rgb(236, 235, 235);
+    height: 50px;
+    width: 100%;
+    padding: 5px;
+}
+
