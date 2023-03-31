@@ -2,6 +2,21 @@
     margin: 0px;
     padding: 0px;
 }
+.navbar img{
+    width: 170px;
+}
+.navbar{
+    background: #EAEAE8;
+    padding: 12px;
+}
+.navbar .btn-light{
+    color: #1E50B3;
+}
+.navbar .nav-buttons{
+    display: block;
+    margin-right:0px auto;
+}
+
 #register ul li{
     
     margin-bottom: 15px;
