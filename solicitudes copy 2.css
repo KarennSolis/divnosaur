@@ -229,4 +229,36 @@ div.collapse li a:hover {
   }
 
 
+/* -----Barra Búsqueda y filtro----------------------------------------------------------- */
+.div_filter {
+    background-color: rgb(255, 255, 255);
+}
 
+.d-none {
+    display: none;
+}
+
+.friendsCounter {
+    color: rgb(171, 191, 232);
+}
+
+select {
+    width: 60%;
+    font-size: 14px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: cursive, sans-serif;
+    outline: 0;
+    background-color: rgb(180, 187, 187);
+    color: #fff;
+    border: 1px solid crimson;
+    padding: 4px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+select:hover {
+    background-color: rgb(160, 160, 160);
+    
+}
