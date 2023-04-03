@@ -33,26 +33,54 @@ main {
 
 
 /*----------NAVBAR-----------------------------------------------------------------------------------------------------*/
-.navbar {
-    position: sticky;
-    top: 0px;
-}
-
-nav {
+.navbar{
+    padding: 5px;
     background: #EAEAE8;
-}
-
-button.btn {
-    background: #1E50B3;
-}
-
-div.collapse li a {
+    position:sticky;
+  }
+  
+  a.navbar-brand img{
+    margin-left: 50px;
+  }
+  
+  div.collapse li a{
     color: #1E50B3;
-}
-
-div.collapse li a:hover {
-    size: 155%;
-}
+  }
+  li.dropdown{
+    margin-right: 80px;
+  }
+  
+  
+  @media (max-width: 576px){
+    a.navbar-brand img{
+      margin-left: 10px;
+    }
+    button.navbar-toggler{
+      margin-right: 15px;
+    }
+    ul.dropdown-menu .dropdown-item{
+      margin-left: 15px;
+    }
+    ul.navbar-nav li.nav-item{
+      margin-left: 25px;
+    }
+    form#search{
+      margin: 15px;
+    }
+  }
+  
+  @media(max-width:1025px){
+    ul.navbar-nav form#search input,ul.navbar-nav form#search button{
+      height: 40px;
+    }
+    ul.navbar-nav li.nav-item{
+      font-size: 12px;
+      margin-left: 5px;
+    }
+    a.navbar-brand img{
+      margin-left: 5px;
+    }
+  }
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 
@@ -198,23 +226,6 @@ div.collapse li a:hover {
 
 .just_friend:hover {
     background-color: rgb(123, 17, 38);
-}
-
-.enviarMsj {
-    width: 150px;
-    height: 40px;
-    background-color: rgb(56, 56, 247);
-    border-radius: 0.5em;
-    color: white;
-    font-weight: bold;
-    position: fixed;
-    bottom: 0px;
-    left: 1300px;
-    margin-bottom: 2px;
-}
-
-.enviarMsj:hover {
-    background-color: rgb(33, 33, 146);
 }
 
 

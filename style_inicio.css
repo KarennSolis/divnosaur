@@ -3,9 +3,12 @@
     padding: 0;
 } 
 
+/*Principio de nav*/
+
 .navbar{
     padding: 5px;
     background: #EAEAE8;
+    position:sticky;
   }
   
   a.navbar-brand img{
@@ -50,6 +53,8 @@
       margin-left: 5px;
     }
   }
+
+/*Final nav*/
 
 div.col-12{
     padding: 0;
