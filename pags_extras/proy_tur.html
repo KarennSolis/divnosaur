@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <title>ProyectoTurismo</title>
+    <style>
+        :root{
+            --colorPrimario: rgb(82, 44, 249);
+            --colorSecundario: blueviolet;
+            --colorBlanco: white;
+            --colorGris: rgb(177, 177, 177)
+        }
+        html,body{
+            margin: 0;
+        }
+        body{
+            font-family: 'Raleway', sans-serif;
+        }
+        .logo{
+            text-align: center;
+            color:var(--colorPrimario);
+            background-color: rgba(170, 110, 207, 0.418);
+        }
+        .logo span{
+            color:var(--colorSecundario);
+        }
+        ul{
+            display: flex;
+            list-style: none;
+            justify-content: space-evenly;
+            padding: 20px;
+            
+            background: linear-gradient(
+                90deg,
+                var(--colorPrimario),
+                rgba(82, 44, 249, 0.461),
+                var(--colorPrimario)
+            );
+        }
+        ul li a{
+            color:var(--colorBlanco);
+            text-decoration: none;
+            text-shadow: 0px 0px 2px black;
+            font-size: 17px;
+        }
+        ul li a:hover{
+            border-bottom: 1px solid var(--colorBlanco);
+            padding-bottom: 5px;
+        }
+        #pagina_empresa, #pagina_servicios,#pagina_contacto{
+            display: none;
+            padding: 50px;
+            border-radius: 50px;
+            margin: 20px;
+            color:var(--colorBlanco);
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.516);
+            background: linear-gradient(
+                45deg,
+                var(--colorPrimario) 90%,
+                var(--colorBlanco) 90%
+            );
+        }
+        #pagina_inicio{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        #pagina_inicio div img{
+            width: 300px;
+            animation: chica 4s infinite ease-in-out;
+        }
+        @keyframes chica {
+            0%{ transform: translateY(-10%)}
+            50%{ transform: translateY(0%)}
+            100%{ transform: translateY(-10%)}
+        }
+        #pagina_inicio div a{
+            border: 1px solid var(--colorPrimario);
+            border-radius: 25px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: var(--colorPrimario)
+        }
+        #pagina_inicio div a:hover{
+            background: var(--colorPrimario);
+            color: var(--colorBlanco)
+        }
+
+        .container {
+            
+            width: 550px;
+            height: 430px;
+            text-align: center;
+            margin: auto;
+            border: 2px solid var(--colorSecundario);
+            padding-left: 15px;
+            padding-right: 15px;
+            background-color: rgba(137, 43, 226, 0.142);
+        }
+
+       
+           
+    </style>
+</head>
+<body>
+    <h1 class="logo">Joven <span>Turismo</span></h1>
+    <ul>
+        <li><a href="#" class="boton" id="inicio">INICIO</a></li>
+        <li><a href="#" class="boton" id="empresa">EMPRESA</a></li>
+        <li><a href="#" class="boton" id="servicios">SERVICIOS</a></li>
+        <li><a href="#" class="boton" id="contacto">CONTACTO</a></li>
+    </ul>
+
+    <div class="page">
+        <div id="pagina_inicio">
+            <div><img src="voyage-violet.png"></div>
+        </div>
+       
+        <div>
+            <form action="container" class="container">
+            <p>¡Te ofrecemos crecer con nosotros en nuestra unidad tecnológica FullStack Development como Programador/a! Si tienes unos 6 meses de experiencia como programador/a, así como iniciativa, empatía y ganas de llegar lejos, danos la oportunidad de conocer <br>
+
+                ¿Qué necesitamos?  <br>
+                
+                Al menos 6 meses de experiencia y/o prácticas en desarrollo y programacion. <br>
+                
+                Skills tipo: Python y SQL <br>
+                
+                ¿Qué te podemos ofrecer? <br>
+                • Contratación indefinida <br>
+                • Rango salarial: 17.000 / 20.000 b/a (rango orientativo, salario en función de experiencia aportada) <br>
+                • Beneficios sociales Seguro médico privado y seguro de vida <br>
+                • Retribución flexible: tickets restaurante, tickets guardería, tarjeta transporte <br>
+                • 23 días de vacaciones y el día de tu cumpleaños <br>
+                • Plan de formación personalizado. <br>
+                
+                Si sientes que podrías encajar y te apetece la experiencia, ¡ponte en contacto con nosotros! Y te daremos toda la información que necesites. <br>
+                
+                ¡Abre una nueva ventana a tu futuro con Second Window! ¡Envía tu CV! tecler@ejemplo.es</p>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

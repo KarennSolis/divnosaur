@@ -84,5 +84,21 @@ addComment('commentButton', 'txtAreaCom');
 addComment('commentButton2', 'txtAreaCom2');
 addComment('commentButton3', 'txtAreaCom3');
 
+boton = document.getElementById('masIng');
 
+document.getElementById('masIng').addEventListener('click', (e)=>{
+    window.location.href = 'http://127.0.0.1:5500/pags_extras/Proy_Ing.html'
+});
+
+boton = document.getElementById('masTur');
+
+document.getElementById('masTur').addEventListener('click', (e)=>{
+    window.location.href = 'http://127.0.0.1:5500/pags_extras/proy_tur.html'
+});
+
+boton = document.getElementById('masInmo');
+
+document.getElementById('masInmo').addEventListener('click', (e) => {
+    window.location.href = 'http://127.0.0.1:5500/pags_extras/proy_inmo.html'
+});
 
