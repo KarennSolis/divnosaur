@@ -2,6 +2,33 @@
     margin: 0px;
     padding: 0px;
 }
+.navbar{
+    padding: 5px;
+    background: #EAEAE8;
+    position: sticky;
+  }
+  nav div#start-button
+  a.navbar-brand img{
+    margin-left: 50px;
+  }
+  
+  
+  
+  @media (max-width: 395px){
+    nav a img{
+      width: 130px;
+    }
+    .navbar img{
+      margin-left: 10px;
+    }
+    button.navbar-toggler{
+      margin-right: 15px;
+    }
+    button.btn-inicio{
+      width: 70px;
+    }
+   
+  }
 #register ul li{
     
     margin-bottom: 15px;
