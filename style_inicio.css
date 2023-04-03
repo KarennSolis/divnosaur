@@ -280,3 +280,6 @@ div#reactions button{
     padding: 5px;
 }
 
+.listaPerfil{
+    list-style: none;
+}
