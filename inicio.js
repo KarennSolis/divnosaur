@@ -72,19 +72,22 @@ addLikes('likeButton2', 'totalLikes2');
 addLikes('likeButton3', 'totalLikes3');
 
 /* ------Boton Comments-------------------------------------------------------------------- */
-function addComment(id, txtArId) {
-  let commentButton = document.getElementById(id);
-  let txtAreaCom = document.getElementById(txtArId)
+
+function addComment(buttonId,fatherId) {
+  let commentButton = document.getElementById(buttonId);
+  let commentFather = document.getElementById(fatherId);
+
   commentButton.addEventListener('click', () => {
-    txtAreaCom.style.display = 'block';
+    let divChild = document.createElement("textarea");
+    divChild.setAttribute("id", "hijo")
+    divChild.placeholder=('Deja tu comentario...')
+    commentFather.appendChild(divChild);
   }
   )
 }
-addComment('commentButton', 'txtAreaCom');
-addComment('commentButton2', 'txtAreaCom2');
-addComment('commentButton3', 'txtAreaCom3');
-
-boton = document.getElementById('masIng');
+addComment('commentButton', 'commentFather');
+addComment('commentButton2', 'commentFather2');
+addComment('commentButton3', 'commentFather3');
 
 document.getElementById('masIng').addEventListener('click', (e)=>{
     window.location.href = 'http://127.0.0.1:5500/pags_extras/Proy_Ing.html'
