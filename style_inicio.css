@@ -267,17 +267,15 @@ div#reactions button{
     align-items: flex-start;
 }
 
-.newComment{
-    display: none;
-    display: flex;
-    margin: 10px 0px 30px 0px;
+.btn-toolbar{
+    margin-bottom: 10px;
 }
-.txtAreaCom{
-    display: none;
-    background-color: rgb(236, 235, 235);
-    height: 50px;
-    width: 100%;
+#hijo{
+    height: 46px;
+    width: 90%;
     padding: 5px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 0.4em;
 }
 
 .listaPerfil{
