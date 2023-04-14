@@ -10,11 +10,11 @@ form.addEventListener('submit', (e)=>{
     let entrar = false;
     parrafo.innerHTML = '';
     if (!expRegEmail.test(email.value)) {
-        warnings += `El correo no es valido <br>`
+        warnings += ` El correo no es valido.`
         entrar = true
     };
     if (password.value.length < 8) {
-        warnings += `La contraseña no es valida <br>`
+        warnings += ` La contraseña no es valida.`
         entrar = true
     };
     if (entrar) {

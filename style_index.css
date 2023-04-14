@@ -77,11 +77,12 @@ a:link, a:visited, a:active {
 }
 
 .warnings{
-    width: 200px;
+    width: 500px;
     text-align: center;
     margin: auto;
-    color: #060606;
+    color: #ff1313;
     padding-top: 20px;
+    font-weight: bold;
 }
 
 .butGoogle{
