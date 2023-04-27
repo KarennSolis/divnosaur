@@ -50,8 +50,6 @@ form.addEventListener('submit', (event) => {
     const experience = document.getElementById('experience').value;
 
     
-
-
     form.reset();
 
     fetch('http://localhost:3000/register', {
