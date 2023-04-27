@@ -16,7 +16,7 @@ app.get('/register', async (req, res) => {
 })
 
 app.post('/register', async (req, res) => {
-    const { user, email, password } = req.body
+    const { user, email, password, age, phone, town, country, hobbies, experience } = req.body
     console.log(req.body)
 })
 

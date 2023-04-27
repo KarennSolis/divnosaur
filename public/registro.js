@@ -42,13 +42,22 @@ form.addEventListener('submit', (event) => {
     const user = document.getElementById("user").value;
     const email = document.getElementById('Correo').value;
     const password = document.getElementById('Contrasena').value;
+    const age = document.getElementById('age').value;
+    const phone = document.getElementById('phone').value;
+    const town = document.getElementById('town').value;
+    const country = document.getElementById('country').value;
+    const hobbies = document.getElementById('hobbies').value;
+    const experience = document.getElementById('experience').value;
+
     
+
+
     form.reset();
 
     fetch('http://localhost:3000/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user, email, password})
+        body: JSON.stringify({ user, email, password, age, phone, town, country, hobbies, experience })
     })
 
         .then(response => {
