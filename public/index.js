@@ -1,4 +1,4 @@
-password = document.getElementById('exampleInputPassword1');
+/* password = document.getElementById('exampleInputPassword1');
 email = document.getElementById('exampleInputEmail1');
 form = document.getElementById('form');
 parrafo =document.getElementById('warnings');
@@ -42,3 +42,36 @@ form.addEventListener('submit', (e)=>{
     );
     google.accounts.id.prompt(); // also display the One Tap dialog
   }
+ */
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById('exampleInputEmail1').value;
+  const password = document.getElementById('exampleInputPassword1').value;
+
+  form.reset();
+
+  fetch('http://localhost:3000/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({email, password })
+  })
+    .then(response => {
+      if (response.ok) {
+        console.log(response.json);
+        console.log('done');
+
+      } else {
+        response.text().then(errorMessage => {
+          alert(errorMessage)
+        });
+      }
+    })
+    .catch(error => {
+      console.error('Error al enviar la solicitud: ', error)
+    });
+
+});

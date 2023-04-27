@@ -43,24 +43,24 @@
             <div class="contenedor-Login text-center">
                 <h2 class="tituloLogin text-center">Login</h2>
                 <div class="contenedor-Form" id="contenedorForm">
-                    <form class="form-horizontal" action="" id="form">
+                    <form class="form-horizontal" action="/register" method="post" id="form">
                         <ul id="ul">
                             <li>
                                 <!-- estos son botoncitos para interactuar, "actuar" -->
                                 <label for="User" class="visually-hidden"></label>
-                                <input class="form-control" type="text" placeholder="User" id="user">
+                                <input class="form-control" type="text" placeholder="User" id="user" required>
                                 <!-- le quito required del input para ver si falla js por eso  -->
                             </li>
                             <li>
                                 <label for="Correo" class="visually-hidden"></label>
-                                <input type="text" placeholder="Correo" class="form-control" id="Correo">
+                                <input type="text" placeholder="Correo" class="form-control" id="Correo" required>
                                 <!-- le quito required del input para ver si falla js por eso  -->
                             </li>
                             <li>
                                 <!-- cajita para escribir -->
                                 <label for="" class="visually-hidden"></label>
                                 <!-- cajita para poner contraseña oculta -->
-                                <input type="password" name="Contraseña" id="Contrasena" placeholder="Password" class="form-control">
+                                <input type="password" name="Contraseña" id="Contrasena" placeholder="Password" class="form-control" required>
                                 <!-- le quito required del input para ver si falla js por eso -->
                             </li>
                             <li>

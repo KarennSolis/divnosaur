@@ -90,7 +90,9 @@ addComment('commentButton2', 'commentFather2');
 addComment('commentButton3', 'commentFather3');
 
 document.getElementById('masIng').addEventListener('click', (e)=>{
-    window.location.href = 'pags_extras/Proy_Ing.html'
+    //window.location.href = 'pags_extras/Proy_Ing.html'
+    window.location.href = ''
+
 });
 
 boton = document.getElementById('masTur');
