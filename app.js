@@ -100,7 +100,9 @@ app.post('/login', async (req, res) => {
 }})
 
 //Publicaciones
+// app.post('/publication', async (req, res) => {
 
+// })
 //Amigos
 
 

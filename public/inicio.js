@@ -89,21 +89,58 @@ addComment('commentButton', 'commentFather');
 addComment('commentButton2', 'commentFather2');
 addComment('commentButton3', 'commentFather3');
 
+//ver proyectos en más detalles//
+
+
 document.getElementById('masIng').addEventListener('click', (e)=>{
-    //window.location.href = 'pags_extras/Proy_Ing.html'
-    window.location.href = ''
+    window.location.href = '/pags_extras/Proy_Ing.html'
 
 });
 
 boton = document.getElementById('masTur');
 
 document.getElementById('masTur').addEventListener('click', (e)=>{
-    window.location.href = 'pags_extras/proy_tur.html'
+    window.location.href = '/pags_extras/proy_tur.html'
 });
 
 boton = document.getElementById('masInmo');
 
 document.getElementById('masInmo').addEventListener('click', (e) => {
-    window.location.href = 'pags_extras/proy_inmo.html'
+    window.location.href = '/pags_extras/proy_inmo.html'
 });
 
+
+//Publicaciones//
+
+// form.addEventListener('submit', (event) => {
+//   event.preventDefault();
+
+//   const publication = document.getElementById('mypublications').value;
+
+//   form.reset();
+
+//   fetch('http://localhost:3000/publication', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({publication})
+//   })
+//     .then(response => {
+//       if (response.ok) {
+//         console.log(response.json);
+//         console.log('done');
+//         const divnosaurName = document.createRange().createContextualFragment(`
+// 				<h1>${email}</h1> 
+// 		  `);
+// 		  const main = document.getElementById("divnosaurImg");
+// 		  main.append(divnosaurName);
+//       } else {
+//         response.text().then(errorMessage => {
+//           alert(errorMessage)
+//         });
+//       }
+//     })
+//     .catch(error => {
+//       console.error('Error al enviar la solicitud: ', error)
+//     });
+
+// });
