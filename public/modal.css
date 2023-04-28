@@ -67,8 +67,8 @@
 .modal-btn:checked+label:after,
 .modal-btn:not(:checked)+label:after {
     position: fixed;
-    top: 40px;
-    right: 100px;
+    top: 100px;
+    right: 250px;
     z-index: 110;
     width: 40px;
     border-radius: 3px;
