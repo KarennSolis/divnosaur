@@ -59,20 +59,24 @@ form.addEventListener('submit', (event) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({email, password })
   })
-    .then(response => {
-      if (response.ok) {
-        console.log(response.json);
-        console.log('done');
-        const divnosaurName = document.createRange().createContextualFragment(`
-				<h1>${email}</h1> 
-		  `);
-		  const main = document.getElementById("divnosaurImg");
-		  main.append(divnosaurName);
+     .then(data => data.json())
+      .then(response => {
+        const {result, message}= response
+         if (result) {
+          alert(message)
+          
+     
+        // const divnosaurName = document.createRange().createContextualFragment(`
+				// <h1>${email}</h1> 
+		  // `);
+		  // const main = document.getElementById("divnosaurImg");
+		  // main.append(divnosaurName);
       } else {
-        response.text().then(errorMessage => {
-          alert(errorMessage)
-        });
-      }
+        window.location.href="/public/inicio.html"
+          
+
+        }
+      
     })
     .catch(error => {
       console.error('Error al enviar la solicitud: ', error)

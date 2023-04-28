@@ -48,28 +48,28 @@ form.addEventListener('submit', (event) => {
     const country = document.getElementById('country').value;
     const hobbies = document.getElementById('hobbies').value;
     const experience = document.getElementById('experience').value;
-    const a = false;
+    // const a = false;
     
     form.reset();
 
     fetch('http://localhost:3000/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user, email, password, age, phone, town, country, hobbies, experience, a })
+        body: JSON.stringify({ user, email, password, age, phone, town, country, hobbies, experience})
     })
-        .then(data => { console.log(data) })
+        // .then(data => { console.log(data) })
+        .then(data => data.json())
         .then(response => {
-            if (response.ok) {
-                console.log('toy')
-                console.log(response.json);
-                console.log('done');
-                if (a=true){
-                    window.location.href="/public/index.html"
-                };
+            const {result, message}= response
+            if (result) {
+                
+                alert(message)
             } else {
-                response.text().then(errorMessage => {
-                    alert(errorMessage)
-                });
+                // response.text().then(errorMessage => {
+                //     alert(errorMessage)
+                // });
+                // alert(message)
+                window.location.href="/public/index.html"
             }
         })
         .catch(error => {
