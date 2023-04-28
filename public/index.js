@@ -63,7 +63,11 @@ form.addEventListener('submit', (event) => {
       if (response.ok) {
         console.log(response.json);
         console.log('done');
-
+        const divnosaurName = document.createRange().createContextualFragment(`
+				<h1>${email}</h1> 
+		  `);
+		  const main = document.getElementById("divnosaurImg");
+		  main.append(divnosaurName);
       } else {
         response.text().then(errorMessage => {
           alert(errorMessage)
