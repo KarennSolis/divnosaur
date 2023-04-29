@@ -65,12 +65,6 @@ form.addEventListener('submit', (event) => {
          if (result) {
           alert(message)
           
-     
-        // const divnosaurName = document.createRange().createContextualFragment(`
-				// <h1>${email}</h1> 
-		  // `);
-		  // const main = document.getElementById("divnosaurImg");
-		  // main.append(divnosaurName);
       } else {
         window.location.href="/public/inicio.html"
           
