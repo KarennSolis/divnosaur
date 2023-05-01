@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const sequelize = require('../conexion-base-datos');
+var mysql2 = require('mysql2');
 
 
 const postRegister = async function (req, res) {
@@ -17,8 +18,8 @@ const postRegister = async function (req, res) {
                     // return res.status(404).send(`No existe el usuario`);
                     //query de insert//
                     // let array_insert = ["Alias","2","3","@gmail.com","5*","año_mes_dia","7","8","link","estudios"];      
-                    sequelize.query('INSERT INTO `users`(`name`,`email`,`age`,`password`,`telephone_number`,`city`,`country`,`hobbies`,`experience`,`birthdate`,`studies`,`linkedin`,`role`,`registration_date`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-                        { replacements: req.body, type: sequelize.QueryTypes.INSERT })
+                    sequelize.query('INSERT INTO users (name,email,age,password,telephone_number,city,country,hobbies,experience) VALUES (?,?,?,?,?,?,?,?,?)',
+                        { replacements: [req.body.user, req.body.email, req.body.age, req.body.password, req.body.phone, req.body.town, req.body.country, req.body.hobbies, req.body.experience], type: sequelize.QueryTypes.INSERT })
                     console.log('No existe el usuario')
                     res.status(200).send({ result: true, message: "Usuario creado con exito, inicie sesión" })
                 } else {

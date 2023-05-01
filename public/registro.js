@@ -78,8 +78,8 @@ form.addEventListener('submit', (event) => {
                 // response.text().then(errorMessage => {
                 //     alert(errorMessage)
                 // });
-                // alert(message)
-                window.location.href = "/public/index.html"
+                alert(message)
+                window.location.href="/public/index.html"
             }
         })
         .catch(error => {
