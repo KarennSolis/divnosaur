@@ -1,9 +1,9 @@
-/* password = document.getElementById('exampleInputPassword1');
+/*  password = document.getElementById('exampleInputPassword1');
 email = document.getElementById('exampleInputEmail1');
 form = document.getElementById('form');
-parrafo =document.getElementById('warnings');
+parrafo =document.getElementById('warnings'); */
 
-form.addEventListener('submit', (e)=>{
+/* form.addEventListener('submit', (e)=>{
     e.preventDefault()
     let warnings = "";
     let expRegEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -24,10 +24,10 @@ form.addEventListener('submit', (e)=>{
             location.href = 'http://127.0.0.1:5500/inicio.html';
         }, 1000,);
     };
-});
+}); */
 
 
-  function handleCredentialResponse(response) {
+/*   function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
   }
   window.onload = function () {
@@ -41,10 +41,10 @@ form.addEventListener('submit', (e)=>{
       { theme: "outline", size: "large" }  // customization attributes
     );
     google.accounts.id.prompt(); // also display the One Tap dialog
-  }
- */
+  } */
 
-const form = document.querySelector('form');
+
+/* const form = document.querySelector('form');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -67,8 +67,6 @@ form.addEventListener('submit', (event) => {
           
       } else {
         window.location.href="/public/inicio.html"
-          
-
         }
       
     })
@@ -76,4 +74,78 @@ form.addEventListener('submit', (event) => {
       console.error('Error al enviar la solicitud: ', error)
     });
 
+}); */
+
+/* ----------------------------------------------------- */
+
+
+
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const password = document.getElementById('exampleInputPassword1').value;
+  const email = document.getElementById('exampleInputEmail1').value;
+  const form = document.getElementById('form');
+  const parrafo = document.getElementById('warnings');
+
+  form.reset();
+
+  const asyncPostCall = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await response.json();
+      const { result, message } = response
+
+      if (result) {
+          alert(message)
+      } else {
+        window.location.href = "/public/inicio.html"
+      }
+
+    } catch (error) {
+      console.error('Error al enviar la solicitud: ', error)
+    }
+  }
+
+  let warnings = "";
+  let expRegEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let entrar = false;
+  parrafo.innerHTML = '';
+
+  if (!expRegEmail.test(email)) {
+    warnings += ` El correo no es valido.`
+    entrar = true
+  };
+  if (password.length < 8) {
+    warnings += ` La contraseña no es valida.`
+    entrar = true
+  };
+  if (entrar) {
+    parrafo.innerHTML = warnings
+  } else {
+    parrafo.innerHTML = 'Usuario logueado con éxito';
+    asyncPostCall();
+  };
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
