@@ -7,28 +7,22 @@ const postLogin = require ('./routes/loginBack')
 require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 3000;
-//Actualizaciones 
 const postRegister = require('./routes/registroBack');
 const postLogin = require ('./routes/loginBack')
+const readPublication = require('./routes/publicatBack');
+const postPublication = require('./routes/publicatBack');
+
 var mysql2 = require('mysql2');
 
 app.use(requestTransfer);
 app.use(express.json());
 app.use(cors());
-//Actualizaciones 
-app.post('/register', postRegister);
-app.post('/login', postLogin);
 
 
 
 //Rutas
-app.get('/', async (req, res) => {
-    res.status(200).send('Helo World')
-})
+
 //Registro
-app.get('/register', async (req, res) => {
-    res.status(200).send('Helo World')
-})
 
 /* app.post('/register', async (req, res) => {
     const { user, email, password, age, phone, town, country, hobbies, experience } = req.body
@@ -134,12 +128,11 @@ app.post('/register', postRegister);
 app.post('/login', postLogin);
 
 
-
-
 //Publicaciones
-// app.post('/publication', async (req, res) => {
+app.get('/publication', readPublication);
 
-// })
+app.post('/createPublication', postPublication);
+
 //Amigos
 
 
