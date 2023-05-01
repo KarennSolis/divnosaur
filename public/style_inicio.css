@@ -107,6 +107,11 @@ div.columnaB img.friends{
 div.columnaB button#publication{
     margin: 10px;
 }
+#buttonAndPubli{
+display: flex; 
+justify-content: flex-end;
+}
+
 div.space{
     margin: 0;
     margin-top: 15px;

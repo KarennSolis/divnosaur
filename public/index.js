@@ -1,232 +1,59 @@
-/*  password = document.getElementById('exampleInputPassword1');
-email = document.getElementById('exampleInputEmail1');
-form = document.getElementById('form');
-parrafo =document.getElementById('warnings'); */
+const parrafo = document.getElementById('warnings');
 
-/* form.addEventListener('submit', (e)=>{
-    e.preventDefault()
-    let warnings = "";
-    let expRegEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    let entrar = false;
-    parrafo.innerHTML = '';
-    if (!expRegEmail.test(email.value)) {
-        warnings += ` El correo no es valido.`
-        entrar = true
-    };
-    if (password.value.length < 8) {
-        warnings += ` La contraseña no es valida.`
-        entrar = true
-    };
-    if (entrar) {
-        parrafo.innerHTML = warnings
-    } else {
-        setTimeout(function () {
-            location.href = 'http://127.0.0.1:5500/inicio.html';
-        }, 1000,);
-    };
-}); */
+const asyncPostCall = async (email, password) => {
+	try {
+		const response = await fetch('http://localhost:3000/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ email, password })
+		});
+		const data = await response.json();
+		const { result, message } = data;
 
+		if (result) {
+			alert(message)
+		} else {
+			parrafo.innerHTML = 'Usuario logueado con éxito';
+			window.location.href = "/public/inicio.html"
+		}
 
-/*   function handleCredentialResponse(response) {
-    console.log("Encoded JWT ID token: " + response.credential);
-  }
-  window.onload = function () {
-    google.accounts.id.initialize({
-      client_id: "950930800316-89b2reruqh07kqvv975hjabjmaq0egrt.apps.googleusercontent.com",
-      callback: handleCredentialResponse
-    });
+	} catch (error) {
+		console.error('Error al enviar la solicitud: ', error)
+	}
+}
 
-    google.accounts.id.renderButton(
-      document.getElementById("butGoogle"),
-      { theme: "outline", size: "large" }  // customization attributes
-    );
-    google.accounts.id.prompt(); // also display the One Tap dialog
-  }
- */
-//comentar//
-// const form = document.querySelector('form');
-
-// form.addEventListener('submit', (event) => {
-//   event.preventDefault();
-
-//   const email = document.getElementById('exampleInputEmail1').value;
-//   const password = document.getElementById('exampleInputPassword1').value;
-
-//   form.reset();
-
-//   fetch('http://localhost:3000/login', {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({email, password })
-//   })
-//      .then(data => data.json())
-//       .then(response => {
-//         const {result, message}= response
-//          if (result) {
-//           alert(message)
-          
-     
-//         // const divnosaurName = document.createRange().createContextualFragment(`
-// 				// <h1>${email}</h1> 
-// 		  // `);
-// 		  // const main = document.getElementById("divnosaurImg");
-// 		  // main.append(divnosaurName);
-//       } else {
-//         window.location.href="/public/inicio.html"
-          
-
-//         }
-      
-//     })
-//     .catch(error => {
-//       console.error('Error al enviar la solicitud: ', error)
-//     });
-
-// });
-//comentar//
 
 //Actualizacion//
+const form = document.getElementById('form');
 form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const password = document.getElementById('exampleInputPassword1').value;
-  const email = document.getElementById('exampleInputEmail1').value;
-  const form = document.getElementById('form');
-  const parrafo = document.getElementById('warnings');
+	e.preventDefault();
+	const password = document.getElementById('exampleInputPassword1').value;
+	const email = document.getElementById('exampleInputEmail1').value;
 
-  form.reset();
+	form.reset();
 
-  // fetch('http://localhost:3000/login', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({email, password })
-  // })
-  //    .then(data => data.json())
-  //     .then(response => {
-  //       const {result, message}= response
-  //        if (result) {
-  //         alert(message)
-          
-  //     } else {
-  //       window.location.href="/public/inicio.html"
-  //       }
-      
-  //   })
-  //   .catch(error => {
-  const asyncPostCall = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
-      });
-      const data = await response.json();
-      const { result, message } = response
+	let warnings = "";
+	let expRegEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	let entrar = false;
+	parrafo.innerHTML = '';
 
-      if (result) {
-          alert(message)
-      } else {
-        window.location.href = "/public/inicio.html"
-      }
+	if (!expRegEmail.test(email)) {
+		warnings += ` El correo no es valido.`
+		entrar = true
+	};
+	if (password.length < 8) {
+		warnings += ` La contraseña no es valida.`
+		entrar = true
+	};
+	if (entrar) {
+		parrafo.innerHTML = warnings
+	} else {
 
-    } catch (error) {
-      console.error('Error al enviar la solicitud: ', error)
-    }
-  }
-
-  let warnings = "";
-  let expRegEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  let entrar = false;
-  parrafo.innerHTML = '';
-
-  if (!expRegEmail.test(email)) {
-    warnings += ` El correo no es valido.`
-    entrar = true
-  };
-  if (password.length < 8) {
-    warnings += ` La contraseña no es valida.`
-    entrar = true
-  };
-  if (entrar) {
-    parrafo.innerHTML = warnings
-  } else {
-    parrafo.innerHTML = 'Usuario logueado con éxito';
-    asyncPostCall();
-  };
-
-}); 
-
-/* ----------------------------------------------------- */
-
-
-
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const password = document.getElementById('exampleInputPassword1').value;
-  const email = document.getElementById('exampleInputEmail1').value;
-  const form = document.getElementById('form');
-  const parrafo = document.getElementById('warnings');
-
-  form.reset();
-
-  const asyncPostCall = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
-      });
-      const data = await response.json();
-      const { result, message } = response
-
-      if (result) {
-          alert(message)
-      } else {
-        window.location.href = "/public/inicio.html"
-      }
-
-    } catch (error) {
-      console.error('Error al enviar la solicitud: ', error)
-    }
-  }
-
-  let warnings = "";
-  let expRegEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  let entrar = false;
-  parrafo.innerHTML = '';
-
-  if (!expRegEmail.test(email)) {
-    warnings += ` El correo no es valido.`
-    entrar = true
-  };
-  if (password.length < 8) {
-    warnings += ` La contraseña no es valida.`
-    entrar = true
-  };
-  if (entrar) {
-    parrafo.innerHTML = warnings
-  } else {
-    parrafo.innerHTML = 'Usuario logueado con éxito';
-    asyncPostCall();
-  };
+		asyncPostCall(email, password);
+	};
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

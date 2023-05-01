@@ -110,7 +110,75 @@ document.getElementById('masInmo').addEventListener('click', (e) => {
 });
 
 
-//Publicaciones//
+//Publicaciones sin terminar//
+
+// const formPubli = document.getElementById('publiForm');
+// formPubli.addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   // const user = document.getElementById("user").value;
+//   const text = document.getElementById('mypublications').value;
+//   const parrafoPost = document.getElementById('parrafoPubli');
+ 
+
+
+//   formPubli.reset();
+
+
+//   const asyncPostSend = async () => {
+//       try {
+//           const response = await fetch('http://localhost:3000/createPublication', {
+//               method: 'POST',
+//               headers: {
+//                   'Content-Type': 'application/json'
+//               },
+//               body: JSON.stringify({text})
+//           });
+//           const data = await response.json();
+//           const { result, message } = response;
+
+//           if (result) {
+//             data.result.map((item) => {
+//                   const content = document.createElement("div");
+//                   content.innerHTML = 
+//                   `<h4>${item.text}</h4>`
+//                   ;
+//                   const textPost = document.getElementById('muroPubli')
+//                   textPost.appendChild(content);
+
+//               })
+//               alert(message)
+//           } else {
+//               window.location.href = "/public/index.html"
+//           }
+
+//       } catch (error) {
+//           console.error('Error al enviar la solicitud: ', error)
+//       }
+//   }
+
+
+//   let warnings = "";
+//   let entrar = false;
+//   parrafoPost.innerHTML = '';
+
+//   if (text.length > 200) {
+//       warnings += `Su post no se puede publicar. Ha excedido los caracteres máximos (200)  <br>`
+//       entrar = true
+//   };
+//   if (!text) {
+//     warnings += `Su post no se puede publicar. No tiene contenido <br>`
+//     entrar = true
+// };
+//   if (entrar) {
+//       parrafoPost.innerHTML = warnings
+//   } else {
+//       parrafoPost.innerHTML = 'Su contenido ha sido publicado';
+//       asyncPostSend();
+//   }; 
+
+// });
+
+
 
 // form.addEventListener('submit', (event) => {
 //   event.preventDefault();
