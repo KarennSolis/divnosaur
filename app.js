@@ -34,6 +34,10 @@ app.post('/register', postRegister);
 app.get('/login', async (req, res) => {
     res.status(200).send('Helo World')
 })
+/* app.get('/login', async (req, res) => {
+    console.log(result)
+    res.status(200).send(result)
+}) */
 app.post('/login', postLogin);
 
 

@@ -1,6 +1,6 @@
 const parrafo = document.getElementById('warnings');
 
-const asyncPostCall = async (email, password) => {
+/* const asyncPostCall = async (email, password) => {
 	try {
 		const response = await fetch('http://localhost:3000/login', {
 			method: 'POST',
@@ -15,7 +15,39 @@ const asyncPostCall = async (email, password) => {
 		if (result) {
 			alert(message)
 		} else {
+			console.log(data.result)
 			parrafo.innerHTML = 'Usuario logueado con éxito';
+			localStorage.setItem('user_id', data.result);
+			window.location.href = "/public/inicio.html"
+		}
+
+	} catch (error) {
+		console.error('Error al enviar la solicitud: ', error)
+	}
+} */
+
+const asyncPostCall = async (email, password) => {
+	try {
+		const response = await fetch('http://localhost:3000/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ email, password })
+		});
+		const data = await response.json();
+		const { result, message } = data;
+		console.log(result)
+		console.log(data)
+
+		if (!result) {
+			alert(message)
+		} else {
+			alert(message)
+			console.log(result)
+			parrafo.innerHTML = 'Usuario logueado con éxito';
+			/* localStorage.setItem('user_id', result); */
+			localStorage.setItem('user_id', result['user_id']);
 			window.location.href = "/public/inicio.html"
 		}
 
@@ -50,7 +82,6 @@ form.addEventListener('submit', (e) => {
 	if (entrar) {
 		parrafo.innerHTML = warnings
 	} else {
-
 		asyncPostCall(email, password);
 	};
 

@@ -212,3 +212,12 @@ document.getElementById('masInmo').addEventListener('click', (e) => {
 //     });
 
 // });
+
+/* -------------Cerrar Sesión----------------------------------------------------------------- */
+const closeSessionBut = document.getElementById('closeSessionBut');
+closeSessionBut.addEventListener('click', (e)=>{
+  localStorage.removeItem('user_id');
+  window.location.href = './index.html'
+
+})
+
