@@ -88,3 +88,55 @@
 // module.exports =  readPublication;
 // module.exports =  postPublication;
 
+const express = require('express')
+const morgan = require('morgan')
+const app = express()
+
+
+
+// SERVER:
+app.post('/publicaciones',async (req,res)=>{
+  const {text, user} = req.body
+  const publicacion = {
+    text, user,
+    date: new Date(),
+    likes: 0 // dato aleatorio parseInt(Math.random()*10)
+  }
+  res.status(200).send(publicacion)
+})
+
+//CLIENT:
+const form = document.querySelector('#form-posts')
+form.addEventListener('submit',async (event)=>{
+  event.preventDefault()
+  const textArea=document.querySelector('#input-post')
+  const user = await JSON.parse(localStorage.getItem('user'))
+  const response = await fetch('http://localhost:3001/publicaciones',{
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body:{
+      text: textArea.value,
+      author: user
+    }
+  })
+  const data = await response.json()
+  //data = {text, user, date, likes}
+  const newPost = document.createElement('div')
+  const postText = document.createElement('span')
+  postText.value = data.text
+  newPost.appendChild(postText)
+  //...
+  const feed = document.querySelector('#feed')
+  feed.appendChild(newPost)
+})
+
+{/* <div>
+  <span>{data.text}</span>
+  <div>
+    <span>{data.user} - publicado el dia {data.date}</span>
+    <span>♥ {data.likes}</span>
+  </div>
+</div> */}
+

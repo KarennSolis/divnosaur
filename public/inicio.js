@@ -229,4 +229,11 @@ fetch(`http://localhost:3000/${user_id}`, {
   // json.forEach((item) => renderUserData(item));
   renderUserData(json);
 });
+/* -------------Cerrar Sesión----------------------------------------------------------------- */
+const closeSessionBut = document.getElementById('closeSessionBut');
+closeSessionBut.addEventListener('click', (e)=>{
+  localStorage.removeItem('user_id');
+  window.location.href = './index.html'
+
+})
 
