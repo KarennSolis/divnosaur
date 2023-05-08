@@ -212,3 +212,21 @@ document.getElementById('masInmo').addEventListener('click', (e) => {
 //     });
 
 // });
+
+//KAREN CAMBIOS//
+
+const renderUserData = (user) => {
+  document.getElementById("idNameMuro").innerHTML = user.name;
+};
+
+const user_id = localStorage.getItem("idLogged");
+
+fetch(`http://localhost:3000/${user_id}`, {
+  method: "GET",
+}).then(async (response) => {
+  const json = await response.json();
+  console.log(json);
+  // json.forEach((item) => renderUserData(item));
+  renderUserData(json);
+});
+

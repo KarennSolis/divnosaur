@@ -16,7 +16,7 @@ const postLogin = async function(req, res) {
                     res.status(200).send({ result: true, message: "Este usuario no existe, registrese" })
                 } else {
                     console.log('si existe el usuario')
-                    res.status(200).send({ result: false, message: 'Usuario loggeado con exito' })
+                    res.status(200).json({ result: false, message: 'Usuario loggeado con exito', user_id: users[0].user_id})//CAMBIO KAREN//
                 }
             })
 

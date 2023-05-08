@@ -84,6 +84,27 @@ document.addEventListener('DOMContentLoaded', createUser);
 
 /* -----------------Fin Código de API ------------------------------------------------------------------------------- */
 
+//API propia amigos//
+//KAREN CAMBIOS//
+async function displayUsers() {
+    const response = await fetch("http://localhost:3000/users");
+    const users = await response.json();
+    console.log(users)
+    // users.forEach((user) => {
+    //   const { name, country, email, id } = user;
+    //   const userContainer = document.createElement("div");
+    //   userContainer.classList.add = "userCard";
+    //   userContainer.innerHTML = `<a class='userCardLink' href='/profile/${id}'>
+    //   <img class='userCardImg' src=${urlImg}>
+    //   <p class='userCardName'>${name}</p>
+    //   <p class='userCardText'>${country}</p>
+    //   <p class='userCardText'>${email}</p>
+    //   </a>
+    //   `;
+    //   const friendList = document.getElementsByClassName("friend-list")[0];
+    //   friendList.appendChild(userContainer);
+    // });
+  };
 
 /* ----------------Filtro de Amigos según ya Amigos o Sugeridos--------------------------------------------------------- */
 

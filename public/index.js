@@ -16,6 +16,7 @@ const asyncPostCall = async (email, password) => {
 			alert(message)
 		} else {
 			parrafo.innerHTML = 'Usuario logueado con éxito';
+			localStorage.setItem("idLogged", data.user_id);
 			window.location.href = "/public/inicio.html"
 		}
 
