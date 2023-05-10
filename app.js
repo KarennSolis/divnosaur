@@ -7,12 +7,12 @@ const postRegister = require('./routes/registroBack');
 const postLogin = require('./routes/loginBack');
 const getPublications = require('./routes/publicatBack');
 const postPublications = require('./routes/publicatBack')
+const postLogin = require ('./routes/loginBack')
+const postFriends = require ('./routes/friendsBack')
+const { getUser } = require("./routes/usersBack");
 require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 3000;
-// const readPublication = require('./routes/publicatBack');
-// const postPublication = require('./routes/publicatBack');
-
 
 app.use(requestTransfer);
 app.use(express.json());
@@ -72,7 +72,19 @@ app.post('/createPublications', postPublications);
 
 //Amigos
 
+app.get('/friends', async (req, res) => {
+    res.status(200).send('Render friends')
+})
+app.post('/friends', postFriends);
 
+//Recoger datos usuarios//
+// app.use("/", userRouter);
+
+// router.route("/:user_id")
+// 	.get(getUser) 
+
+app.route("/:user_id")
+	.get(getUser) 
 
 app.listen(port, () => {
     console.log(`Server Started at http://localhost:${port}`)
