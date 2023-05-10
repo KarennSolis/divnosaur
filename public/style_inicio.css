@@ -100,6 +100,23 @@ div.aceptar-rechazar button{
 .muro1{
   margin: 30px;
 }
+
+/* ------------------Publicaciones de usuario---------------------------------- */
+
+
+.postItem, .newPost{
+    width: 95%;
+    background-color: rgb(252, 250, 249);
+    /* height: 100px; */
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 0.5em;
+}
+
+#commentFather{
+    display: flex;
+    flex-direction: column-reverse;
+}
 div.columnaB img.friends{
     width: 75px;
     height: 75px;

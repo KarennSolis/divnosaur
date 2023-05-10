@@ -1,9 +1,12 @@
 const express = require('express');
 const requestTransfer = require('express-request-transfer');
+const moment = require('moment');
 const cors = require('cors');
 const sequelize = require('./conexion-base-datos');
 const postRegister = require('./routes/registroBack');
-const postLogin = require ('./routes/loginBack')
+const postLogin = require('./routes/loginBack');
+const getPublications = require('./routes/publicatBack');
+const postPublications = require('./routes/publicatBack')
 require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 3000;
@@ -41,27 +44,33 @@ app.get('/login', async (req, res) => {
 app.post('/login', postLogin);
 
 
-//Publicaciones
-// app.get('/publication', readPublication);
-// app.get('/publication', 
-// async (req, res) => {
-//     const {text} = req.body
-//     console.log(req.body)
-//     then((resp)=> resp.json())
-//     .then((data) => {
-//         console.log(data.result);
-//         data.result.map((item) => {
-//             const content = document.createElement("div");
-//             content.innerHTML =
-//             `<h4>${item.text}</h4>`
-//             ;
-//       })}                 
-//     )});
+//PUBLICACIONES :  cargar y crear en la página de inicio
 
-// app.post('/createPublication', postPublication);
+/* app.get('/publications', getPublications);  */
+app.get('/publications', async function(req, res) {
+    const user_id = req.query.user_id;
+    console.log(req.query.user_id)
+    if (user_id) {
+        sequelize.query('SELECT * FROM posts WHERE user_id = :user_user', { replacements: { user_user: user_id }, type: sequelize.QueryTypes.SELECT })
+            .then(posts => {
+                console.log(posts.length);
+                console.log(posts)
+                res.status(200).send({ posts })
+                /* if (Object.keys(posts).length === 0) {
+                    console.log('No existen publicaciones para este usuario')
+                    res.status(200).send({ result: false, message: "No existen publicaciones para este usuario" })
+                } else {
+                    console.log('Si existen publicaciones para este usuario')
+                    res.status(200).send({ result: posts, message: 'Si existen publicaciones para este usuario' })
+                } */
+            })
+    }
+}); 
+
+app.post('/createPublications', postPublications); 
+
 
 //Amigos
-
 
 
 

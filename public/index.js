@@ -1,30 +1,5 @@
 const parrafo = document.getElementById('warnings');
 
-/* const asyncPostCall = async (email, password) => {
-	try {
-		const response = await fetch('http://localhost:3000/login', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ email, password })
-		});
-		const data = await response.json();
-		const { result, message } = data;
-
-		if (result) {
-			alert(message)
-		} else {
-			console.log(data.result)
-			parrafo.innerHTML = 'Usuario logueado con éxito';
-			localStorage.setItem('user_id', data.result);
-			window.location.href = "/public/inicio.html"
-		}
-
-	} catch (error) {
-		console.error('Error al enviar la solicitud: ', error)
-	}
-} */
 
 const asyncPostCall = async (email, password) => {
 	try {
@@ -47,7 +22,7 @@ const asyncPostCall = async (email, password) => {
 			console.log(result)
 			parrafo.innerHTML = 'Usuario logueado con éxito';
 			/* localStorage.setItem('user_id', result); */
-			localStorage.setItem('user_id', result['user_id']);
+			localStorage.setItem('idLogged', result['user_id']);
 			window.location.href = "/public/inicio.html"
 		}
 
