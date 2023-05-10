@@ -202,7 +202,7 @@ main {
 }
 
 .add_friend,
-.just_friend {
+.just_friend, .following, .users {
     margin-top: 10px;
     height: 30px;
     border-radius: 4em;
@@ -212,19 +212,19 @@ main {
     border: none;
 }
 
-.add_friend {
+.add_friend, .users{
     background-color: rgb(29, 207, 29);
 }
 
-.add_friend:hover {
+.add_friend:hover, .users:hover {
     background-color: rgb(14, 105, 14);
 }
 
-.just_friend {
+.just_friend, .following {
     background-color: rgb(220, 20, 60);
 }
 
-.just_friend:hover {
+.just_friend:hover, .following:hover {
     background-color: rgb(123, 17, 38);
 }
 

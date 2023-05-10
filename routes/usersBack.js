@@ -3,9 +3,6 @@ const sequelize = require('../conexion-base-datos');
 var mysql2 = require('mysql2');
 const express = require('express')
 
-
-
-
 const getUser = async (request, response) => {
 	const user_id = request.params.user_id;
 	try {
@@ -22,7 +19,18 @@ const getUser = async (request, response) => {
 	}
 };
 
-
-
 module.exports.getUser = getUser;
+
+// const allUser = async (request, response) => {
+// 	try{
+//         const personas = await sequelize.query('SELECT * FROM users',{type: sequelize.QueryTypes.SELECT})
+//         res.send(personas);
+//     }catch (error)
+//     {console.log(error);
+//     res.status(500).send('Error interno del servidor');
+// }
+// };
+
+// module.exports.allUser = allUser;
+
 

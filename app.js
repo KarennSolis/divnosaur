@@ -6,6 +6,10 @@ const postRegister = require('./routes/registroBack');
 const postLogin = require ('./routes/loginBack')
 const postFriends = require ('./routes/friendsBack')
 const { getUser } = require("./routes/usersBack");
+const { allUser} = require("./routes/allUsersback");
+// const { allUser} = require("./routes/usersBack");
+// const followers = require('./routes/followBack');
+const {followers} = require('./routes/followBack');
 require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 3000;
@@ -48,14 +52,29 @@ app.get('/friends', async (req, res) => {
 })
 app.post('/friends', postFriends);
 
+//Followers//
+// app.get('/followed/:user_id', async (req, res) => {
+//     res.status(200).send('Render followers')})
+// app.post('/followed/:user_id', followers);
+
+app.route("/followed/:user_id", async (req, res) => {
+    res.status(200).send('Render follow')})
+    .get(followers)
+
 //Recoger datos usuarios//
 // app.use("/", userRouter);
 
 // router.route("/:user_id")
 // 	.get(getUser) 
-
+app.route("/users")
+	.get(allUser) 
+    
 app.route("/:user_id")
 	.get(getUser) 
+
+// app.route("/renderUsers")
+// 	.get(allUser) 
+
 
 app.listen(port, () => {
     console.log(`Server Started at http://localhost:${port}`)

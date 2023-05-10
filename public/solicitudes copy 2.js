@@ -1,142 +1,156 @@
-/* -------------API para mostrar contactos random---------------------------------------------------- */
-let divDetails = document.getElementsByClassName('details');
-let divDetailsArr = []
+let users = [];
+let usersFiltered = users;
 
-for (let div of divDetails) {
-    divDetailsArr.push(div);
+const createUserElement = async (userData) => {
+    // Container para append el elemento de usuario
+    const container = document.getElementById("followersContainer");
+
+    // Creamos elemento de usuario (el cuadrado)
+    const element = document.createElement("div");
+    element.classList.add("item");
+
+    element.innerHTML = `
+        <h4>${userData.name}</h4>
+        <p>${userData.email}</p>
+        <p>${userData.country}</p>
+    `
+
+    const button = document.createElement("button");
+    if (userData.status_friendship===1){
+        button.textContent = "Siguiendo";
+        button.classList.add("following");
+    }else {
+        button.textContent = "Seguir";
+        button.classList.add("users");
+    }
+
+    const image = document.createElement("img");
+    image.src = userData.image;
+
+    element.appendChild(button);
+    const h4 = element.querySelector("h4");
+    element.insertBefore(image, h4);
+    container.appendChild(element);
 }
 
-const createUser = async () => {
-    for (i = 0; i < divDetailsArr.length; i++) {
-
-        var imgChild = document.createElement("img");
-        var h4Child = document.createElement("h4");
-        var pChild = document.createElement("p");
-        divDetailsArr[i].appendChild(imgChild);
-        divDetailsArr[i].appendChild(h4Child);
-        divDetailsArr[i].appendChild(pChild);
-
-        try {
-            const url = 'https://randomuser.me/api/'
-            const response = await fetch(url);
-            if (response.ok) {
-                const data = await response.json();
-                const dataUser = data.results[0];
-                //console.log(dataUser);
-
-                /* --------------------EDICIÓN DEL ELEMENTO CREADO EN EL DOM, ASIGANCIÓN A OTRO CONTENEDOR PADRE Y VOLCADO DE DATOS RESPUESTA DE LA API----------- */
-                if (dataUser.email) {
-                    imgChild.src = dataUser.picture.large;
-                    h4Child.textContent = dataUser.name.title + " " + dataUser.name.first + " " + dataUser.name.last;
-                    pChild.innerHTML = dataUser.email;
-
-
-                    /* ------Funcionalidad Barra de Búsqueda de Amigos, mostrando amigos correspondiente según búsqueda además el número de los mismos--------------------------- */
-                    let friendsNames = document.getElementsByTagName('h4');
-                    let searchInput = document.getElementById('friendsSearch');
-                    let friendItems = document.getElementsByClassName('item');
-                    let friendsCounter = document.getElementById('counter');
-                    let numFriends = friendItems.length;
-                    let friendsNameArr = [];
-                    let counter = 1;
-
-                    friendsCounter.innerHTML = numFriends;
-
-                    for (let friend of friendsNames) {
-                        friendsNameArr.push({
-                            id: counter++,
-                            text: friend.innerHTML
-                        });
-                    }
-
-                    searchInput.addEventListener("keyup", keyupHandler);
-
-                    function keyupHandler() {
-                        for (let item of friendItems) {
-                            item.classList.add("d-none");
-                        }
-                        let text = this.value;
-                        let filteredFriends = friendsNameArr.filter(el => el.text.toLowerCase().includes(text.toLowerCase()));
-
-                        if (filteredFriends.length > 0) {
-                            for (let el of filteredFriends) {
-                                document.querySelector(`.item:nth-child(${el.id})`).classList.remove("d-none");
-                            }
-                        }
-
-                        friendsCounter.textContent = filteredFriends.length;
-                    }
-                    /* --------Fin Código Funcionalidad de Barra de Búsqueda-------------------------------------------------------------- */
-                }
-
-
-            } else {
-                console.log(response.status); // 404
-            }
-
-        } catch (error) {
-            console.log(error)
-        }
+const getUsers = async () => {
+    const idLogged = localStorage.getItem('idLogged');
+    const followedResponse = await fetch(`http://localhost:3000/followed/${idLogged}`);
+    if (followedResponse.ok) {
+        const followedData = await followedResponse.json();
+        console.log(followedData);
+        users = [...users, ...followedData];
     }
+
+    const url = 'http://localhost:3000/users'
+    const response = await fetch(url);       
+    if (response.ok) {
+        const dataUser = await response.json();
+        console.log(dataUser);
+        users = [...users, ...dataUser];
+    }
+
+    users.map(user => 
+        fetch('https://randomuser.me/api/')
+        .then(response => response.json())
+        .then(data => {
+            user.image = data.results[0].picture.large;
+            renderUsers(users);
+        })
+    )
+
+    renderUsers(users);
 }
 
-document.addEventListener('DOMContentLoaded', createUser);
-
-/* -----------------Fin Código de API ------------------------------------------------------------------------------- */
-
-//API propia amigos//
-//KAREN CAMBIOS//
-async function displayUsers() {
-    const response = await fetch("http://localhost:3000/users");
-    const users = await response.json();
-    console.log(users)
-    // users.forEach((user) => {
-    //   const { name, country, email, id } = user;
-    //   const userContainer = document.createElement("div");
-    //   userContainer.classList.add = "userCard";
-    //   userContainer.innerHTML = `<a class='userCardLink' href='/profile/${id}'>
-    //   <img class='userCardImg' src=${urlImg}>
-    //   <p class='userCardName'>${name}</p>
-    //   <p class='userCardText'>${country}</p>
-    //   <p class='userCardText'>${email}</p>
-    //   </a>
-    //   `;
-    //   const friendList = document.getElementsByClassName("friend-list")[0];
-    //   friendList.appendChild(userContainer);
-    // });
-  };
-
-/* ----------------Filtro de Amigos según ya Amigos o Sugeridos--------------------------------------------------------- */
-
-let contactNet = document.querySelector('#contactNet');
-let indice;
-let container = document.querySelector(".container")
-let containerArr = container.children;
-let justFriend = document.getElementsByClassName(".just")
-
-const mostrar = (indice) => {
-    indice = contactNet.selectedIndex;
-    if (indice == 1) {
-        for (let item of containerArr) {
-            item.classList.remove("d-none");
-        }
-    }
-    else if (indice == 2) {
-        for (let item of containerArr) {
-            item.classList.add("d-none");
-            if (item.classList[2] == "just") {
-                item.classList.remove("d-none");
-            }
-        }
-    }
-    else if (indice == 3) {
-        for (let item of containerArr) {
-            item.classList.add("d-none");
-            if (item.classList[2] == "add") {
-                item.classList.remove("d-none");
-            }
-        }
-    }
+const renderUsers = (users) => {
+    const container = document.getElementById("followersContainer");
+    container.innerHTML = "";
+    users.forEach((user) => {
+        createUserElement(user);
+    })
 };
 
-contactNet.addEventListener("change", mostrar);
+
+const searchBar = () => {
+    const container = document.getElementById("followersContainer");
+    let searchInput = document.getElementById('friendsSearch');
+
+    const keyupHandler = () => {
+        let searchInput = document.getElementById('friendsSearch');
+
+        let text = searchInput.value;
+        if (text === "") {
+            usersFiltered = users
+            renderUsers(usersFiltered);
+        } else {
+            usersFiltered = users.filter(user => user.name.toLowerCase().includes(text));
+            renderUsers(usersFiltered);
+        }
+    }
+
+    searchInput.addEventListener("keyup", keyupHandler);
+}
+
+const filterUsers = () => {
+    let contactNet = document.querySelector('#contactNet');
+
+    const mostrar = () => {
+        const indice = contactNet.selectedIndex;
+        
+        switch (indice) {
+            case 1:
+                usersFiltered = users;
+                break;
+            case 2:
+                usersFiltered = users.filter(user => user.status_friendship === 1);
+                break;
+            case 3:
+                usersFiltered = users.filter(user => user.friendship_id === undefined);
+                break;
+        }
+        renderUsers(usersFiltered);
+    }
+
+    contactNet.addEventListener("change", mostrar);
+}
+
+searchBar();
+filterUsers();
+getUsers();
+
+
+/* ----------------Filtro de Amigos según ya Amigos o Sugeridos--------------------------------------------------------- */
+//NO COMENTAR//
+
+// let contactNet = document.querySelector('#contactNet');
+// let indice;
+// let container = document.querySelector(".container")
+// let containerArr = container.children;
+// let justFriend = document.getElementsByClassName(".just")
+
+// const mostrar = (indice) => {
+//     indice = contactNet.selectedIndex;
+//     if (indice == 1) {
+//         for (let item of containerArr) {
+//             item.classList.remove("d-none");
+//         }
+//     }
+//     else if (indice == 2) {
+//         for (let item of containerArr) {
+//             item.classList.add("d-none");
+//             if (item.classList[2] == "just") {
+//                 item.classList.remove("d-none");
+//             }
+//         }
+//     }
+//     else if (indice == 3) {
+//         for (let item of containerArr) {
+//             item.classList.add("d-none");
+//             if (item.classList[2] == "add") {
+//                 item.classList.remove("d-none");
+//             }
+//         }
+//     }
+// };
+
+// contactNet.addEventListener("change", mostrar);
