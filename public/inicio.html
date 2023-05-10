@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Inicio</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -82,7 +82,7 @@
                         </li> -->
                     <li>
                         <hr class="dropdown-divider">
-                    <!-- <li><a class="dropdown-item" id="closeSessionBut" href="./index.html">Cerrar sesión</a></li>
+                        <!-- <li><a class="dropdown-item" id="closeSessionBut" href="./index.html">Cerrar sesión</a></li>
                     </li> -->
                     <li><a class="dropdown-item" id="closeSessionBut">Cerrar sesión</a></li>
                     </li>
@@ -194,10 +194,9 @@
                                         class="comentaUsuario" alt="">
                                 </div>
                                 <div class="col-10">
-                                    <form action="/createPublication" method="post" id="publiForm">
+                                    <form action="/createPublications" method="post" id="publiForm">
                                         <textarea class="form-control" type="text" rows="3" name="saludo"
-                                            id="mypublications"
-                                            placeholder="Hola, ¿qué tal ha ido tu día?"></textarea>
+                                            id="myPublications" placeholder="Hola, ¿qué tal ha ido tu día?"></textarea>
                                         <div id="buttonAndPubli">
                                             <p id="parrafoPubli"></p>
                                             <button id="publication" type="submit"
@@ -210,19 +209,22 @@
                         <div class="space"></div>
                     </div>
 
+
+                    <div id="publiContainer"></div>
+
                     <div class="muro2" id="muroPubli">
                         <div class="container">
                             <div class="row">
                                 <div class="col-2">
-                                    <img class="friends rounded-circle mx-auto d-block"
+                                    <!-- <img class="friends rounded-circle mx-auto d-block"
                                         src="https://pbs.twimg.com/media/FoP9W1BXkAAUC4o?format=jpg&name=small"
-                                        class="comentaAmigo" alt="">
+                                        class="comentaAmigo" alt=""> -->
                                 </div>
 
                                 <div class="col-10" id="commentFather">
-                                    <p class="comentAmigo alert alert-light">Qué bien lo pasamos en la parrillada el
-                                        otro día, para cuando la próxima??</p>
-                                    <div class="float-right">
+                                    <!-- <p class="comentAmigo alert alert-light">Qué bien lo pasamos en la parrillada el
+                                        otro día, para cuando la próxima??</p> -->
+                                    <div class="float-right" id="div">
                                         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                             <div id="reactions" class="btn-group mr-2" role="group"
                                                 aria-label="First group">
@@ -255,94 +257,8 @@
                             </div>
 
                         </div>
-                        <div class="container comentarios">
-                            <div class="row">
-                                <div class="col-2">
-                                    <img class="friends rounded-circle mx-auto d-block"
-                                        src="https://www.semana.com/resizer/8pW3U2lko2Y4fPzZLUswWA3H9-s=/fit-in/768x432/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/KVRYJNDM6FGKPGL6WXPO26HFUA.png"
-                                        class="comentaAmigo" alt="">
-                                </div>
-
-                                <div class="col-10" id="commentFather2">
-                                    <p class="comentAmigo alert alert-light">Fue bueno reencontrarnos después de
-                                        tanto tiempo!</p>
-                                    <div class="float-right">
-                                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                            <div id="reactions" class="btn-group mr-2" role="group"
-                                                aria-label="First group">
-                                                <div id="likeAnch" class="butonDiv">
-                                                    <div id="totalLikes2" class="totalLikes"></div><button type="button"
-                                                        id="likeButton2" class="btn btn-primary likeButton"><img
-                                                            class="img-fluid"
-                                                            src="https://cdn-icons-png.flaticon.com/512/9970/9970200.png"
-                                                            alt=""></button>
-                                                </div>
-                                                <!-- <div><button type="button" class="btn btn-primary "><img
-                                                            class="img-fluid"
-                                                            src="https://cdn-icons-png.flaticon.com/512/9975/9975907.png"
-                                                            alt=""></button></div> -->
-                                                <div><button type="button" id="commentButton2"
-                                                        class="btn btn-primary "><img class="img-fluid"
-                                                            src="https://cdn-icons-png.flaticon.com/512/7198/7198933.png"
-                                                            alt=""></button></div>
-                                                <!-- <a href=""><button type="button" class="btn btn-primary "><img
-                                                            class="img-fluid"
-                                                            src="https://cdn-icons-png.flaticon.com/512/1828/1828954.png"
-                                                            alt=""></button></a> -->
-                                            </div>
-                                        </div>
-                                    </div>
 
 
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="container comentarios">
-                            <div class="row">
-                                <div class="col-2">
-                                    <img class="friends rounded-circle mx-auto d-block"
-                                        src="https://www.soy502.com/sites/default/files/styles/mobile_full_node/public/2023/Feb/07/dinosaurios_profesiones_tendencia.png"
-                                        class="comentaAmigo" alt="">
-                                </div>
-
-                                <div class="col-10" id="commentFather3">
-                                    <p class="comentAmigo alert alert-light">Me encantó charlar contigo de la vida,
-                                        ¡espero verte pronto!</p>
-                                    <div class="float-right">
-                                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                            <div id="reactions" class="btn-group mr-2" role="group"
-                                                aria-label="First group">
-                                                <div id="likeAnch" class="butonDiv">
-                                                    <div id="totalLikes3" class="totalLikes"></div><button type="button"
-                                                        id="likeButton3" class="btn btn-primary likeButton"><img
-                                                            class="img-fluid"
-                                                            src="https://cdn-icons-png.flaticon.com/512/9970/9970200.png"
-                                                            alt=""></button>
-                                                </div>
-                                                <!-- <div><button type="button" class="btn btn-primary "><img
-                                                            class="img-fluid"
-                                                            src="https://cdn-icons-png.flaticon.com/512/9975/9975907.png"
-                                                            alt=""></button></div> -->
-                                                <div><button type="button" id="commentButton3"
-                                                        class="btn btn-primary "><img class="img-fluid"
-                                                            src="https://cdn-icons-png.flaticon.com/512/7198/7198933.png"
-                                                            alt=""></button></div>
-                                                <!-- <a href=""><button type="button" class="btn btn-primary "><img
-                                                            class="img-fluid"
-                                                            src="https://cdn-icons-png.flaticon.com/512/1828/1828954.png"
-                                                            alt=""></button></a> -->
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                        </div>
 
                     </div>
                 </div>
