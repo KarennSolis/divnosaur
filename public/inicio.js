@@ -1,11 +1,26 @@
-
-/* --------Carga de los posteos del usuario logueado con la carga de la página----------------------- */
-
 const formPubli = document.querySelector('#publiForm');
 const user_id = localStorage.getItem('idLogged');
 const feed = document.querySelector('#commentFather');
 const buttonPostContainer = document.querySelector('#divButtonsPost')
 const totalLikes = document.querySelector('#totalLikes')
+
+//RENDER USER NAME//
+const renderUserData = (user) => {
+  document.getElementById("idNameMuro").innerHTML = user.name;
+};
+
+// const user_id = localStorage.getItem("idLogged");
+
+fetch(`http://localhost:3000/${user_id}`, {
+  method: "GET",
+}).then(async (response) => {
+  const json = await response.json();
+  console.log(json);
+  // json.forEach((item) => renderUserData(item));
+  renderUserData(json);
+});
+
+/* --------Carga de los posteos del usuario logueado con la carga de la página----------------------- */
 
 const asyncPubliGet = async () => {
   const user_id = localStorage.getItem('idLogged');
@@ -244,126 +259,6 @@ document.getElementById('masInmo').addEventListener('click', (e) => {
   window.location.href = '/pags_extras/proy_inmo.html'
 });
 
-
-//Publicaciones sin terminar//
-
-// const formPubli = document.getElementById('publiForm');
-// formPubli.addEventListener('submit', (event) => {
-//   event.preventDefault();
-//   // const user = document.getElementById("user").value;
-//   const text = document.getElementById('mypublications').value;
-//   const parrafoPost = document.getElementById('parrafoPubli');
- 
-
-
-//   formPubli.reset();
-
-
-//   const asyncPostSend = async () => {
-//       try {
-//           const response = await fetch('http://localhost:3000/createPublication', {
-//               method: 'POST',
-//               headers: {
-//                   'Content-Type': 'application/json'
-//               },
-//               body: JSON.stringify({text})
-//           });
-//           const data = await response.json();
-//           const { result, message } = response;
-
-//           if (result) {
-//             data.result.map((item) => {
-//                   const content = document.createElement("div");
-//                   content.innerHTML = 
-//                   `<h4>${item.text}</h4>`
-//                   ;
-//                   const textPost = document.getElementById('muroPubli')
-//                   textPost.appendChild(content);
-
-//               })
-//               alert(message)
-//           } else {
-//               window.location.href = "/public/index.html"
-//           }
-
-//       } catch (error) {
-//           console.error('Error al enviar la solicitud: ', error)
-//       }
-//   }
-
-
-//   let warnings = "";
-//   let entrar = false;
-//   parrafoPost.innerHTML = '';
-
-//   if (text.length > 200) {
-//       warnings += `Su post no se puede publicar. Ha excedido los caracteres máximos (200)  <br>`
-//       entrar = true
-//   };
-//   if (!text) {
-//     warnings += `Su post no se puede publicar. No tiene contenido <br>`
-//     entrar = true
-// };
-//   if (entrar) {
-//       parrafoPost.innerHTML = warnings
-//   } else {
-//       parrafoPost.innerHTML = 'Su contenido ha sido publicado';
-//       asyncPostSend();
-//   }; 
-
-// });
-
-
-
-// form.addEventListener('submit', (event) => {
-//   event.preventDefault();
-
-//   const publication = document.getElementById('mypublications').value;
-
-//   form.reset();
-
-//   fetch('http://localhost:3000/publication', {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({publication})
-//   })
-//     .then(response => {
-//       if (response.ok) {
-//         console.log(response.json);
-//         console.log('done');
-//         const divnosaurName = document.createRange().createContextualFragment(`
-// 				<h1>${email}</h1> 
-// 		  `);
-// 		  const main = document.getElementById("divnosaurImg");
-// 		  main.append(divnosaurName);
-//       } else {
-//         response.text().then(errorMessage => {
-//           alert(errorMessage)
-//         });
-//       }
-//     })
-//     .catch(error => {
-//       console.error('Error al enviar la solicitud: ', error)
-//     });
-
-// });
-
-//KAREN CAMBIOS//
-
-const renderUserData = (user) => {
-  document.getElementById("idNameMuro").innerHTML = user.name;
-};
-
-/* const user_id = localStorage.getItem("idLogged"); */
-
-fetch(`http://localhost:3000/${user_id}`, {
-  method: "GET",
-}).then(async (response) => {
-  const json = await response.json();
-  console.log(json);
-  // json.forEach((item) => renderUserData(item));
-  renderUserData(json);
-});
 /* -------------Cerrar Sesión----------------------------------------------------------------- */
 const closeSessionBut = document.getElementById('closeSessionBut');
 closeSessionBut.addEventListener('click', (e) => {
