@@ -354,7 +354,7 @@ const renderUserData = (user) => {
   document.getElementById("idNameMuro").innerHTML = user.name;
 };
 
-const user_id = localStorage.getItem("idLogged");
+/* const user_id = localStorage.getItem("idLogged"); */
 
 fetch(`http://localhost:3000/${user_id}`, {
   method: "GET",

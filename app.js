@@ -7,7 +7,7 @@ const postRegister = require('./routes/registroBack');
 const postLogin = require('./routes/loginBack');
 const getPublications = require('./routes/publicatBack');
 const postPublications = require('./routes/publicatBack')
-const postLogin = require ('./routes/loginBack')
+
 const postFriends = require ('./routes/friendsBack')
 const { getUser } = require("./routes/usersBack");
 require('dotenv').config()
