@@ -15,14 +15,51 @@ const createUserElement = async (userData) => {
         <p>${userData.country}</p>
     `
 
+    // const button = document.createElement("button");
+    // if (userData.status_friendship===1){
+    //     button.textContent = "Siguiendo";
+    //     button.classList.add("following");
+    // }else {
+    //     button.textContent = "Seguir";
+    //     button.classList.add("users");
+    // }
+
+    //KAREN//
     const button = document.createElement("button");
-    if (userData.status_friendship===1){
+    if (userData.status_friendship === 1) {
         button.textContent = "Siguiendo";
         button.classList.add("following");
-    }else {
+    } else {
         button.textContent = "Seguir";
         button.classList.add("users");
     }
+
+    button.addEventListener("click", async () => {
+        // Realizar la solicitud para cambiar el estado de la amistad a 1
+        try {
+            const idLogged = localStorage.getItem('idLogged');
+            const response = await fetch(`http://localhost:3000/changeStatus/${idLogged}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // status_friendship: 0,
+                    friend: userData.user_id
+                }),
+            });
+            console.log(response);
+            if (response.ok) {
+                // Actualizar la interfaz de usuario según sea necesario
+                button.textContent = "Siguiendo";
+                button.classList.add("following");
+            } else {
+                console.error("Ocurrió un error al actualizar el estado de la amistad.");
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    });
 
     const image = document.createElement("img");
     image.src = userData.image;
@@ -43,20 +80,20 @@ const getUsers = async () => {
     }
 
     const url = 'http://localhost:3000/users'
-    const response = await fetch(url);       
+    const response = await fetch(url);
     if (response.ok) {
         const dataUser = await response.json();
         console.log(dataUser);
         users = [...users, ...dataUser];
     }
 
-    users.map(user => 
+    users.map(user =>
         fetch('https://randomuser.me/api/')
-        .then(response => response.json())
-        .then(data => {
-            user.image = data.results[0].picture.large;
-            renderUsers(users);
-        })
+            .then(response => response.json())
+            .then(data => {
+                user.image = data.results[0].picture.large;
+                renderUsers(users);
+            })
     )
 
     renderUsers(users);
@@ -96,7 +133,7 @@ const filterUsers = () => {
 
     const mostrar = () => {
         const indice = contactNet.selectedIndex;
-        
+
         switch (indice) {
             case 1:
                 usersFiltered = users;

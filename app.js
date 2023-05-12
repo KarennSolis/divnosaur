@@ -7,7 +7,7 @@ const postRegister = require('./routes/registroBack');
 const postLogin = require('./routes/loginBack');
 const getPublications = require('./routes/publicatBack');
 const postPublications = require('./routes/publicatBack')
-
+const {updateFriendshipStatus} = require('./routes/friendsPrueba')
 const postFriends = require ('./routes/friendsBack')
 const { getUser } = require("./routes/usersBack");
 const { allUser} = require("./routes/allUsersback");
@@ -73,7 +73,9 @@ app.get('/publications', async function(req, res) {
 
 app.post('/createPublications', postPublications); 
 
-
+//KAREN//
+app.route("/changeStatus/:user_id")
+	.patch(updateFriendshipStatus);
 //Amigos
 
 app.get('/friends', async (req, res) => {
