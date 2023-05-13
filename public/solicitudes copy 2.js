@@ -1,30 +1,18 @@
 let users = [];
-let usersFiltered = users;
+let loggedUserId;
 
 const createUserElement = async (userData) => {
-    // Container para append el elemento de usuario
     const container = document.getElementById("followersContainer");
 
-    // Creamos elemento de usuario (el cuadrado)
     const element = document.createElement("div");
     element.classList.add("item");
 
     element.innerHTML = `
-        <h4>${userData.name}</h4>
-        <p>${userData.email}</p>
-        <p>${userData.country}</p>
-    `
+     <h4>${userData.name}</h4>
+     <p>${userData.email}</p>
+     <p>${userData.country}</p>
+   `;
 
-    // const button = document.createElement("button");
-    // if (userData.status_friendship===1){
-    //     button.textContent = "Siguiendo";
-    //     button.classList.add("following");
-    // }else {
-    //     button.textContent = "Seguir";
-    //     button.classList.add("users");
-    // }
-
-    //KAREN//
     const button = document.createElement("button");
     if (userData.status_friendship === 1) {
         button.textContent = "Siguiendo";
@@ -35,24 +23,26 @@ const createUserElement = async (userData) => {
     }
 
     button.addEventListener("click", async () => {
-        // Realizar la solicitud para cambiar el estado de la amistad a 1
         try {
-            const idLogged = localStorage.getItem('idLogged');
-            const response = await fetch(`http://localhost:3000/changeStatus/${idLogged}`, {
+            const response = await fetch(`http://localhost:3000/changeStatus/${loggedUserId}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    // status_friendship: 0,
-                    friend: userData.user_id
+                    friend: userData.user_id,
+                    status_friendship: userData.status_friendship === 1 ? 0 : 1 //----------nuevo valor--------------//
                 }),
             });
-            console.log(response);
+
             if (response.ok) {
-                // Actualizar la interfaz de usuario según sea necesario
-                button.textContent = "Siguiendo";
-                button.classList.add("following");
+                userData.status_friendship = userData.status_friendship === 1 ? 0 : 1;
+                button.textContent = userData.status_friendship === 1 ? "Siguiendo" : "Seguir";//---------dejar de seguir, cambia valor a 0 y cambia el botón------------------//
+                button.classList.toggle("following");
+
+                if (userData.status_friendship === 0) {
+                    container.removeChild(element);
+                }
             } else {
                 console.error("Ocurrió un error al actualizar el estado de la amistad.");
             }
@@ -68,18 +58,20 @@ const createUserElement = async (userData) => {
     const h4 = element.querySelector("h4");
     element.insertBefore(image, h4);
     container.appendChild(element);
-}
+};
 
 const getUsers = async () => {
     const idLogged = localStorage.getItem('idLogged');
+    loggedUserId = idLogged;
+
     const followedResponse = await fetch(`http://localhost:3000/followed/${idLogged}`);
     if (followedResponse.ok) {
         const followedData = await followedResponse.json();
         console.log(followedData);
-        users = [...users, ...followedData];
+        users = [...followedData];
     }
 
-    const url = 'http://localhost:3000/users'
+    const url = 'http://localhost:3000/users';
     const response = await fetch(url);
     if (response.ok) {
         const dataUser = await response.json();
@@ -87,46 +79,48 @@ const getUsers = async () => {
         users = [...users, ...dataUser];
     }
 
-    users.map(user =>
+    const promises = users.map(user =>
         fetch('https://randomuser.me/api/')
             .then(response => response.json())
             .then(data => {
                 user.image = data.results[0].picture.large;
-                renderUsers(users);
             })
-    )
+    );
 
-    renderUsers(users);
-}
+    await Promise.all(promises);
+
+    // --------Filtrar usuarios repetidos y contactos sugeridos--------------//
+    const filteredUsers = users.filter((user, index, self) =>
+        user.user_id !== loggedUserId && self.findIndex(u => u.user_id === user.user_id) === index && (user.status_friendship === 0 || user.status_friendship === 1)
+    );
+
+    renderUsers(filteredUsers);
+};
 
 const renderUsers = (users) => {
     const container = document.getElementById("followersContainer");
     container.innerHTML = "";
     users.forEach((user) => {
         createUserElement(user);
-    })
+    });
 };
 
-
 const searchBar = () => {
-    const container = document.getElementById("followersContainer");
-    let searchInput = document.getElementById('friendsSearch');
+    const searchInput = document.getElementById('friendsSearch');
 
     const keyupHandler = () => {
-        let searchInput = document.getElementById('friendsSearch');
-
         let text = searchInput.value;
         if (text === "") {
-            usersFiltered = users
-            renderUsers(usersFiltered);
+            const filteredUsers = users.filter(user => user.user_id !== loggedUserId);
+            renderUsers(filteredUsers);
         } else {
-            usersFiltered = users.filter(user => user.name.toLowerCase().includes(text));
-            renderUsers(usersFiltered);
+            const filteredUsers = users.filter(user => user.name.toLowerCase().includes(text.toLowerCase()) && user.user_id !== loggedUserId);
+            renderUsers(filteredUsers);
         }
-    }
+    };
 
     searchInput.addEventListener("keyup", keyupHandler);
-}
+};
 
 const filterUsers = () => {
     let contactNet = document.querySelector('#contactNet');
@@ -135,59 +129,28 @@ const filterUsers = () => {
         const indice = contactNet.selectedIndex;
 
         switch (indice) {
+            case 0:
+                renderUsers(users);
+                break;
             case 1:
-                usersFiltered = users;
+                const filteredUsers = users.filter(user => user.status_friendship !== 1 && user.user_id !== loggedUserId);
+                renderUsers(filteredUsers);
                 break;
             case 2:
-                usersFiltered = users.filter(user => user.status_friendship === 1);
+                const followingUsers = users.filter(user => user.status_friendship === 1 && user.user_id !== loggedUserId);
+                renderUsers(followingUsers);
                 break;
             case 3:
-                usersFiltered = users.filter(user => user.friendship_id === undefined);
+                const suggestedUsers = users.filter(user => user.friendship_id === undefined && user.user_id !== loggedUserId);
+                renderUsers(suggestedUsers);
                 break;
         }
-        renderUsers(usersFiltered);
-    }
+    };
 
     contactNet.addEventListener("change", mostrar);
-}
+};
+
 
 searchBar();
 filterUsers();
 getUsers();
-
-
-/* ----------------Filtro de Amigos según ya Amigos o Sugeridos--------------------------------------------------------- */
-//NO COMENTAR//
-
-// let contactNet = document.querySelector('#contactNet');
-// let indice;
-// let container = document.querySelector(".container")
-// let containerArr = container.children;
-// let justFriend = document.getElementsByClassName(".just")
-
-// const mostrar = (indice) => {
-//     indice = contactNet.selectedIndex;
-//     if (indice == 1) {
-//         for (let item of containerArr) {
-//             item.classList.remove("d-none");
-//         }
-//     }
-//     else if (indice == 2) {
-//         for (let item of containerArr) {
-//             item.classList.add("d-none");
-//             if (item.classList[2] == "just") {
-//                 item.classList.remove("d-none");
-//             }
-//         }
-//     }
-//     else if (indice == 3) {
-//         for (let item of containerArr) {
-//             item.classList.add("d-none");
-//             if (item.classList[2] == "add") {
-//                 item.classList.remove("d-none");
-//             }
-//         }
-//     }
-// };
-
-// contactNet.addEventListener("change", mostrar);
