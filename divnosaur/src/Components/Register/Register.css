@@ -1,0 +1,73 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.navbar{
+    padding: 5px;
+    background: #EAEAE8;
+    position: sticky;
+  }
+  nav div#start-button
+  a.navbar-brand img{
+    margin-left: 50px;
+  }
+  
+  
+  
+  @media (max-width: 395px){
+    nav a img{
+      width: 130px;
+    }
+    .navbar img{
+      margin-left: 10px;
+    }
+    button.navbar-toggler{
+      margin-right: 15px;
+    }
+    button.btn-inicio{
+      width: 70px;
+    }
+   
+  }
+#register ul li{
+    
+    margin-bottom: 15px;
+    list-style: none;
+}
+div#login h1, div#login h2{
+    margin-top: 15px;
+}
+div#login .form-control{
+    margin: 15px auto;
+    width: 75%;
+}
+ul li a{
+    margin: 10px;
+}
+
+nav ul li, ul li{
+    list-style: none;
+}
+div.col-12{
+    padding: 0;
+}
+div#nav{
+    background: #67CDFE;  
+}
+div#nav input#search{
+    width: 350px;
+    margin-left: 15px;
+    border-radius: 0.25rem 0px 0px 0.25rem;
+}
+div#nav input#searchbutton{
+    border-radius: 0px 0.25rem 0.25rem 0px;
+}
+
+.warnings{
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    color: #060606;
+    padding-top: 20px;
+}
+

@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+    padding: 5px;
+    background: #EAEAE8;
+    position: sticky;
+  }
+  nav div#start-button
+  a.navbar-brand img{
+    margin-left: 50px;
+  }
+  
+  
+  
+  @media (max-width: 395px){
+    nav a img{
+      width: 130px;
+    }
+    .navbar img{
+      margin-left: 10px;
+    }
+    button.navbar-toggler{
+      margin-right: 15px;
+    }
+    button.btn-inicio{
+      width: 70px;
+    }
+   
+  }
+#footer-start ul li{
+    display: inline-block;
+    list-style: none;
+}
+#section-start div a button{
+    width: 450px;
+    margin: 10px;
+    height: 50px;
+}
+#section-start div a button img{
+    width: 30px;
+}
+#section-start{
+    margin: 70px;
+}
+#footer-start img{
+    width: 30px;
+}
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
+#section-start #form{
+    padding-top: 30px;
+    margin-top: 30px;
+}
+#section-start #form input, #section-start #form label.form-check-label, #section-start div.col-lg-10, #section-start div.col-12 a button{
+    margin:  5px;
+} 
+
+@media only screen and ( max-width: 768px ) {
+
+    #nav-start .col-12 a button{
+       padding: 0;
+        width: 25%;
+    }
+
+}
+
+@media only screen and ( max-width: 413x ) {
+
+    #nav-start .col-12 a button{
+        padding: 0;
+        width: 15%;
+    }
+
+}
+
+#buttonSession{
+justify-content: center;
+width: 45%;
+
+}
+
+.butSession{
+    /* height: 80px;
+    margin: 35px; */
+    width: 100%;
+}
+.warnings{
+    width: 500px;
+    text-align: center;
+    margin: auto;
+    color: #ff1313;
+    padding-top: 20px;
+    font-weight: bold;
+}
+
+.butGoogle{
+    margin: 5px;
+    border: 1px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 474px;
+    
+}

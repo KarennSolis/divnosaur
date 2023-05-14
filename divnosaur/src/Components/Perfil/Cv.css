@@ -1,0 +1,78 @@
+.cv-main{
+    margin-top: 40px;
+     font-family:'Times New Roman', Times, serif;
+     border: 5px solid black;
+ }
+ .cv-h4{
+     margin-bottom: 10%;
+     color: rgb(51, 51, 147);
+     font-weight: bold;
+ }
+ u{
+     color: rgb(51, 51, 147);
+     border-bottom: 4px solid rgb(51, 51, 147);
+     padding-bottom: 6px;
+ }
+ 
+ /*--------Columna CABECERA------------------------------------------------*/
+ 
+ .tecler-cv{
+     display: flex;
+     justify-content: center;
+     padding: 8% 15%;
+     background-color: rgb(216, 218, 218);
+ }
+ .fotoTecler{
+     width: 60%;
+     border-radius: 48%;
+ }
+ .divCabecera{
+     margin-left: 15%;
+ }
+ #h1-cabecera{
+     font-weight:bolder;
+     font-size: 55px;
+     color:rgb(10, 10, 162) ;
+ }
+ #p-cabecera{
+     font-weight: bold;
+     font-size: 18px;
+     color:rgb(51, 51, 147)
+ }
+ .cv-row{
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+ }
+ /*------------Bloque columnas derecha----------------------------------------------------------------*/
+ #cv-container{
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ 
+ }
+ .par, .impar{
+     width: 100%;
+    padding: 35px;
+ }
+ .par{
+     background-color: rgb(235, 242, 244);
+ }
+ .cv-contacto{
+     display: flex;
+ }
+ 
+ .cv-icono{
+     width: 27px;
+     height: 27px;
+     margin-right: 10px;
+ }
+ 
+ @media screen and (max-width: 599px) {
+     #h1-cabecera{
+         font-size: 45px;
+     }
+     }
