@@ -1,30 +1,30 @@
 
 import './App.css';
 import { useState, useEffect } from 'react';
-import { Redirect, Routes, Route } from 'react-router-dom';
+import { Navigate, Routes, Route } from 'react-router-dom';
+import PostWall from "./Components/PostWall";
+import Login from "./Components/Login";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    // Check if user is logged in and update state accordingly
     const userIsLoggedIn = checkLoginStatus();
     setLoggedIn(userIsLoggedIn);
   }, []);
 
   const checkLoginStatus = () => {
-    // Check if user is logged in
-    // Return true or false
+    const isLoggedIn = localStorage.getItem('loggedIn');
+    return isLoggedIn === 'true';
   }
+  
 
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/postwall" element={<PostWall />} />
       {loggedIn ? (
-        <Route path="/postwall" element={<Dashboard />} />
+        <Route path="/postwall" element={<PostWall />} />
       ) : (
-        <Redirect to="/login" />
+        <Navigate to="/login"  element={<Login/>}/>
       )}
     </Routes>
   );
