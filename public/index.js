@@ -32,7 +32,7 @@ const asyncPostCall = async (email, password) => {
 }
 
 
-//Actualizacion//
+
 const form = document.getElementById('form');
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
