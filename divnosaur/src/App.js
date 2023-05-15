@@ -1,7 +1,7 @@
 
 import './App.css';
 import { useState, useEffect } from 'react';
-import { Navigate, Routes, Route } from 'react-router-dom';
+/* import { Navigate, Routes, Route } from 'react-router-dom'; */
 import PostWall from "./Components/PostWall";
 import Login from "./Components/Login";
 
@@ -20,13 +20,13 @@ const App = () => {
   
 
   return (
-    <Routes>
+    {/* <Routes>
       {loggedIn ? (
         <Route path="/postwall" element={<PostWall />} />
       ) : (
         <Navigate to="/login"  element={<Login/>}/>
       )}
-    </Routes>
+    </Routes> */}
   );
 };
 

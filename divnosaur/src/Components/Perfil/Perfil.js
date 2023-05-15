@@ -5,7 +5,7 @@ import "./Modal.css";
 import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
 
 
-export function Perfil(props) {
+export default function Perfil(props) {
     return (
         <div>
             <Navbar2></Navbar2>

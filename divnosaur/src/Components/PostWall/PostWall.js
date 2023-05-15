@@ -3,7 +3,7 @@ import "./PostWall.css";
 import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
 
 
-export function PostWall(props) {
+export default function PostWall(props) {
     return (
 
         <div>

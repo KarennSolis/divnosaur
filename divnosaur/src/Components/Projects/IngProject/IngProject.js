@@ -1,7 +1,7 @@
 import React from "react";
 import "./IngProject.css";
 
-export function IngProject(props) {
+export default function IngProject(props) {
     return (
 
         <div>

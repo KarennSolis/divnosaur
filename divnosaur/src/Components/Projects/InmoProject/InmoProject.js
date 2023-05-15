@@ -1,7 +1,7 @@
 import React from "react";
 import "./InmoProject.css";
 
-export function InmoProject(props) {
+export default function InmoProject(props) {
     return (
 
         <div>
