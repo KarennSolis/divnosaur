@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar2.css";
 
-export default function Navbar2(props) {
+export function Navbar2(props) {
     return (
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">

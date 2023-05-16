@@ -3,7 +3,7 @@ import "./Login.css";
 import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
 
 
-export default function Login(props) {
+export function Login(props) {
     const parrafo = document.getElementById('warnings');
 
     const asyncPostCall = async (email, password) => {

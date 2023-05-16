@@ -1,7 +1,7 @@
 import React from "react";
 import "./TurisProject.css";
 
-export default function TurisProject(props) {
+export function TurisProject(props) {
     return (
 
         <div>

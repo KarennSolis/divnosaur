@@ -4,7 +4,7 @@ import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
 
 
 
-export default function Register(props) {
+export function Register(props) {
     return (
         <div>
             <Navbar2></Navbar2>
