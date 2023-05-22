@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Navbar2.css";
 
 export function Navbar2(props) {
@@ -22,35 +23,29 @@ export function Navbar2(props) {
                             <button class="btn btn-outline-primary me-2" type="submit">Buscar</button>
                         </form>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Inicio</a>
+                            <Link to=" "><a class="nav-link" aria-current="page" href="#">Inicio</a></Link> 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Mis amigos</a>
+                            <Link to="followers"><a class="nav-link" href="#">Mis amigos</a></Link> 
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Mensajes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Notificaciones</a>
-                        </li>
-
-
+                        
+                        
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Mi cuenta
                             </a>
                             <ul class="dropdown-menu">
 
-                                <li class="dropdown-item">Mi cuenta</li>
-                                <li><hr class="dropdown-divider" />
+                                {/* <li class="dropdown-item">Mi cuenta</li> */}
+                                {/* <li><hr class="dropdown-divider" />
                                     <li><a class="dropdown-item " href="#">Ajustes y preferencias</a></li>
                                     <li><a class="dropdown-item " href="#">Idioma</a></li>
+                                </li> */}
+                                <li><hr class="dropdown-divider" />
+                                    <Link to="/perfil" ><li><a class="dropdown-item" href="#">Mi Perfil</a></li></Link>
                                 </li>
                                 <li><hr class="dropdown-divider" />
-                                    <li><a class="dropdown-item" href="#">Publicaciones</a></li>
-                                </li>
-                                <li><hr class="dropdown-divider" />
-                                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                    <Link to="/"><li><a class="dropdown-item" href="#">Cerrar sesión</a></li></Link> 
                                 </li>
                             </ul>
                         </li>

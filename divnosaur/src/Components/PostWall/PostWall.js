@@ -1,9 +1,13 @@
-import React from "react";
+/* import React from "react"; */
+import React, { useState, useEffect, useRef } from 'react';
 import "./PostWall.css";
 import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
+import { Link } from "react-router-dom";
 
 
 export function PostWall(props) {
+
+
     return (
 
         <div>
@@ -56,7 +60,7 @@ export function PostWall(props) {
                                     <div>
                                         <p class="projTitle">Proyecto ingeniería</p>
                                         <button id="proIngen" class="detailBut">ver detalles</button>
-                                        <button id="masIng" class="detailBut">más detalles</button>
+                                        <Link to="ingproject"><button id="masIng" class="detailBut">más detalles</button></Link>
                                         {/* <!-- //boton agregado --> */}
                                     </div>
                                 </div>
@@ -67,7 +71,7 @@ export function PostWall(props) {
                                     <div>
                                         <p class="projTitle">Proyecto turismo</p>
                                         <button id="proTuris" class="detailBut">ver detalles</button>
-                                        <button id="masTur" class="detailBut">más detalles</button>
+                                        <Link to="turisproject"><button id="masTur" class="detailBut">más detalles</button></Link>
                                     </div>
                                 </div>
                                 <div class="proyect_text">
@@ -77,7 +81,7 @@ export function PostWall(props) {
                                     <div>
                                         <p class="projTitle">Proyecto inmobiliaria</p>
                                         <button id="proBuild" class="detailBut">ver detalles</button>
-                                        <button id="masInmo" class="detailBut">más detalles</button>
+                                        <Link to="inmoproject"><button id="masInmo" class="detailBut">más detalles</button></Link>
                                     </div>
                                 </div>
 

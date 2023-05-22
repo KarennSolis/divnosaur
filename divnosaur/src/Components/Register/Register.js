@@ -1,6 +1,7 @@
 import React from "react";
 import "./Register.css";
 import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
+import { Link } from "react-router-dom";
 
 
 

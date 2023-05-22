@@ -1,37 +1,36 @@
 
 import './App.css';
-import { useState, useEffect } from 'react';
-/* import { Navigate, Routes, Route } from 'react-router-dom'; */
-
-import { Register } from './Components/Register/Register';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { Login } from "./Components/Login/Login";
+import { PostWall } from "./Components/PostWall/PostWall";
+import { Register } from "./Components/Register/Register";
+import { Perfil } from "./Components/Perfil/Perfil";
+import { Followers } from "./Components/Followers/Followers";
+/* import { IngProject } from "./Components/Projects/IngProject/IngProject";
+import { InmoProject } from "./Components/Projects/InmoProject/InmoProject";
+import { TurisProject } from "./Components/Projects/TurisProject/TurisProject"; */
 
 
 const App = () => {
- /*  const [loggedIn, setLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const userIsLoggedIn = checkLoginStatus();
-    setLoggedIn(userIsLoggedIn);
-  }, []);
-
-  const checkLoginStatus = () => {
-    const isLoggedIn = localStorage.getItem('loggedIn');
-    return isLoggedIn === 'true';
-  } */
-  
-
   return (
     <>
-    
-      <Register></Register>
-      
+
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/postwall" element={<PostWall />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/followers" element={<Followers />} />
+        
+      </Routes>
     </>
-    
-  )
-  
+  );
 };
 
-    
 export default App;
+
+
+
 
 

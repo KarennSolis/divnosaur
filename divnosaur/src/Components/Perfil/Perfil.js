@@ -1,11 +1,11 @@
 import React from "react";
 import "./Perfil.css";
 import "./Modal.css";
-
 import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
+import { Link } from "react-router-dom";
 
 
-export default function Perfil(props) {
+export function Perfil(props) {
     return (
         <div>
             <Navbar2></Navbar2>
