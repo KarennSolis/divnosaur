@@ -1,32 +1,42 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const sequelize = require('../conexion-base-datos');
-var mysql2 = require('mysql2');
+const mysql2 = require('mysql2');
+const bcrypt = require('bcrypt');
+
 
 
 const postRegister = async function (req, res) {
-    const { user, email, password, age, phone, town, country, hobbies, experience } = req.body
-    console.log(req.body)
-    // if (user && email && password && age && phone && town && country && hobbies && experience)  {
-    if (user) {
-        sequelize.query('SELECT * FROM users WHERE name = :user_user', { replacements: { user_user: user }, type: sequelize.QueryTypes.SELECT })
-            .then(users => {
-                console.log(users);
-                if (Object.keys(users).length === 0) {      
-                    sequelize.query('INSERT INTO users (name,email,age,password,telephone_number,city,country,hobbies,experience) VALUES (?,?,?,?,?,?,?,?,?)',
-                        { replacements: [req.body.user, req.body.email, req.body.age, req.body.password, req.body.phone, req.body.town, req.body.country, req.body.hobbies, req.body.experience], type: sequelize.QueryTypes.INSERT })
-                    console.log('No existe el usuario')
-                    res.status(200).send({ result: true, message: "Usuario creado con exito, inicie sesión" })
-                } else {
-                    console.log('si existe el usuario')
-                    res.status(200).send({ result: false, message: 'Este usuario ya esta registrado, inicie sesión' })
-                }
-            })
+  const { name, email, password, age, phone, city, country, hobbies, experience } = req.body;
+  console.log(req.body);
 
-            console.log('prueba')
+  if (name) {
+    try {
+      // Comprobar si ya existe el usuario
+      sequelize.query('SELECT * FROM users WHERE name = :user_user', { replacements: { user_user: name }, type: sequelize.QueryTypes.SELECT })
+        .then(async users => {
+          console.log(users);
+          if (Object.keys(users).length === 0) {
+            // Hashear la contraseña
+            const hashedPassword = await bcrypt.hash(password, 10);
 
+            // Crear usuario
+            sequelize.query('INSERT INTO users (name,email,age,password,telephone_number,city,country,hobbies,experience) VALUES (?,?,?,?,?,?,?,?,?)',
+              { replacements: [name ?? "", email ?? "", age ?? "", hashedPassword ?? "", phone ?? "", city ?? "", country ?? "", hobbies ?? "", experience ?? ""], type: sequelize.QueryTypes.INSERT });
+
+            console.log('No existe el usuario');
+            res.status(200).send({ result: true, message: "Usuario creado con éxito, inicie sesión" });
+          } else {
+            console.log('El usuario ya existe');
+            res.status(200).send({ result: false, message: 'Este usuario ya está registrado, inicie sesión' });
+          }
+        });
+    } catch (error) {
+      console.log(error);
     }
+    console.log('prueba');
+  }
+};
 
-}
-
-module.exports =  postRegister 
+module.exports = postRegister;

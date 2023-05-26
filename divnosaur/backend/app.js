@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const requestTransfer = require('express-request-transfer');
 const moment = require('moment');
@@ -14,10 +15,10 @@ const { allUser} = require("./routes/allUsersback");
 // const { allUser} = require("./routes/usersBack");
 // const followers = require('./routes/followBack');
 const {followers} = require('./routes/followBack');
-require('dotenv').config()
-const app = express();
-const port = process.env.PORT || 3001;
 
+const app = express();
+// const port = process.env.PORT || 3000;
+const port = 3001;
 app.use(requestTransfer);
 app.use(express.json());
 app.use(cors());
