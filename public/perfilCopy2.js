@@ -23,7 +23,6 @@ const renderUserData = (dataUser) => {
     locationUser.innerHTML = dataUser.country;
     profileBirth.innerHTML = dataUser.age;
     profileStudy.innerHTML = dataUser.experience;
-    
     mailUser.innerHTML = dataUser.email
     profileHobbies.innerHTML = dataUser.hobbies;
 }
