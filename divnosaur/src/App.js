@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { Login } from "./Components/Login/Login";
 import { PostWall } from "./Components/PostWall/PostWall";
-import { Register } from "./Components/Register/Register";
+// import { Register } from "./Components/Register/Register";
 import Formulario from './Components/RegisterFinal/Formulario';
 import { Perfil } from "./Components/Perfil/Perfil";
 import { Followers } from "./Components/Followers/Followers";
