@@ -1,10 +1,7 @@
 import { useState, useRef } from 'react';
 import { Navbar1 } from '../Navbar/Navbar1/Navbar1';
 import { useNavigate, Link } from 'react-router-dom';
-/* import jwt from 'jsonwebtoken'; */
 import "./Login.css";
-
-/* const jwt = require('jsonwebtoken'); */
 
 
 export function Login() {
@@ -12,7 +9,6 @@ export function Login() {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
     const navigate = useNavigate();
-
 
     const [formData, setFormData] = useState({
         warnings: '',
@@ -59,6 +55,7 @@ export function Login() {
 
         if (entrar) {
             setFormData(prevData => ({ ...prevData, parrafo: warnings }));
+
         } else {
             try {
                 const response = await fetch('http://localhost:3001/login', {
@@ -70,17 +67,36 @@ export function Login() {
                 });
                 const data = await response.json();
                 const { result, message } = data;
+                console.log(data)
+                console.log(data.result)
 
                 if (!result) {
                     alert(message);
+
                 } else {
-                    const userId = result['user_id'];
-                    /* const token = jwt.sign({ user_id: userId }, 'your-secret-key'); */
-                    /* localStorage.setItem('idLogged', result['user_id']); */
+                    const userId = data.result.userId;
+                    const userName = data.result.userName;
+                    const userEmail = data.result.userEmail;
+                    const userAge = data.result.userAge;
+                    const userPhone = data.result.userPhone;
+                    const userCity = data.result.userCity;
+                    const userCountry = data.result.userCountry;
+                    const userHobbies = data.result.userHobbies;
+                    const userExperience = data.result.userExperience;
+
                     localStorage.setItem('idLogged', userId);
-                    /* localStorage.setItem('token', token); */
+                    localStorage.setItem('userName', userName);
+                    localStorage.setItem('userEmail', userEmail);
+                    localStorage.setItem('userAge', userAge);
+                    localStorage.setItem('userPhone', userPhone);
+                    localStorage.setItem('userCity', userCity);
+                    localStorage.setItem('userCountry', userCountry);
+                    localStorage.setItem('userHobbies', userHobbies);
+                    localStorage.setItem('userExperience', userExperience);
+
                     emailRef.current.value = '';
                     passwordRef.current.value = '';
+
                     navigate('/postwall');
                     setFormData((prevData) => ({
                         ...prevData,
@@ -97,77 +113,6 @@ export function Login() {
         passwordRef.current.value = '';
 
     };
-
-
-    /* -------------generar el token------------------------------ */
-/* 
-    function generateToken(payload, secretKey, expiresIn) {
-        return new Promise((resolve, reject) => {
-            jwt.sign(payload, secretKey, { expiresIn }, (err, token) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(token);
-                }
-            });
-        });
-    } */
-
-
-    /* ------------------verificar el token------------------- */
-
-    /* function verifyToken(token, secretKey) {
-        return new Promise((resolve, reject) => {
-            jwt.verify(token, secretKey, (err, decoded) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(decoded);
-                }
-            });
-        });
-    } */
-
-
-    // Generar un token
-
-    /* const userId = localStorage.getItem('idLogged');
-    const payload = { userId: userId };
-
-    const secretKey = 'your-secret-key';
-    const expiresIn = '300s';
-
-    generateToken(payload, secretKey, expiresIn)
-        .then(token => {
-            console.log('Token generado:', token);
-            localStorage.setItem('token', token);
-        })
-        .catch(err => {
-            console.error('Error al generar el token:', err);
-        }); */
-
-    // Verificar un token
-   /*  const token = localStorage.getItem('token');
-
-    if (token) {
-        verifyToken(token, secretKey)
-            .then(decoded => {
-                console.log('Datos decodificados:', decoded);
-            })
-            .catch(err => {
-                console.error('Error al verificar el token:', err);
-            });
-    } else {
-        console.warn('No hay token almacenado en el localStorage.');
-    }
-     */
-
-
-
-
-
-
-
 
 
 
