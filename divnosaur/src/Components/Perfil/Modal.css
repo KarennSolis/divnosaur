@@ -14,11 +14,11 @@
     justify-content: center;
 }
 
-[type="checkbox"]:checked,
+/* [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked) {
     position: absolute;
     left: -9999px;
-}
+} */
 
 .modal-btn:checked+label,
 .modal-btn:not(:checked)+label {
