@@ -5,8 +5,7 @@ const cors = require('cors');
 const sequelize = require('./conexion-base-datos');
 const postRegister = require('./routes/registroBack');
 const postLogin = require('./routes/loginBack');
-const getPublications = require('./routes/publicatBack');
-const postPublications = require('./routes/publicatBack')
+const { getPublications, getAllPublications , postPublications }= require('./routes/publicatBack')
 const {updateFriendshipStatus} = require('./routes/friendsPrueba')
 const postFriends = require ('./routes/friendsBack')
 const { getUser } = require("./routes/usersBack");
@@ -52,6 +51,9 @@ app.post('/login', postLogin);
 //PUBLICACIONES :  cargar y crear en la página de inicio
 
 /* app.get('/publications', getPublications);  */
+
+app.get('/allPublications', getAllPublications);
+
 app.get('/publications', async function(req, res) {
     const user_id = req.query.user_id;
     console.log(req.query.user_id)

@@ -4,11 +4,15 @@ import { useNavigate, Link } from 'react-router-dom';
 /* import jwt from 'jsonwebtoken'; */
 import "./Login.css";
 
+/* const jwt = require('jsonwebtoken'); */
+
+
 export function Login() {
 
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
     const navigate = useNavigate();
+
 
     const [formData, setFormData] = useState({
         warnings: '',
@@ -95,6 +99,78 @@ export function Login() {
     };
 
 
+    /* -------------generar el token------------------------------ */
+/* 
+    function generateToken(payload, secretKey, expiresIn) {
+        return new Promise((resolve, reject) => {
+            jwt.sign(payload, secretKey, { expiresIn }, (err, token) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(token);
+                }
+            });
+        });
+    } */
+
+
+    /* ------------------verificar el token------------------- */
+
+    /* function verifyToken(token, secretKey) {
+        return new Promise((resolve, reject) => {
+            jwt.verify(token, secretKey, (err, decoded) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(decoded);
+                }
+            });
+        });
+    } */
+
+
+    // Generar un token
+
+    /* const userId = localStorage.getItem('idLogged');
+    const payload = { userId: userId };
+
+    const secretKey = 'your-secret-key';
+    const expiresIn = '300s';
+
+    generateToken(payload, secretKey, expiresIn)
+        .then(token => {
+            console.log('Token generado:', token);
+            localStorage.setItem('token', token);
+        })
+        .catch(err => {
+            console.error('Error al generar el token:', err);
+        }); */
+
+    // Verificar un token
+   /*  const token = localStorage.getItem('token');
+
+    if (token) {
+        verifyToken(token, secretKey)
+            .then(decoded => {
+                console.log('Datos decodificados:', decoded);
+            })
+            .catch(err => {
+                console.error('Error al verificar el token:', err);
+            });
+    } else {
+        console.warn('No hay token almacenado en el localStorage.');
+    }
+     */
+
+
+
+
+
+
+
+
+
+
     return (
         <>
             <Navbar1></Navbar1>
@@ -143,8 +219,8 @@ export function Login() {
                             {/* </div>  */}
                             {/* <div id="butGoogle" className="butGoogle"></div> */}
                             <div className="col-12" id="homeRegBot">
-                            <Link to="register"><a href="./registro.html"><button className="btn btn-outline-info" id="regBot"><h4>Regístrate ahora</h4></button></a></Link>
-                        </div>
+                                <Link to="register"><a href="./registro.html"><button className="btn btn-outline-info" id="regBot"><h4>Regístrate ahora</h4></button></a></Link>
+                            </div>
                         </div>
                     </div>
                 </div>
