@@ -13,8 +13,9 @@ const { getUser } = require("./routes/usersBack");
 const { allUser, namesUsers} = require("./routes/allUsersback");
 // const { allUser} = require("./routes/usersBack");
 // const followers = require('./routes/followBack');
-const {followers} = require('./routes/followBack');
-
+const { followers } = require('./routes/followBack');
+const { getUserDataById } = require('./routes/perfilBack')
+const { updateUserDataById } = require('./routes/perfilBack')
 const app = express();
 // const port = process.env.PORT || 3000;
 const port = 3001;
@@ -36,6 +37,10 @@ app.get('/register', async (req, res) => {
 
 app.post('/register', postRegister);
 
+//Perfil//
+app.route("/profile/:user_id")
+    .get(getUserDataById)
+    .patch(updateUserDataById)
 
 //Login
 app.get('/login', async (req, res) => {
@@ -73,9 +78,9 @@ app.get('/publications', async function(req, res) {
                 } */
             })
     }
-}); 
+});
 
-app.post('/createPublications', postPublications); 
+app.post('/createPublications', postPublications);
 
 //nombre de usuario
 app.get('/:name', namesUsers);
@@ -84,7 +89,7 @@ app.get('/:name', namesUsers);
 //Seguidores y Solicitudes de Seguimiento
 //KAREN//
 app.route("/changeStatus/:user_id")
-	.patch(updateFriendshipStatus);
+    .patch(updateFriendshipStatus);
 //Amigos
 
 app.get('/friends', async (req, res) => {
@@ -98,7 +103,8 @@ app.post('/friends', postFriends);
 // app.post('/followed/:user_id', followers);
 
 app.route("/followed/:user_id", async (req, res) => {
-    res.status(200).send('Render follow')})
+    res.status(200).send('Render follow')
+})
     .get(followers)
 
 //Recoger datos usuarios//
@@ -107,10 +113,10 @@ app.route("/followed/:user_id", async (req, res) => {
 // router.route("/:user_id")
 // 	.get(getUser) 
 app.route("/users")
-	.get(allUser) 
-    
+    .get(allUser)
+
 app.route("/:user_id")
-	.get(getUser) 
+    .get(getUser)
 
 
 // app.route("/renderUsers")
