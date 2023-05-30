@@ -127,7 +127,7 @@ export function Login() {
                             <img className="img-fluid" src="https://images.unsplash.com/photo-1632594737623-bea601083890?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />
                         </div>
                         <div id="" className="col-7">
-                            <h1>Mensaje de bienvenida</h1>
+                            <h1>Inicia Sesión</h1>
                             <form onSubmit={handleSubmit} id="form" className="loginForm" >
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">Email</label>
@@ -164,7 +164,7 @@ export function Login() {
                             {/* </div>  */}
                             {/* <div id="butGoogle" className="butGoogle"></div> */}
                             <div className="col-12" id="homeRegBot">
-                                <Link to="register"><a href="./registro.html"><button className="btn btn-outline-info" id="regBot"><h4>Regístrate ahora</h4></button></a></Link>
+                                <Link to="/register"><a href="./registro.html"><button className="btn btn-outline-info" id="regBot"><h4>Regístrate ahora</h4></button></a></Link>
                             </div>
                         </div>
                     </div>

@@ -81,7 +81,7 @@ app.post('/createPublications', postPublications);
 app.get('/:name', namesUsers);
 
 
-
+//Seguidores y Solicitudes de Seguimiento
 //KAREN//
 app.route("/changeStatus/:user_id")
 	.patch(updateFriendshipStatus);

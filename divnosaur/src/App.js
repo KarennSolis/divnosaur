@@ -23,7 +23,7 @@ const App = () => {
         <Route path="/register" element={<Formulario />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/followers" element={<Followers />} />
-        {/* <Route path="*" element = {<Error/>}/> */}
+        {/* <Route path="*" element = {<Error404/>}/> */}
       </Routes>
     </>
   );

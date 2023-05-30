@@ -13,7 +13,7 @@ export function Register(props) {
                 <div class="row">
                     <h1 class="text-center">Registrate, es muy fácil</h1>
                     <div class="contenedor-Login text-center">
-                        <h2 class="tituloLogin text-center">Login</h2>
+                        {/* <h2 class="tituloLogin text-center">Login</h2> */}
                         <div class="contenedor-Form" id="contenedorForm">
                             <form class="form-horizontal" action="/register" method="post" id="form" >
                                 <ul id="ul">

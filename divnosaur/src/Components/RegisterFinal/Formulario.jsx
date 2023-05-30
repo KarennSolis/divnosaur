@@ -46,7 +46,7 @@ const Formulario = () => {
             <div className="row">
                 <h1 className="text-center">Registrate, es muy fácil</h1>
                 <div className="contenedor-Login text-center">
-                    <h2 className="tituloLogin text-center">Login</h2>
+                    {/* <h2 className="tituloLogin text-center">Login</h2> */}
                     <div className="contenedor-Form" id="contenedorForm">
                         <form className="form-horizontal" action="/register" method="post" id="form" onSubmit={handleSubmit(onSubmit)}>
                             <ul id="ul">
