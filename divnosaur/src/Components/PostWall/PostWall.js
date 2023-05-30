@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 export function PostWall(props) {
 
     /* const [userData, setUserData] = useState([]); */
+    const [namesWriters, setUsersName] = useState([]);
     const [publications, setPublications] = useState([]);
     const [, updateState] = useState();
     const forceUpdate = useCallback(() => updateState({}), []);
@@ -117,6 +118,15 @@ export function PostWall(props) {
 
     };
 
+    const formattedDateTime = new Date(namesWriters.post_creation_date).toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      });
+      
 
 
     /* -------------Fetch de todas las publicaciones , indicando a qué usuario pertenece---------------------------------------------------------------- */
@@ -142,24 +152,24 @@ export function PostWall(props) {
 
     /* --------------------consultar en la tabla users el nombre del usuario que hizo cada publicación usando publication.user_id---------------------- */
 
-    /* useEffect(() => {
-            const fetchUsersNames = async () => {
-              try {
-                const url = new URL('http://localhost:3001/publications');
-                
+    useEffect(() => {
+        const fetchUsersNames = async () => {
+            try {
+                const url = new URL('http://localhost:3001/${name}');
+
                 const response = await fetch(url, {
-                  method: "GET"
+                    method: "GET"
                 });
                 const data = await response.json();
                 console.log(data);
-                console.log(data.name);
-                setUsersName(data.name);
-              } catch (error) {
+                setUsersName(data);
+                console.log(namesWriters)
+            } catch (error) {
                 console.error('Error al consultar el nombre del usuario: ', error)
-              }
-            };
-            fetchUsersNames().catch(console.error);
-          }, [publication.user_id]); */
+            }
+        };
+        fetchUsersNames().catch(console.error);
+    }, [user_id]);
 
 
 
@@ -167,32 +177,39 @@ export function PostWall(props) {
 
     /* ------Botón LIKES--------------------------------------------------------------------- */
 
-    /* const ComponentePublicaciones = ({ publications }) => {
-        const [likes, setLikes] = useState(0);
+    const ComponentePublicaciones = ({ }) => {
+        const [likes, setLikes] = useState({});
         const [fingerUp, setFingerUp] = useState(0);
         const [likesByPublication, setLikesByPublication] = useState(
             publications.reduce((acc, pub) => acc + pub.likes, 0)
         );
         const likeButtonRef = useRef(null);
 
-        useEffect(() => {
+        const handleLikeClick = (postId) => {
+            addLikes(postId);
             const likeButton = likeButtonRef.current;
 
-            return () => {
-                if (likes % 2 === 1) {
-                    likeButton.textContent = fingerUp;
-                    likeButton.classList.remove("clickedLike");
-                } else {
-                    likeButton.textContent = fingerUp;
-                    likeButton.classList.add("clickedLike");
-                }
-            };
-        }, [likes]);
+            if (likes[postId] && likes[postId] % 2 === 1) {
+                likeButton.textContent = fingerUp;
+                likeButton.classList.remove("clickedLike");
+            } else {
+                likeButton.textContent = fingerUp;
+                likeButton.classList.add("clickedLike");
+            }
+        };
+
 
         const addLikes = (postId) => {
-            // Aquí debes actualizar la información de "likes" en la base de datos.
-            // Por ejemplo, si tienes una función fetchUpdateLikes que actualiza los "likes" en la base de datos, puedes llamarla:
-            fetchUpdateLikes(postId, likes + 1);
+            /* fetchUpdateLikes(postId, (likes[postId] || 0) + 1); */
+            const fetchUpdateLikes = async (postId, newLikes) => {
+                // Lógica para actualizar los 'likes' en el servidor
+                likes[postId] = +1
+            };
+
+            setLikes((prevLikes) => ({
+                ...prevLikes,
+                [postId]: (prevLikes[postId] || 0) + 1,
+            }));
 
             setLikesByPublication((prevLikes) => {
                 const newLikes = prevLikes.map((likeCount) =>
@@ -203,7 +220,8 @@ export function PostWall(props) {
         };
 
 
-    } */
+
+    }
 
 
 
@@ -441,23 +459,23 @@ export function PostWall(props) {
                                             {/* --------publicaciones de todos los usuarios, indicando el usuario que la hizo----------------------------------------------- */}
 
                                             <div >
-                                                {publications.map((publication) => (
-                                                    <div key={publication.post_id} className='divPublication'>
-                                                        <p>ID de usuario: {publication.user_id}</p>
+                                                {namesWriters.map((namesWriters) => (
+                                                    <div key={namesWriters.post_id} className='divPublication'>
+                                                        <p><small className='postWritter'>{namesWriters.name}</small> escribió:</p>
                                                         <div className='textPublication' >
-                                                            <p>{publication.post_content}</p>
-                                                            <p>{publication.post_creation_date}</p>
+                                                            <p>{namesWriters.post_content}</p>
+                                                            <p className='postTimeStamp'><small>publicado el: {namesWriters.post_creation_date}</small></p>
                                                             <div class="float-right" id="div">
                                                                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                                                     <div id="reactions" class="btn-group mr-2" role="group"
                                                                         aria-label="First group">
-                                                                        <div id="likeAnch" class="butonDiv">
-                                                                            <div id="totalLikes" class="totalLikes">{publication.likes}{/* {likesByPublication[publication.post_id]} */}</div><button type="button"
-                                                                                id="likeButton" /* ref={likeButtonRef} */ class="btn btn-primary likeButton" /* onClick={addLikes} */ /* onClick={() => addLikes(publication.post_id)} */><img
+                                                                        {/* <div id="likeAnch" class="butonDiv">
+                                                                            <div id="totalLikes" class="totalLikes">{namesWriters.likes}</div><button type="button"
+                                                                                id="likeButton" ref={likeButtonRef} class="btn btn-primary likeButton" onClick={() => handleLikeClick(namesWriters.user_id)}><img
                                                                                     class="img-fluid"
                                                                                     src="https://cdn-icons-png.flaticon.com/512/9970/9970200.png"
-                                                                                    alt="" />{/* {publication.likes} */}</button>
-                                                                        </div>
+                                                                                    alt="" /></button>
+                                                                        </div> */}
                                                                         <div><button type="button" id="commentButton"
                                                                             class="btn btn-primary commentButton butonDiv"><img
                                                                                 class="img-fluid"
@@ -467,7 +485,7 @@ export function PostWall(props) {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div>{publication.comments}</div>
+                                                        <div>{namesWriters.comments}</div>
                                                     </div>
                                                 ))}
                                             </div>

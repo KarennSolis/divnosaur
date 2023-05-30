@@ -132,6 +132,16 @@ div.aceptar-rechazar button{
     background-color: coral;
 }
 
+.postWritter{
+    color: rgb(12, 147, 116);
+    font-weight: bold;
+}
+
+.postTimeStamp{
+    font-style: italic;
+    color: rgb(110, 108, 108);
+}
+
 .textPublication{
     background-color: rgb(250, 250, 248);
     border-radius: 0.5em;
@@ -237,7 +247,7 @@ div#reactions button{
 
 .col-10 p{
     font-size: large;
-    color: black; 
+    /* color: black;  */
 }
 
 .comentarios{

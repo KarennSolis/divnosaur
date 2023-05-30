@@ -10,7 +10,7 @@ const { getPublications, getAllPublications , postPublications }= require('./rou
 const {updateFriendshipStatus} = require('./routes/friendsPrueba')
 const postFriends = require ('./routes/friendsBack')
 const { getUser } = require("./routes/usersBack");
-const { allUser} = require("./routes/allUsersback");
+const { allUser, namesUsers} = require("./routes/allUsersback");
 // const { allUser} = require("./routes/usersBack");
 // const followers = require('./routes/followBack');
 const {followers} = require('./routes/followBack');
@@ -77,6 +77,11 @@ app.get('/publications', async function(req, res) {
 
 app.post('/createPublications', postPublications); 
 
+//nombre de usuario
+app.get('/:name', namesUsers);
+
+
+
 //KAREN//
 app.route("/changeStatus/:user_id")
 	.patch(updateFriendshipStatus);
@@ -106,6 +111,7 @@ app.route("/users")
     
 app.route("/:user_id")
 	.get(getUser) 
+
 
 // app.route("/renderUsers")
 // 	.get(allUser) 
