@@ -6,17 +6,17 @@ export function InmoProject(props) {
     return (
 
         <div>
-            <h1 class="logo">Gesti <span>Habitat</span></h1>
+            <h1 className="logo">Gesti <span>Habitat</span></h1>
         
 
-<div class="page">
+<div className="page">
     <div id="pagina_inicio">
 
         <div><img src="inmobiliaria.jpg"/></div>
     </div>
 
     <div>
-        <form action="container" class="container">
+        <form action="container" className="container">
             <p>¡Te ofrecemos crecer con nosotros en nuestra unidad tecnológica FullStack Development como
                 Programador/a! Si tienes unos 6 meses de experiencia como programador/a, así como iniciativa,
                 empatía y ganas de llegar lejos, danos la oportunidad de conocer <br/>

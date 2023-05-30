@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export function Register(props) {
     return (
         <div>
-            <Navbar2></Navbar2>
+            <Navbar2 />
             <div id="login" class="container-fluid">
                 <div class="row">
                     <h1 class="text-center">Registrate, es muy fácil</h1>

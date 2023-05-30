@@ -6,21 +6,21 @@ export function TurisProject(props) {
     return (
 
         <div>
-            <h1 class="logo">Joven <span>Turismo</span></h1>
+            <h1 className="logo">Joven <span>Turismo</span></h1>
     <ul>
-        <li><a href="#" class="boton" id="inicio">INICIO</a></li>
-        <li><a href="#" class="boton" id="empresa">EMPRESA</a></li>
-        <li><a href="#" class="boton" id="servicios">SERVICIOS</a></li>
-        <li><a href="#" class="boton" id="contacto">CONTACTO</a></li>
+        <li><a href="#" className="boton" id="inicio">INICIO</a></li>
+        <li><a href="#" className="boton" id="empresa">EMPRESA</a></li>
+        <li><a href="#" className="boton" id="servicios">SERVICIOS</a></li>
+        <li><a href="#" className="boton" id="contacto">CONTACTO</a></li>
     </ul>
 
-    <div class="page">
+    <div className="page">
         <div id="pagina_inicio">
             <div><img src="../public/voyage-violet.png"/></div>  
         </div>
        
         <div>
-            <form action="container" class="container">
+            <form action="container" className="container">
             <p>¡Te ofrecemos crecer con nosotros en nuestra unidad tecnológica FullStack Development como Programador/a! Si tienes unos 6 meses de experiencia como programador/a, así como iniciativa, empatía y ganas de llegar lejos, danos la oportunidad de conocer <br/>
 
                 ¿Qué necesitamos?  <br/>
