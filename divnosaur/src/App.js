@@ -10,21 +10,27 @@ import { Followers } from "./Components/Followers/Followers";
 /* import { IngProject } from "./Components/Projects/IngProject/IngProject";
 import { InmoProject } from "./Components/Projects/InmoProject/InmoProject";
 import { TurisProject } from "./Components/Projects/TurisProject/TurisProject"; */
-
+import { Provider } from 'react-redux';
+import AppPerfil from './Components/Perfil/AppPerfil';
+import { store } from "./redux/store"
 
 const App = () => {
   return (
     <>
+      <Provider store={store}>
+        {/* <AppPerfil /> */}
+        <Routes>
 
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/postwall" element={<PostWall />} />
-        <Route path="/register" element={<Formulario />} />
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/followers" element={<Followers />} />
-        {/* <Route path="*" element = {<Error/>}/> */}
-      </Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/postwall" element={<PostWall />} />
+          <Route path="/register" element={<Formulario />} />
+          <Route path="/perfil" element={<Perfil />} />
+          <Route path="/profile" element={<AppPerfil />} />
+          <Route path="/followers" element={<Followers />} />
+          {/* <Route path="*" element = {<Error/>}/> */}
+        </Routes>
+      </Provider>
     </>
   );
 };
