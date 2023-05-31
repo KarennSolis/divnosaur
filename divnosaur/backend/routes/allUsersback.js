@@ -4,7 +4,7 @@ var mysql2 = require('mysql2');
 const express = require('express');
 // const userRouter =  express.Router
 
-const allUser = async (req, res) => {
+/* const allUser = async (req, res) => {
     // userRouter.get("/allUsers",async (req, res) => {
     try {
         const personas = await sequelize.query('SELECT * FROM users', { type: sequelize.QueryTypes.SELECT })
@@ -15,6 +15,29 @@ const allUser = async (req, res) => {
         res.status(500).send('Error interno del servidor');
     }
     // });
+}; */
+
+
+/* const allUser = async function (req, res) {
+    sequelize.query('SELECT * FROM users', { type: sequelize.QueryTypes.SELECT })
+        .then(users => {
+            console.log(users.length);
+            console.log(users)
+            res.status(200).send({ users })
+        })
+}; */
+
+const allUser = async function (req, res) {
+    sequelize.query('SELECT * FROM users', { type: sequelize.QueryTypes.SELECT })
+        .then(users => {
+            console.log(users.length);
+            console.log(users)
+            res.json(users);
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(500).send('Error interno del servidor');
+          });
 };
 
 
@@ -37,3 +60,5 @@ module.exports = {
     allUser,
     namesUsers
 };
+/* module.exports.allUser = allUser; */
+/* module.exports.namesUsers = namesUsers; */

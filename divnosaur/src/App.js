@@ -28,7 +28,7 @@ const App = () => {
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/profile" element={<AppPerfil />} />
           <Route path="/followers" element={<Followers />} />
-          {/* <Route path="*" element = {<Error/>}/> */}
+          {/* <Route path="*" element = {<Error404/>}/> */}
         </Routes>
       </Provider>
     </>

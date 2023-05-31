@@ -1,123 +1,141 @@
-import React from "react";
-import "./Followers.css";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLoggedUserId, setUsers, updateFriendshipStatus } from '../../redux/followerSlice';
+import './Followers.css';
 import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
+export function Followers() {
+    const dispatch = useDispatch();
+    const loggedUserId = useSelector((state) => state.user.loggedUserId);
+    const users = useSelector((state) => state.follower.users);
+    const [userImages, setUserImages] = useState([]);
+    const idLogged = localStorage.getItem('idLogged');
 
 
-export function Followers(props) {
+    useEffect(() => {
+        const fetchData = async () => {
 
-    /* let users = [];
-    let loggedUserId; */
-    
-/*     const createUserElement = async (userData) => {
-        const container = document.getElementById("followersContainer");
-    
-        const element = document.createElement("div");
-        element.classList.add("item");
-    
-        element.innerHTML = `
-         <h4>${userData.name}</h4>
-         <p>${userData.email}</p>
-         <p>${userData.country}</p>
-       `;
-    
-        const button = document.createElement("button");
-        if (userData.status_friendship === 1) {
-            button.textContent = "Siguiendo";
-            button.classList.add("following");
-        } else {
-            button.textContent = "Seguir";
-            button.classList.add("users");
-        }
-    
-        button.addEventListener("click", async () => {
-            try {
-                const response = await fetch(`http://localhost:3000/changeStatus/${loggedUserId}`, {
-                    method: "PATCH",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        friend: userData.user_id,
-                        status_friendship: userData.status_friendship === 1 ? 0 : 1 //----------nuevo valor--------------//
-                    }),
-                });
-    
-                if (response.ok) {
-                    userData.status_friendship = userData.status_friendship === 1 ? 0 : 1;
-                    button.textContent = userData.status_friendship === 1 ? "Siguiendo" : "Seguir";//---------dejar de seguir, cambia valor a 0 y cambia el botón------------------//
-                    button.classList.toggle("following");
-    
-                    if (userData.status_friendship === 0) {
-                        container.removeChild(element);
-                    }
-                } else {
-                    console.error("Ocurrió un error al actualizar el estado de la amistad.");
-                }
-            } catch (error) {
-                console.error(error);
+
+            const allUsers = await fetch(`http://localhost:3001/users`);
+            let dataUser = [];
+            if (allUsers.ok) {
+                dataUser = await allUsers.json();
+                console.log(dataUser);
             }
-        });
-    
-        const image = document.createElement("img");
-        image.src = userData.image;
-    
-        element.appendChild(button);
-        const h4 = element.querySelector("h4");
-        element.insertBefore(image, h4);
-        container.appendChild(element);
-    }; */
-    
-/*     const getUsers = async () => {
-        const idLogged = localStorage.getItem('idLogged');
-        loggedUserId = idLogged;
-    
-        const followedResponse = await fetch(`http://localhost:3000/followed/${idLogged}`);
-        if (followedResponse.ok) {
-            const followedData = await followedResponse.json();
-            console.log(followedData);
-            users = [...followedData];
-        }
-    
-        const url = 'http://localhost:3000/users';
-        const response = await fetch(url);
-        if (response.ok) {
-            const dataUser = await response.json();
-            console.log(dataUser);
-            users = [...users, ...dataUser];
-        }
-    
-        const promises = users.map(user =>
-            fetch('https://randomuser.me/api/')
-                .then(response => response.json())
-                .then(data => {
+
+            const promises = users.map((user) =>
+                fetch('https://randomuser.me/api/')
+                    .then((response) => response.json())
+                    .then((data) => {
+                        return {
+                            ...user,
+                            image: data.results[0].picture.large,
+                        };
+                    }),
+            );
+
+
+            const followedResponse = await fetch(`http://localhost:3001/followed/${idLogged}`);
+            let followedData = [];
+            if (followedResponse.ok) {
+                followedData = await followedResponse.json();
+                console.log(followedData);
+            }
+
+
+            /* const promises = users.map((user) =>
+                fetch('https://randomuser.me/api/').then((response) => response.json()).then((data) => {
                     user.image = data.results[0].picture.large;
+                }),
+            );
+
+             await Promise.all(promises); */
+
+             
+            Promise.all(promises).then((updatedUsers) => {
+                setUserImages(updatedUsers);
+            });
+
+            dispatch(setUsers([/* ...followedData, */ ...dataUser]));
+            dispatch(setLoggedUserId(idLogged));
+
+        };
+        
+
+        fetchData();
+    }, [dispatch, loggedUserId]);
+    /* }, [dispatch, loggedUserId, users]); */
+
+
+    const handleButtonClick = async function (userData) {
+        try {
+
+            const response = await fetch(`http://localhost:3001/changeStatus/${idLogged}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    friend: userData.user_id,
+                    status_friendship: userData.status_friendship 
                 })
-        );
-    
-        await Promise.all(promises); */
-    
-        // --------Filtrar usuarios repetidos y contactos sugeridos--------------//
-/*         const filteredUsers = users.filter((user, index, self) =>
-            user.user_id !== loggedUserId && self.findIndex(u => u.user_id === user.user_id) === index && (user.status_friendship === 0 || user.status_friendship === 1)
-        );
-    
-        renderUsers(filteredUsers);
-    };
-    
-    const renderUsers = (users) => {
-        const container = document.getElementById("followersContainer");
-        container.innerHTML = "";
-        users.forEach((user) => {
-            createUserElement(user);
-        });
-    }; */
+            })
 
-    return (
+            if (response.ok) {
+                dispatch(updateFriendshipStatus({
+                    friendId: userData.user_id,
+                    newStatus: userData.status_friendship 
+                }))
+            } else {
 
-    /*     -----------------------Con BOOTSTRAP-------------------------------------------------------- */
-/* 
-    <div className="container">
+                console.error('Ocurrió un error al actualizar el estado de la amistad.')
+            }
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+
+return (
+    <>
+        <Navbar2 />
+        <div className='postsDiv'>
+            {userImages.map((user) => (
+                <div key={user.user_id}>
+                    <img src={user.image} alt="User" />
+                    <h4>{user.name}</h4>
+                    <p>{user.email}</p>
+                    <button
+                        className={user.status_friendship === 1 ? 'following' : ''}
+                        onClick={() => handleButtonClick(user)}
+                    >
+                        {user.status_friendship === 1 ? 'Siguiendo' : 'Seguir'}
+                    </button>
+                </div>
+            ))}
+        </div>
+        {/*             <div>
+                {users.map(user => (
+                    <div key={user.user_id}>
+                        <img src={user.image} alt="User" />
+                        <h4>{user.name}</h4>
+                        <p>{user.email}</p>
+                        <button
+                            className={user.status_friendship === 1 ? 'following' : ''}
+                            onClick={() => handleButtonClick(user)}
+                        >
+                            {user.status_friendship === 1 ? 'Siguiendo' : 'Seguir'}
+                        </button>
+                    </div>
+                ))}
+            </div> */}
+
+
+
+        {/*  -----------------------Con BOOTSTRAP--------------------------------------------------------  */}
+
+        {/*     <div className="container">
   <div className="row align-items-center">
     <div className="col-md-8">
       <div className="columnaA">
@@ -162,7 +180,7 @@ export function Followers(props) {
                             <p>Chat</p>
                         </li>
                     </ul>
-                </div> */
+                </div> 
            
 
          <div>
@@ -235,7 +253,8 @@ export function Followers(props) {
 
                 </div>
             </div>
-        </div> 
-    );
-}
+        </div> */}
+    </>
+);
+    }
 

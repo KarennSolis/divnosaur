@@ -6,11 +6,11 @@ const cors = require('cors');
 const sequelize = require('./conexion-base-datos');
 const postRegister = require('./routes/registroBack');
 const postLogin = require('./routes/loginBack');
-const { getPublications, getAllPublications , postPublications }= require('./routes/publicatBack')
-const {updateFriendshipStatus} = require('./routes/friendsPrueba')
-const postFriends = require ('./routes/friendsBack')
+const { getPublications, getAllPublications, postPublications } = require('./routes/publicatBack')
+const { updateFriendshipStatus } = require('./routes/friendsPrueba')
+const postFriends = require('./routes/friendsBack')
 const { getUser } = require("./routes/usersBack");
-const { allUser, namesUsers} = require("./routes/allUsersback");
+const { allUser, namesUsers } = require("./routes/allUsersback");
 // const { allUser} = require("./routes/usersBack");
 // const followers = require('./routes/followBack');
 const { followers } = require('./routes/followBack');
@@ -32,7 +32,7 @@ app.get('/', async (req, res) => {
 })
 //Registro
 app.get('/register', async (req, res) => {
-    res.status(200).send('Helo World')
+    res.status(200).send('Hello World')
 })
 
 app.post('/register', postRegister);
@@ -47,10 +47,7 @@ app.get('/login', async (req, res) => {
     console.log(res)
     res.status(200).send(res)
 })
-/* app.get('/login', async (req, res) => {
-    console.log(result)
-    res.status(200).send(result)
-}) */
+
 app.post('/login', postLogin);
 
 
@@ -60,7 +57,7 @@ app.post('/login', postLogin);
 
 app.get('/allPublications', getAllPublications);
 
-app.get('/publications', async function(req, res) {
+app.get('/publications', async function (req, res) {
     const user_id = req.query.user_id;
     console.log(req.query.user_id)
     if (user_id) {
@@ -82,14 +79,25 @@ app.get('/publications', async function(req, res) {
 
 app.post('/createPublications', postPublications);
 
-//nombre de usuario
+//USUARIOS
+
+//todos los usuarios
+app.get('/users', allUser);
+
+//por nombre de usuario
 app.get('/:name', namesUsers);
+
+//por id de usuario
+app.get('/:user_id', getUser); //ahora mismo no funciona
+
 
 
 //Seguidores y Solicitudes de Seguimiento
 //KAREN//
-app.route("/changeStatus/:user_id")
-    .patch(updateFriendshipStatus);
+/* app.route("/changeStatus/:user_id")
+    .patch(updateFriendshipStatus); */
+app.patch("/changeStatus/:user_id", updateFriendshipStatus);
+
 //Amigos
 
 app.get('/friends', async (req, res) => {
@@ -102,22 +110,20 @@ app.post('/friends', postFriends);
 //     res.status(200).send('Render followers')})
 // app.post('/followed/:user_id', followers);
 
-app.route("/followed/:user_id", async (req, res) => {
+/* app.route("/followed/:user_id", async (req, res) => {
     res.status(200).send('Render follow')
 })
-    .get(followers)
+    .get(followers) */
+
+app.route("/followed/:user_id")
+    .get(followers);
+
 
 //Recoger datos usuarios//
 // app.use("/", userRouter);
 
 // router.route("/:user_id")
 // 	.get(getUser) 
-app.route("/users")
-    .get(allUser)
-
-app.route("/:user_id")
-    .get(getUser)
-
 
 // app.route("/renderUsers")
 // 	.get(allUser) 

@@ -154,7 +154,7 @@ export function Perfil(props) {
                     </div>
                     <div className="col-5 exception-b">
                         {/* <a href="" id="nameChange" className="a-perfil-b">Editar Nombre de Usuario</a> */}
-                        <a href="" id="nameChange" className="a-perfil-b" type="name" value={user.name} onSubmit={handleChange}>Editar Nombre de Usuario</a>
+                        <a href="" id="nameChange" className="a-perfil-b" type="name" value={user.name} onSubmit={handleChange}>Editar Nombcd re de Usuario</a>
                         <div id="profileInput" className="d-none-b" type="text"></div>
                     </div>
                 </div>

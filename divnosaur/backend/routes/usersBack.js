@@ -19,7 +19,14 @@ const getUser = async (request, response) => {
 	}
 };
 
+
+
+
+
+
 module.exports.getUser = getUser;
+/* module.exports.allUser = allUser; */
+
 
 // const allUser = async (request, response) => {
 // 	try{

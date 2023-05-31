@@ -4,55 +4,17 @@ import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
 import { Link } from "react-router-dom";
 
 
-export function PostWall(props) {
-
-    /* const [userData, setUserData] = useState([]); */
+export function PostWall() {
     const [namesWriters, setUsersName] = useState([]);
-    const [publications, setPublications] = useState([]);
-    const [, updateState] = useState();
-    const forceUpdate = useCallback(() => updateState({}), []);
+    /* const [userData, setUserData] = useState([]); */
+    
+    /* const [publications, setPublications] = useState([]); */
+    /* const [, updateState] = useState();
+    const forceUpdate = useCallback(() => updateState({}), []); */
+
 
     const user_id = localStorage.getItem('idLogged');
 
-    /* 
-        useEffect(() => {
-    
-            fetch(`http://localhost:3001/${user_id}`, {
-                method: "GET",
-            })
-                .then(response => response.json())
-                .then(userData => setUserData(userData))
-                
-                console.log(userData)
-                
-        }, []);
-    
-        console.log(userData) */
-
-    /* ------------------Fetch de publicaciones del usuario logueado--------------------------------------------------------------------------- */
-
-    /* useEffect(() => {
-        const fetchPublications = async () => {
-          try {
-            const url = new URL('http://localhost:3001/publications');
-            url.searchParams.set('user_id', user_id);
-            const response = await fetch(url, {
-              method: "GET"
-            });
-            const data = await response.json();
-            console.log(data);
-            console.log(data.posts);
-            setPublications(data.posts);
-          } catch (error) {
-            console.error('Error al cargar la publicación: ', error)
-          }
-        };
-        fetchPublications().catch(console.error);
-      }, [user_id]); */
-
-
-
-    /* ----------Crear publicaciones------------------------------------------- */
 
     const [formData, setFormData] = useState({
         textArea: '',
@@ -65,6 +27,91 @@ export function PostWall(props) {
 
 
     const [createdPublications, setCreatedPublications] = useState([]);
+
+
+    /* --------------------consultar en la tabla users el nombre del usuario que hizo cada publicación usando publication.user_id---------------------- */
+
+        useEffect(() => {
+            const fetchUsersNames = async () => {
+                try {
+                    const url = new URL('http://localhost:3001/${name}');
+    
+                    const response = await fetch(url, {
+                        method: "GET"
+                    });
+                    const data = await response.json();
+                    console.log(data);
+                    setUsersName(data);
+                    console.log(namesWriters)
+                } catch (error) {
+                    console.error('Error al consultar el nombre del usuario: ', error)
+                }
+            };
+            fetchUsersNames().catch(console.error);
+        }, [createdPublications]);
+
+    /* const isFirstRender = useRef(true); */
+
+/*     const fetchUsersNames = async (fetchUsersNames) => {
+        try {
+            const url = new URL('http://localhost:3001/${name}');
+
+            const response = await fetch(url, {
+                method: "GET"
+            });
+            const data = await response.json();
+            console.log(data);
+            setUsersName(data);
+            console.log(namesWriters)
+        } catch (error) {
+            console.error('Error al consultar el nombre del usuario: ', error)
+        }
+    }; */
+
+ /*    const fetchUsersNames = useCallback( async () => {
+        try {
+            const url = new URL('http://localhost:3001/${name}');
+
+            const response = await fetch(url, {
+                method: "GET"
+            });
+            const data = await response.json();
+            console.log(data);
+            setUsersName(data);
+            console.log(namesWriters)
+        } catch (error) {
+            console.error('Error al consultar el nombre del usuario: ', error)
+        }
+    }, []);
+
+    useEffect(() => {
+        if (isFirstRender.current) {
+            fetchUsersNames().catch(console.error);
+        }
+    }, [fetchUsersNames]);
+
+    useEffect(() => {
+        if (isFirstRender.current || !createdPublications.length) {
+          fetchUsersNames().catch(console.error);
+        }
+      }, [createdPublications, fetchUsersNames, isFirstRender]); */
+
+    /* useEffect(() => {
+        if (createdPublications.length === 0) {
+            fetchUsersNames(fetchUsersNames).catch(console.error);
+        }
+    }, [createdPublications]); */
+
+    /* useEffect(() => { */
+    // El código que se ejecuta cuando se actualiza la lista de publicaciones
+    /* }, [createdPublications]); */
+
+
+
+
+
+
+    /* ----------Crear publicaciones------------------------------------------- */
 
 
     const createPublication = async (formData, user_id) => {
@@ -85,8 +132,21 @@ export function PostWall(props) {
             });
             const data = await response.json();
             console.log(data);
-            setCreatedPublications([...createdPublications, data]);//para que renderice las publicaciones recién creadas
-            forceUpdate();
+            setCreatedPublications([...createdPublications, { ...data }]);//para que renderice las publicaciones recién creadas
+            /* forceUpdate(); */
+            /* fetchUsersNames() */
+            //probando
+            setFormData({
+                textArea: '',
+                formattedDateTime: '',
+                editionDate: '',
+                likes: 0,
+                comments: '',
+                user_id: user_id,
+              });
+              /* isFirstRender.current = false; */
+              //hasta aqui la pru
+
         } catch (error) {
             console.error('Error al crear la publicación: ', error);
         }
@@ -116,6 +176,15 @@ export function PostWall(props) {
         /* setFormData(updatedFormData); */
         createPublication(updatedFormData, user_id);
 
+        setFormData({
+            textArea: '',
+            formattedDateTime: '',
+            editionDate: '',
+            likes: 0,
+            comments: '',
+            user_id: user_id,
+        });
+        /* isFirstRender.current = false; *///prueba
     };
 
     const formattedDateTime = new Date(namesWriters.post_creation_date).toLocaleDateString('es-ES', {
@@ -125,51 +194,31 @@ export function PostWall(props) {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
-      });
-      
+    });
+
 
 
     /* -------------Fetch de todas las publicaciones , indicando a qué usuario pertenece---------------------------------------------------------------- */
 
-    useEffect(() => {
-        const fetchPublications = async () => {
-            try {
-                const url = new URL("http://localhost:3001/allPublications");
-                const response = await fetch(url, {
-                    method: "GET",
-                });
-                const data = await response.json();
-                console.log(data);
-                console.log(data.posts);
-                setPublications(data.posts);
-            } catch (error) {
-                console.error("Error al cargar la publicación: ", error);
-            }
-        };
-        fetchPublications().catch(console.error);
-    }, []);
+    /*     useEffect(() => {
+            const fetchPublications = async () => {
+                try {
+                    const url = new URL("http://localhost:3001/allPublications");
+                    const response = await fetch(url, {
+                        method: "GET",
+                    });
+                    const data = await response.json();
+                    console.log(data);
+                    console.log(data.posts);
+                    setPublications(data.posts);
+                } catch (error) {
+                    console.error("Error al cargar la publicación: ", error);
+                }
+            };
+            fetchPublications().catch(console.error);
+        }, []); */
 
 
-    /* --------------------consultar en la tabla users el nombre del usuario que hizo cada publicación usando publication.user_id---------------------- */
-
-    useEffect(() => {
-        const fetchUsersNames = async () => {
-            try {
-                const url = new URL('http://localhost:3001/${name}');
-
-                const response = await fetch(url, {
-                    method: "GET"
-                });
-                const data = await response.json();
-                console.log(data);
-                setUsersName(data);
-                console.log(namesWriters)
-            } catch (error) {
-                console.error('Error al consultar el nombre del usuario: ', error)
-            }
-        };
-        fetchUsersNames().catch(console.error);
-    }, [user_id]);
 
 
 
@@ -177,51 +226,49 @@ export function PostWall(props) {
 
     /* ------Botón LIKES--------------------------------------------------------------------- */
 
-    const ComponentePublicaciones = ({ }) => {
-        const [likes, setLikes] = useState({});
-        const [fingerUp, setFingerUp] = useState(0);
-        const [likesByPublication, setLikesByPublication] = useState(
-            publications.reduce((acc, pub) => acc + pub.likes, 0)
-        );
-        const likeButtonRef = useRef(null);
-
-        const handleLikeClick = (postId) => {
-            addLikes(postId);
-            const likeButton = likeButtonRef.current;
-
-            if (likes[postId] && likes[postId] % 2 === 1) {
-                likeButton.textContent = fingerUp;
-                likeButton.classList.remove("clickedLike");
-            } else {
-                likeButton.textContent = fingerUp;
-                likeButton.classList.add("clickedLike");
-            }
-        };
-
-
-        const addLikes = (postId) => {
-            /* fetchUpdateLikes(postId, (likes[postId] || 0) + 1); */
-            const fetchUpdateLikes = async (postId, newLikes) => {
-                // Lógica para actualizar los 'likes' en el servidor
-                likes[postId] = +1
+    /*     const ComponentePublicaciones = ({ }) => {
+            const [likes, setLikes] = useState({});
+            const [fingerUp, setFingerUp] = useState(0);
+            const [likesByPublication, setLikesByPublication] = useState(
+                publications.reduce((acc, pub) => acc + pub.likes, 0)
+            );
+            const likeButtonRef = useRef(null);
+    
+            const handleLikeClick = (postId) => {
+                addLikes(postId);
+                const likeButton = likeButtonRef.current;
+    
+                if (likes[postId] && likes[postId] % 2 === 1) {
+                    likeButton.textContent = fingerUp;
+                    likeButton.classList.remove("clickedLike");
+                } else {
+                    likeButton.textContent = fingerUp;
+                    likeButton.classList.add("clickedLike");
+                }
             };
-
-            setLikes((prevLikes) => ({
-                ...prevLikes,
-                [postId]: (prevLikes[postId] || 0) + 1,
-            }));
-
-            setLikesByPublication((prevLikes) => {
-                const newLikes = prevLikes.map((likeCount) =>
-                    likeCount.includes(postId) ? likeCount + 1 : likeCount
-                );
-                return newLikes;
-            });
-        };
-
-
-
-    }
+    
+    
+            const addLikes = (postId) => { */
+    /* fetchUpdateLikes(postId, (likes[postId] || 0) + 1); *///DEJAR ESTO COMENTADO
+    /*             const fetchUpdateLikes = async (postId, newLikes) => { */
+    // Lógica para actualizar los 'likes' en el servidor
+    /*                 likes[postId] = +1
+                };
+    
+                setLikes((prevLikes) => ({
+                    ...prevLikes,
+                    [postId]: (prevLikes[postId] || 0) + 1,
+                }));
+    
+                setLikesByPublication((prevLikes) => {
+                    const newLikes = prevLikes.map((likeCount) =>
+                        likeCount.includes(postId) ? likeCount + 1 : likeCount
+                    );
+                    return newLikes;
+                });
+            };
+    
+        } */
 
 
 

@@ -181,6 +181,12 @@ main {
     grid-row-gap: 10px;
 }
 
+.postsDiv{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
 .item-1 {
     grid-row: 1;
     grid-column: 1;

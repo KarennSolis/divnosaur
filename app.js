@@ -74,7 +74,7 @@ app.get('/publications', async function(req, res) {
 app.post('/createPublications', postPublications); 
 
 //KAREN//
-app.route("/changeStatus/:user_id")
+app.route('/changeStatus/:user_id')
 	.patch(updateFriendshipStatus);
 //Amigos
 
@@ -105,6 +105,7 @@ app.route("/:user_id")
 
 // app.route("/renderUsers")
 // 	.get(allUser) 
+
 
 
 app.listen(port, () => {
