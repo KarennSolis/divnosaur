@@ -52,7 +52,7 @@ export function Followers() {
 
              await Promise.all(promises); */
 
-             
+
             Promise.all(promises).then((updatedUsers) => {
                 setUserImages(updatedUsers);
             });
@@ -61,7 +61,7 @@ export function Followers() {
             dispatch(setLoggedUserId(idLogged));
 
         };
-        
+
 
         fetchData();
     }, [dispatch, loggedUserId]);
@@ -78,14 +78,14 @@ export function Followers() {
                 },
                 body: JSON.stringify({
                     friend: userData.user_id,
-                    status_friendship: userData.status_friendship 
+                    status_friendship: userData.status_friendship
                 })
             })
 
             if (response.ok) {
                 dispatch(updateFriendshipStatus({
                     friendId: userData.user_id,
-                    newStatus: userData.status_friendship 
+                    newStatus: userData.status_friendship
                 }))
             } else {
 
@@ -97,25 +97,25 @@ export function Followers() {
     }
 
 
-return (
-    <>
-        <Navbar2 />
-        <div className='postsDiv'>
-            {userImages.map((user) => (
-                <div key={user.user_id}>
-                    <img src={user.image} alt="User" />
-                    <h4>{user.name}</h4>
-                    <p>{user.email}</p>
-                    <button
-                        className={user.status_friendship === 1 ? 'following' : ''}
-                        onClick={() => handleButtonClick(user)}
-                    >
-                        {user.status_friendship === 1 ? 'Siguiendo' : 'Seguir'}
-                    </button>
-                </div>
-            ))}
-        </div>
-        {/*             <div>
+    return (
+        <>
+            <Navbar2 />
+            <div className='postsDiv'>
+                {userImages.map((user) => (
+                    <div key={user.user_id}>
+                        <img src={user.image} alt="User" />
+                        <h4>{user.name}</h4>
+                        <p>{user.email}</p>
+                        <button
+                            className={user.status_friendship === 1 ? 'following' : ''}
+                            onClick={() => handleButtonClick(user)}
+                        >
+                            {user.status_friendship === 1 ? 'Siguiendo' : 'Seguir'}
+                        </button>
+                    </div>
+                ))}
+            </div>
+            {/*             <div>
                 {users.map(user => (
                     <div key={user.user_id}>
                         <img src={user.image} alt="User" />
@@ -133,128 +133,86 @@ return (
 
 
 
-        {/*  -----------------------Con BOOTSTRAP--------------------------------------------------------  */}
+            {/*  -----------------------Con BOOTSTRAP--------------------------------------------------------  */}
 
-        {/*     <div className="container">
-  <div className="row align-items-center">
-    <div className="col-md-8">
-      <div className="columnaA">
-        <div className="newFeeds">
-          <p className="feedTit">New Feeds</p>
-          <ul className="feeds">
-            <li>
-              <i className="bi bi-newspaper"></i>
-              <p>Newsfeed</p>
-            </li>
-            <li>
-              <i className="bi bi-shield-slash-fill"></i>
-              <p>Badges</p>
-            </li>
-            <li>
-              <i className="bi bi-eye-fill"></i>
-              <p>Explore Stories</p>
-            </li>
-            <li>
-              <i className="bi bi-people-fill"></i>
-              <p>Popular Groups</p>
-            </li>
-            <li>
-              <i className="bi bi-person-bounding-box"></i>
-              <p>Author Profile</p>
-            </li>
-          </ul>
-        </div>
-        <div class="account">
-          <p class="feedTit">Account</p>
-          <ul class="feeds">
-            <li>
-              <i class="bi bi-gear-fill"></i>
-              <p>Settings</p>
-            </li>
-            <li>
-                <i className="bi bi-bar-chart-line-fill"></i>
-                            <p>Analytics</p>
-                        </li>
-                        <li>
-                            <i className="bi bi-chat-dots-fill"></i>
-                            <p>Chat</p>
-                        </li>
-                    </ul>
-                </div> 
-           
 
-         <div>
-            <Navbar2 />
-            <div className="columnaA">
-                <div className="newFeeds">
-                    <p className="feedTit">New Feeds</p>
-                    <ul className="feeds">
-                        <li>
-                            <i className="bi bi-newspaper"></i>
-                            <p>Newsfeed</p>
-                        </li>
-                        <li>
-                            <i className="bi bi-shield-slash-fill"></i>
-                            <p>Badges</p>
-                        </li>
-                        <li>
-                            <i className="bi bi-eye-fill"></i>
-                            <p>Explore Stories</p>
-                        </li>
-                        <li>
-                            <i className="bi bi-people-fill"></i>
-                            <p>Popular Groups</p>
-                        </li>
-                        <li>
-                            <i className="bi bi-person-bounding-box"></i>
-                            <p>Author Profile</p>
-                        </li>
-                    </ul>
+            <div>
+                <Navbar2 />
+                <div className="columnaA-f">
+                    <div className="newFeeds-f">
+                        <p className="feedTit-f">New Feeds</p>
+                        <ul className="feeds-f">
+                            <li>
+                                <i className="bi bi-newspaper"></i>
+                                <p>Newsfeed</p>
+                            </li>
+                            <li>
+                                <i className="bi bi-shield-slash-fill"></i>
+                                <p>Badges</p>
+                            </li>
+                            <li>
+                                <i className="bi bi-eye-fill"></i>
+                                <p>Explore Stories</p>
+                            </li>
+                            <li>
+                                <i className="bi bi-people-fill"></i>
+                                <p>Popular Groups</p>
+                            </li>
+                            <li>
+                                <i className="bi bi-person-bounding-box"></i>
+                                <p>Author Profile</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="account-f">
+                        <p className="feedTit-f">Account</p>
+                        <ul className="feeds-f">
+                            <li>
+                                <i className="bi bi-gear-fill"></i>
+                                <p>Settings</p>
+                            </li>
+                            <li>
+                                <i className="bi bi-bar-chart-line-fill"></i>
+                                <p>Analytics</p>
+                            </li>
+                            <li>
+                                <i className="bi bi-chat-dots-fill"></i>
+                                <p>Chat</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div className="account">
-                    <p className="feedTit">Account</p>
-                    <ul className="feeds">
-                        <li>
-                            <i className="bi bi-gear-fill"></i>
-                            <p>Settings</p>
-                        </li>
-                        <li>
-                            <i className="bi bi-bar-chart-line-fill"></i>
-                            <p>Analytics</p>
-                        </li>
-                        <li>
-                            <i className="bi bi-chat-dots-fill"></i>
-                            <p>Chat</p>
-                        </li>
-                    </ul>
+                <div className="friends_container-f">
+                    <div className="search_friends-f">
+                        <h2>Tu red</h2>
+                        <div className="input-group-f">
+                            <input type="search" id="friendsSearch" className="form-control rounded" placeholder="Buscar..."
+                                aria-label="Search" aria-describedby="search-addon" />
+                            <button type="button" className="btn btn-outline-primary">Buscar</button>
+                        </div>
+                        <div className="friendsCounter-f">
+                            Total contactos: <span id="counter"></span>
+                        </div>
+                        <div className="div_filter-f">
+                            <select name="contactNet" id="contactNet">
+                                <option className="option" value="selecciona">Filtrar</option>
+                                <option className="option" value="friend">Todos</option>
+                                <option className="option" id="selectFriends" value="friends">Amigos</option>
+                                <option className="option" id="selectSuggested" value="friendsSug">Contactos sugeridos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="followersContainer" className="container-f">
+
+                    </div>
                 </div>
             </div>
-            <div className="friends_container">
-                <div className="search_friends">
-                    <h2>Tu red</h2>
-                    <div className="input-group">
-                        <input type="search" id="friendsSearch" className="form-control rounded" placeholder="Buscar..."
-                            aria-label="Search" aria-describedby="search-addon" />
-                        <button type="button" className="btn btn-outline-primary">Buscar</button>
-                    </div>
-                    <div className="friendsCounter">
-                        Total contactos: <span id="counter"></span>
-                    </div>
-                    <div className="div_filter">
-                        <select name="contactNet" id="contactNet">
-                            <option className="option" value="selecciona">Filtrar</option>
-                            <option className="option" value="friend">Todos</option>
-                            <option className="option" id="selectFriends" value="friends">Amigos</option>
-                            <option className="option" id="selectSuggested" value="friendsSug">Contactos sugeridos</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="followersContainer" className="container">
 
-                </div>
-            </div>
-        </div> */}
-    </>
-);
-    }
+
+
+
+        </>
+    );
+
+}
 

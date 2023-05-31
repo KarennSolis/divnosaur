@@ -5,15 +5,106 @@ import "./Cv.css";
 import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { changefields } from "../../redux/userSlice";
+import { changefields, updateAge, updateCountry, updateEmail, updateExperience, updateHobbies, updateName } from "../../redux/userSlice";
+import { useState } from "react";
 
-
-export function Perfil(props) {
+export function Perfil() {
     const dispatch = useDispatch();
-    const user = useSelector((state)=> state.user)
-    const handleChange = (e) => {
-        dispatch(changefields(e.target.value));
+    const user = useSelector((state) => state.user)
+    // const { name, email, age, experience, country, hobbies} = useSelector((state) => state.user);
+
+    // const handleChange = (event) => {
+    //     // event.preventDefault()
+    //     const {name, value}= event.target
+
+    //     // const fieldName = event.target.name; // Obtener el nombre del campo actualizado
+
+    //     // const fieldValue = event.target.value; // Obtener el valor del campo actualizado
+    //     dispatch(changefields({ field:name,value })); // Despachar la acción correspondiente para actualizar el campo
+    // }
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        switch (name) {
+            case "name":
+                dispatch(updateName(value));
+                break;
+            case "email":
+                dispatch(updateEmail(value));
+                break;
+            case "age":
+                dispatch(updateAge(value));
+                break;
+            case "experience":
+                dispatch(updateExperience(value));
+                break;
+            case "hobbies":
+                dispatch(updateHobbies(value));
+                break;
+            case "country":
+                dispatch(updateCountry(value));
+                break;
+            default:
+                break;
+        }
+    };
+
+
+
+    const [isEditingName, setIsEditingName] = useState(false);
+
+
+    const [isEditingCountry, setIsEditingCountry] = useState(false);
+    const [isEditingAge, setIsEditingAge] = useState(false);
+    const [isEditingExperience, setIsEditingExperience] = useState(false);
+    const [isEditingHobbies, setIsEditingHobbies] = useState(false);
+    // const [isEditingEmail, setIsEditingEmail] = useState(false);
+
+    const [editingEmail, setEditingEmail] = useState(false);
+const [newUser,setNewUser ] = useState({...user})
+    const handleNameEdit = () => {
+        setIsEditingName(true);
+    };
+
+    const handleCountryEdit = () => {
+        setIsEditingCountry(true);
+    };
+
+    const handleAgeEdit = () => {
+        setIsEditingAge(true);
+    };
+
+    const handleExperienceEdit = () => {
+        setIsEditingExperience(true);
+    };
+
+    const handleHobbiesEdit = () => {
+        setIsEditingHobbies(true);
+    };
+
+    const setNewData = (e) =>{
+        
+        const {name,value}= e.target
+        setNewUser({...newUser,[name]:value})
     }
+
+    async function setNewDataUser (){
+        const idLogged = localStorage.getItem('idLogged');
+     const response = await fetch(`http://localhost:3001/profile/${idLogged}`, {
+        method: "PATCH",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(user)
+     })
+     const result = response.json()
+     if (result.error){
+        console.log(result.error)
+     }else {
+        console.log("success")
+     }
+
+
+    }
+
     return (
         <div>
             <Navbar2></Navbar2>
@@ -146,7 +237,20 @@ export function Perfil(props) {
                         <div className="name-usu-b">
                             <i className="bi bi-person-fill bs-icon-b"></i>
                             {/* <!-- <p id="profileName" className="p-perfil">Tiranius Rexis</p> --> */}
-                            <p id="profileName" className="p-perfil-b">{user.name}</p>
+                            {/* <p id="profileName" className="p-perfil-b">{user.name}</p> */}
+
+                            {isEditingName ? (
+                                <textarea
+                                    id="profileName"
+                                    className="p-perfil-b"
+                                    value={user.name}
+                                    name="name"
+                                    onChange={handleChange}
+                                />
+                            ) : (
+                                <p id="profileName" className="p-perfil-b">{user.name}</p>
+                            )}
+                            {/* <label id="profileName" className="p-perfil-b">{user.name}</label> */}
                             {/* <!-- <textarea id="profileName" className="p-perfil"></textarea> //KAREN 1.2// --> */}
                         </div>
                     </div>
@@ -154,7 +258,16 @@ export function Perfil(props) {
                     </div>
                     <div className="col-5 exception-b">
                         {/* <a href="" id="nameChange" className="a-perfil-b">Editar Nombre de Usuario</a> */}
-                        <a href="" id="nameChange" className="a-perfil-b" type="name" value={user.name} onSubmit={handleChange}>Editar Nombcd re de Usuario</a>
+                        {/* <a href="" id="nameChange" className="a-perfil-b" type="name" value={user.name} onSubmit={handleChange}>Editar Nombre de Usuario</a> */}
+
+                        {/* <a href="" id="nameChange" className="a-perfil-b" type="name" value={user.name} onSubmit={handleChange}>Editar Nombre de Usuario</a>  */}
+                        <button
+                            className="a-perfil-b btn"
+                            onClick={handleNameEdit}
+                        >
+                            Editar Nombre de Usuario
+                        </button>
+
                         <div id="profileInput" className="d-none-b" type="text"></div>
                     </div>
                 </div>
@@ -162,31 +275,82 @@ export function Perfil(props) {
                     <div className="col-5 colum-dat-usu">
                         <i className="bi bi-geo-alt-fill bs-icon-b"></i>
                         {/* <!-- <p id="profileLocal" className="p-perfil">Gijón (Asturias)</p> --> */}
-                        <p id="locationUser" className="p-perfil-b">{user.country}</p>
+
+                        {isEditingCountry ? (
+                            <textarea
+                                id="locationUser"
+                                className="p-perfil-b"
+                                value={user.country}
+                                name="country"
+                                onChange={handleChange}
+                            />
+                        ) : (
+                            <p id="locationUser" className="p-perfil-b">{user.country}</p>
+                        )}
                     </div>
                     <div className="col-2"></div>
                     <div className="col-5">
-                        <a href="" className="a-perfil-b" type="country" value={user.country} onSubmit={handleChange}>Editar localización</a>
+                        {/* <a href="" className="a-perfil-b" type="country" value={user.country} onSubmit={handleChange}>Editar localización</a> */}
+                        <button
+                            className="a-perfil-b btn"
+                            onClick={handleCountryEdit}
+                        >
+                            Editar localización
+                        </button>
                     </div>
                 </div>
                 <div className="row perfil-row-b">
                     <div className="col-5 colum-dat-usu">
                         <i className="bi bi-calendar bs-icon-b"></i>
-                        <p id="profileBirth" className="p-perfil-b">{user.age}</p>
+                        {/* <p id="profileBirth" className="p-perfil-b">{user.age}</p> */}
+                        {isEditingAge ? (
+                            <textarea
+                                id="profileBirth"
+                                className="p-perfil-b"
+                                value={user.age}
+                                name="age"
+                                onChange={handleChange}
+                            />
+                        ) : (
+                            <p id="profileBirth" className="p-perfil-b">{user.age}</p>
+                        )}
                     </div>
                     <div className="col-2"></div>
                     <div className="col-5">
-                        <a href="" className="a-perfil-b" type="age" value={user.age} onSubmit={handleChange}>Editar edad</a>
+                        {/* <a href="" className="a-perfil-b" type="age" value={user.age} onSubmit={handleChange}>Editar edad</a> */}
+                        <button
+                            className="a-perfil-b btn"
+                            onClick={handleAgeEdit}
+                        >
+                            Editar edad
+                        </button>
                     </div>
                 </div>
                 <div className="row perfil-row-b">
                     <div className="col-5 colum-dat-usu">
                         <i className="bi bi-book-fill bs-icon-b"></i>
-                        <p id="profileStudy" className="p-perfil-b">{user.experience}</p>
+                        {/* <p id="profileStudy" className="p-perfil-b">{user.experience}</p> */}
+                        {isEditingExperience ? (
+                            <textarea
+                                id="profileStudy"
+                                className="p-perfil-b"
+                                value={user.experience}
+                                name="experience"
+                                onChange={handleChange}
+                            />
+                        ) : (
+                            <p id="profileStudy" className="p-perfil-b">{user.experience}</p>
+                        )}
                     </div>
                     <div className="col-2"></div>
                     <div className="col-5">
-                        <a href="" className="a-perfil-b" type="experience" value={user.experience} onSubmit={handleChange}>Editar experiencia </a>
+                        {/* <a href="" className="a-perfil-b" type="experience" value={user.experience} onSubmit={handleChange}>Editar experiencia </a> */}
+                        <button
+                            className="a-perfil-b btn"
+                            onClick={handleExperienceEdit}
+                        >
+                            Editar experiencia
+                        </button>
                     </div>
                 </div>
                 <div className="row perfil-row-b">
@@ -202,24 +366,69 @@ export function Perfil(props) {
                 <div className="row perfil-row-b">
                     <div className="col-5 colum-dat-usu">
                         <i className="bi bi-bicycle bs-icon-b"></i>
-                        <p id="profileHobbies" className="p-perfil-b">{user.hobbies}</p>
+                        {/* <p id="profileHobbies" className="p-perfil-b">{user.hobbies}</p> */}
+                        {isEditingHobbies ? (
+                            <textarea
+                                id="profileHobbies"
+                                className="p-perfil-b"
+                                value={user.hobbies}
+                                name="hobbies"
+                                onChange={handleChange}
+                            />
+                        ) : (
+                            <p id="profileHobbies" className="p-perfil-b">{user.hobbies}</p>
+                        )}
                     </div>
                     <div className="col-2"></div>
                     <div className="col-5">
-                        <a href="" className="a-perfil-b" type="hobbies" value={user.hobbies} onSubmit={handleChange}>Editar hobbies</a>
+                        {/* <a href="" className="a-perfil-b" type="hobbies" value={user.hobbies} onSubmit={handleChange}>Editar hobbies</a> */}
+                        <button
+                            className="a-perfil-b btn"
+                            onClick={handleHobbiesEdit}
+                        >
+                            Editar hobbies
+                        </button>
                     </div>
                 </div>
                 <div className="row perfil-row-b">
                     <div className="col-5 colum-dat-usu">
                         <i className="bi bi-linkedin bs-icon-b"></i>
                         {/* <!-- <p id="profileLinkedin" className="p-perfil">/in/tiraniusrex</p> --> */}
-                        <p id="mailUser" className="p-perfil-b">{user.email}</p>
+                        {/* <p id="mailUser" className="p-perfil-b">{user.email}</p> */}
+                        {editingEmail ? (
+                            <textarea
+                                id="mailUser"
+                                className="p-perfil-b"
+                                value={user.email}
+                                name="email"
+                                onChange={handleChange}
+                            ></textarea>
+                        ) : (
+                            <p id="mailUser" className="p-perfil-b">
+                                {user.email}
+                            </p>
+                        )}
+
                     </div>
                     <div className="col-2"></div>
                     <div className="col-5">
-                        <a href="" className="a-perfil-b" type="email" value={user.email} onSubmit={handleChange}>Editar correo</a>
+                        {/* <a href="" className="a-perfil-b" type="email" value={user.email} onSubmit={handleChange}>Editar correo</a> */}
+                        {/* <button href="" className="a-perfil-b btn" type="email" value={user.email} onSubmit={handleChange}>Editar correo</button> */}
+                        <button
+                            className="a-perfil-b btn"
+                            onClick={() => setEditingEmail(true)}
+                        >
+                            Editar correo
+                        </button>
                     </div>
+
+
+
+
                 </div>
+                <button className="a-perfil-b btn" onClick={setNewDataUser} >Guardar cambios</button>
+                <button href="/profile" className="a-perfil-b btn" >Cancelar cambios</button>
+
             </div>
         </div>
 

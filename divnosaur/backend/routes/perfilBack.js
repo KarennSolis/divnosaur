@@ -19,27 +19,43 @@ const getUserDataById = async (req, res) => {
   };
 
   
+
 const updateUserDataById = async (req, res) => {
     try {
-      
+      const user_id = req.params.user_id;
+      const { name, country, age, experience, hobbies, email } = req.body;
+  
       const updateQuery = `
-      UPDATE users
-      SET name = ${newStatus}
-      WHERE (user_friend1_id = '${user_id}' AND user_friend2_id = '${friend}')
-        OR (user_friend1_id = '${friend}' AND user_friend2_id = '${user_id}');
-    `;
-
-    sequelize.query(updateQuery, { replacements: { id: user_id }, type: sequelize.QueryTypes.SELECT })
-      .then(async users => {
-          res.status(200).send(users[0] );
+        UPDATE users
+        SET name = :name,
+            country = :country,
+            age = :age,
+            experience = :experience,
+            hobbies = :hobbies,
+            email = :email
+        WHERE user_id = :user_id;
+      `;
+  
+      await sequelize.query(updateQuery, {
+        replacements: {
+          name,
+          country,
+          age,
+          experience,
+          hobbies,
+          email,
+          user_id
+        },
+        type: sequelize.QueryTypes.UPDATE
       });
-
-      return true; // Actualización exitosa
+  
+      res.send('Los datos del usuario se actualizaron correctamente.');
     } catch (error) {
       console.error(error);
-      throw new Error('Error al actualizar los datos del usuario');
+      res.status(500).send({error: 'Error interno del servidor'});
+    
     }
   };
-
+  
   module.exports.getUserDataById = getUserDataById;
   module.exports.updateUserDataById = updateUserDataById;

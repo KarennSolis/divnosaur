@@ -3,7 +3,9 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../../redux/userSlice";
 import { Perfil } from "./Perfil";
 
+
 function AppPerfil() {
+   
     const dispatch = useDispatch();
     useEffect(() =>{
         const idLogged = localStorage.getItem('idLogged');
@@ -12,15 +14,19 @@ function AppPerfil() {
             .then((response) => response.json())
             .then((data) => {
                 dispatch(addUser(data));
+               
             })
             .catch((error) => {
                 console.log(error)
             });
     }, [])
 
+    
+
+
     return (
        
-        <Perfil/>
+        <Perfil />
         
     )
 }

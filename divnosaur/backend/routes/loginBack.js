@@ -1,10 +1,11 @@
+require('dotenv').config();
+const jwt = require('jsonwebtoken');
+const SECRET = process.env.JWT_SECRET;
 const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcrypt')
 const sequelize = require('../conexion-base-datos')
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
-const SECRET = process.env.JWT_SECRET;
+
 
 
 const postLogin = async function (req, res) {

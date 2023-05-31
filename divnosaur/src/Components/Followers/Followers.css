@@ -87,20 +87,20 @@ main {
 
 /*-----MAQUETADO DE COLUMNA A -------------------------------------------------------*/
 
-.columnaA {
+.columnaA-f {
     width: 19.6%;
     margin: 10px 10px;
 }
 
-.newFeeds,
-.account {
+.newFeeds-f,
+.account-f {
     padding: 40px 20px;
     border-radius: 1em;
     margin-bottom: 10px;
     background-color: rgb(255, 255, 255);
 }
 
-.feedTit {
+.feedTit-f {
     font-size: 12px;
     font-weight: bold;
     color: gray;
@@ -126,12 +126,12 @@ main {
 }
 
 /*-----MAQUETADO DE BARRA DE BUSQUEDA AMIGOS-----------------------------------------*/
-.friends_container {
+.friends_container-f {
     width: 77%;
 
 }
 
-.search_friends {
+.search_friends-f {
     display: flex;
     align-items: center;
     padding: 10px;
@@ -150,7 +150,7 @@ main {
     border: none;
 }
 
-.input-group {
+.input-group-f {
     width: 35%;
 }
 
@@ -158,7 +158,7 @@ main {
     display: flex;
 }
 
-.div_filter {
+.div_filter-f {
     background-color: rgb(236, 237, 237);
 
 }
@@ -170,7 +170,7 @@ main {
 
 
 /*-----MAQUETADO DE GRID-------------------------------------------------------------*/
-.container {
+.container-f {
     padding: 10px;
     color: rgb(8, 8, 8);
     text-align: center;
@@ -236,7 +236,7 @@ main {
 
 
 @media (max-width: 996px) {
-    .container {
+    .container-f {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 220px);
@@ -246,7 +246,7 @@ main {
   }
 
 @media (max-width: 730px) {
-    .container {
+    .container-f {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 220px);
@@ -256,24 +256,24 @@ main {
   }
 
 @media (max-width: 600px) {
-    .container {
+    .container-f {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(3, 220px);
         grid-column-gap: 10px;
         grid-row-gap: 10px;
     }
-    .columnaA ul li p{
+    .columnaA-f ul li p{
         display: none;
     }
-    .columnaA ul li i.bi{
+    .columnaA-f ul li i.bi{
         width: 80px;
     }
   }
 
 
 /* -----Barra Búsqueda y filtro----------------------------------------------------------- */
-.div_filter {
+.div_filter-f {
     background-color: rgb(255, 255, 255);
 }
 
@@ -281,7 +281,7 @@ main {
     display: none;
 }
 
-.friendsCounter {
+.friendsCounter-f {
     color: rgb(171, 191, 232);
 }
 

@@ -146,8 +146,8 @@ export function Login() {
                                 </div>
                                 <div id="buttonSession">
                                     <button type="submit" className="btn btn-primary butSession" >Iniciar sesión</button>
-                                    <p id="warnings" className="warnings">{formData.warnings}</p>
-                                    <p id="warnings" className="warnings">{formData.parrafo}</p>
+                                    <p id="warnings" className="warnings-l">{formData.warnings}</p>
+                                    <p id="warnings" className="warnings-l">{formData.parrafo}</p>
                                     {/* <p id="warnings" className="warnings"></p> */}
                                     {/* {warnings && <p id="warnings">{warnings}</p>}
                                     {parrafo && <p id="warnings">{parrafo}</p>} */}

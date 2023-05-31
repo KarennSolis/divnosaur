@@ -29,9 +29,31 @@ export const userSlice = createSlice({
             state.experience = action.payload;
             state.hobbies = action.payload;
             state.email = action.payload;
-        }
-    }
-})
+        },
 
-export const { addUser, changefields } = userSlice.actions;
+        updateName: (state, action) => {
+            state.name = action.payload;
+        },
+
+        updateCountry: (state, action) => {
+            state.country = action.payload;
+        },
+        updateAge: (state, action) => {
+            state.age = action.payload;
+        },
+        updateExperience: (state, action) => {
+            state.experience = action.payload;
+        },
+        updateHobbies: (state, action) => {
+            state.hobbies = action.payload;
+        },
+        updateEmail: (state, action) => {
+            state.email = action.payload;
+        },
+       
+    },
+},
+)
+
+export const { addUser, changefields, updateAge, updateCountry, updateEmail, updateExperience, updateHobbies, updateName } = userSlice.actions;
 export default userSlice.reducer; 
