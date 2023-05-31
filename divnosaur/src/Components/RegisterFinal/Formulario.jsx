@@ -58,9 +58,9 @@ const Formulario = () => {
                                         minLength: 8,
                                         maxLength: 50
                                     })} />
-                                    {errors.name?.type === 'required' && <p className="warnings" id="warnings">El campo nombre es requerido</p>}
-                                    {errors.name?.type === 'minLength' && <p className="warnings" id="warnings">El campo nombre debe tener más de 8 caracteres</p>}
-                                    {errors.name?.type === 'maxLength' && <p className="warnings" id="warnings">El campo nombre debe tener menos de 50 caracteres</p>}
+                                    {errors.name?.type === 'required' && <p className="warnings-z" id="warnings">El campo nombre es requerido</p>}
+                                    {errors.name?.type === 'minLength' && <p className="warnings-z" id="warnings">El campo nombre debe tener más de 8 caracteres</p>}
+                                    {errors.name?.type === 'maxLength' && <p className="warnings-z" id="warnings">El campo nombre debe tener menos de 50 caracteres</p>}
 
                                 </li>
                                 <li>
@@ -68,7 +68,7 @@ const Formulario = () => {
                                     <input type="text" placeholder="Correo (example@example.com)" className="form-control" id="Correo"  {...register('email', {
                                         pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
                                     })} />
-                                    {errors.email?.type === 'pattern' && <p className="warnings" id="warnings">El formato del correo es incorrecto</p>}
+                                    {errors.email?.type === 'pattern' && <p className="warnings-z" id="warnings">El formato del correo es incorrecto</p>}
 
                                 </li>
                                 <li>
@@ -80,9 +80,9 @@ const Formulario = () => {
                                         minLength: 8,
                                         maxLength: 24
                                     })} />
-                                    {errors.password?.type === 'required' && <p className="warnings" id="warnings">El campo password es requerido</p>}
-                                    {errors.password?.type === 'minLength' && <p className="warnings" id="warnings">El campo password debe tener más de 8 caracteres</p>}
-                                    {errors.password?.type === 'maxLength' && <p className="warnings" id="warnings">El campo password debe tener menos de 24 caracteres</p>}
+                                    {errors.password?.type === 'required' && <p className="warnings-z" id="warnings">El campo password es requerido</p>}
+                                    {errors.password?.type === 'minLength' && <p className="warnings-z" id="warnings">El campo password debe tener más de 8 caracteres</p>}
+                                    {errors.password?.type === 'maxLength' && <p className="warnings-z" id="warnings">El campo password debe tener menos de 24 caracteres</p>}
 
                                 </li>
                                 <li>
@@ -90,7 +90,7 @@ const Formulario = () => {
                                     <input type="text" placeholder="Edad" className="form-control" id="age" {...register('age', {
                                         validate: edadValidator
                                     })} />
-                                    {errors.age && <p className="warnings" id="warnings">Los usuarios deben tener entre 18 y 67 años</p>}
+                                    {errors.age && <p className="warnings-z" id="warnings">Los usuarios deben tener entre 18 y 67 años</p>}
                                 </li>
                                 <li>
                                     <label htmlFor="exampleDataList" className="form-label">Lugar de residencia</label>
@@ -166,7 +166,7 @@ const Formulario = () => {
                                 <li>
                                     <button type="submit" className="btn btn-primary" id="submit">Acceder</button>
                                     <button type="reset" className="btn btn-primary">Borrar</button><br />
-                                    <p className="warnings" id="warnings"></p>
+                                    <p className="warnings-z" id="warnings"></p>
                                 </li>
 
                             </ul>
