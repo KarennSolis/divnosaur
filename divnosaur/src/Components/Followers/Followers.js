@@ -107,7 +107,7 @@ export function Followers() {
                         <h4>{user.name}</h4>
                         <p>{user.email}</p>
                         <button
-                            className={user.status_friendship === 1 ? 'following' : ''}
+                            className={user.status_friendship === 1 ? 'following' : 'users'}
                             onClick={() => handleButtonClick(user)}
                         >
                             {user.status_friendship === 1 ? 'Siguiendo' : 'Seguir'}
