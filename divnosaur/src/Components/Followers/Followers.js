@@ -136,7 +136,7 @@ export function Followers() {
             {/*  -----------------------Con BOOTSTRAP--------------------------------------------------------  */}
 
 
-            <div>
+            {/* <div>
                 <Navbar2 />
                 <div className="columnaA-f">
                     <div className="newFeeds-f">
@@ -207,7 +207,7 @@ export function Followers() {
                     </div>
                 </div>
             </div>
-
+ */}
 
 
 
