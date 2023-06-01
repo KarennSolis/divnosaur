@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
 import followerReducer from "./followerSlice";
+
+
 export const store = configureStore ({
     reducer: {
         user: userReducer,
@@ -8,3 +10,10 @@ export const store = configureStore ({
     },
 
 });
+
+
+  
+
+store.subscribe(() => {
+    console.log(store.getState());
+  });

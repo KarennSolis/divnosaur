@@ -10,14 +10,16 @@ import { Followers } from "./Components/Followers/Followers";
 /* import { IngProject } from "./Components/Projects/IngProject/IngProject";
 import { InmoProject } from "./Components/Projects/InmoProject/InmoProject";
 import { TurisProject } from "./Components/Projects/TurisProject/TurisProject"; */
-import { Provider } from 'react-redux';
+/* import { Provider } from 'react-redux';
+import { store } from "./redux/store"; */
 import AppPerfil from './Components/Perfil/AppPerfil';
-import { store } from "./redux/store"
+
 
 const App = () => {
   return (
     <>
-      <Provider store={store}>
+      {/* <Provider store={store}> */}
+      <BrowserRouter>
         {/* <AppPerfil /> */}
         <Routes>
 
@@ -30,7 +32,8 @@ const App = () => {
           <Route path="/followers" element={<Followers />} />
           {/* <Route path="*" element = {<Error404/>}/> */}
         </Routes>
-      </Provider>
+        </BrowserRouter>
+      {/* </Provider> */}
     </>
   );
 };

@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 export function PostWall() {
     const [namesWriters, setUsersName] = useState([]);
     /* const [userData, setUserData] = useState([]); */
-    
+
+    const [likes, setLikes] = useState({});//NUEVO
+
     /* const [publications, setPublications] = useState([]); */
     /* const [, updateState] = useState();
     const forceUpdate = useCallback(() => updateState({}), []); */
@@ -225,8 +227,8 @@ export function PostWall() {
     /* -------Funcionalidad a los botones de Likes y Comentarios de las publicaciones-------------------------------------------- */
 
     /* ------Botón LIKES--------------------------------------------------------------------- */
-
-    /*     const ComponentePublicaciones = ({ }) => {
+//nuevo
+/*         const ComponentePublicaciones = ({ }) => {
             const [likes, setLikes] = useState({});
             const [fingerUp, setFingerUp] = useState(0);
             const [likesByPublication, setLikesByPublication] = useState(
@@ -245,14 +247,16 @@ export function PostWall() {
                     likeButton.textContent = fingerUp;
                     likeButton.classList.add("clickedLike");
                 }
-            };
+            }; */
+
+            //fin
     
     
-            const addLikes = (postId) => { */
+           /*  const addLikes = (postId) => { */
     /* fetchUpdateLikes(postId, (likes[postId] || 0) + 1); *///DEJAR ESTO COMENTADO
-    /*             const fetchUpdateLikes = async (postId, newLikes) => { */
+                /* const fetchUpdateLikes = async (postId, newLikes) => { */
     // Lógica para actualizar los 'likes' en el servidor
-    /*                 likes[postId] = +1
+   /*                  likes[postId] = +1
                 };
     
                 setLikes((prevLikes) => ({
@@ -265,7 +269,21 @@ export function PostWall() {
                         likeCount.includes(postId) ? likeCount + 1 : likeCount
                     );
                     return newLikes;
-                });
+                }); */
+
+
+                //NUEVO
+                /* const updatedLikes = {
+                    ...likes,
+                    [postId]: (likes[postId] || 0) + 1,
+                  };
+                
+                  setLikes(updatedLikes);
+                  setLikesByPublication((prevLikes) => {
+                    return prevLikes.map((likeCount) =>
+                      likeCount.includes(postId) ? likeCount + 1 : likeCount
+                    );
+                  });
             };
     
         } */
