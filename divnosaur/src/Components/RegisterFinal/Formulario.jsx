@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
+import { Navbar1 } from '../Navbar/Navbar1/Navbar1';
 import { AvatarComponent } from '../AvatarComponent/AvatarComponent';
 import { edadValidator } from "./validators";
 import "./formulario.css"
@@ -11,8 +11,9 @@ const Formulario = () => {
     const { register, formState: { errors }, watch, handleSubmit } = useForm();
     const onSubmit = (data) => {
         console.log(data);
-        await asyncPostCall(data);
-        reset(); // Resetear los campos del formulario después de enviarlo
+        /* await asyncPostCall(data); */
+        asyncPostCall(data);
+        /* reset(); */ // Resetear los campos del formulario después de enviarlo
       };
     const incluirTelefono = watch('incluirTelefono')
     const incluirHobbies = watch('incluirHobbies')

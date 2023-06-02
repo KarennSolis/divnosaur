@@ -194,23 +194,23 @@ export function Followers() {
                 </div> */}
                 <div className="friends_container-f">
                     <div className="search_friends-f">
-                        <h2>Tu red</h2>
+                        {/* <h2>Tu red</h2>
                         <div className="input-group-f">
                             <input type="search" id="friendsSearch" className="form-control rounded" placeholder="Buscar..."
                                 aria-label="Search" aria-describedby="search-addon" />
                             <button type="button" className="btn btn-outline-primary">Buscar</button>
-                        </div>
-                        <div className="friendsCounter-f">
+                        </div> */}
+                        {/* <div className="friendsCounter-f">
                             Total contactos: <span id="counter"></span>
-                        </div>
-                        <div className="div_filter-f">
+                        </div> */}
+                        {/* <div className="div_filter-f">
                             <select name="contactNet" id="contactNet">
                                 <option className="option" value="selecciona">Filtrar</option>
                                 <option className="option" value="friend">Todos</option>
                                 <option className="option" id="selectFriends" value="friends">Amigos</option>
                                 <option className="option" id="selectSuggested" value="friendsSug">Contactos sugeridos</option>
                             </select>
-                        </div>
+                        </div> */}
                     </div>
                     <div id="followersContainer" className="container-f">
                         {/* ------------------INSERTANDO EL DIV DE FOLLOWERS------------------ */}
