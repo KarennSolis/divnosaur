@@ -6,15 +6,12 @@ import { Link } from "react-router-dom";
 
 
 export function PostWall() {
+    
     const [namesWriters, setUsersName] = useState([]);
-    /* const [userData, setUserData] = useState([]); */
 
-    const [likes, setLikes] = useState({});//NUEVO
+    const [createdPublications, setCreatedPublications] = useState([]);
 
-    /* const [publications, setPublications] = useState([]); */
-    /* const [, updateState] = useState();
-    const forceUpdate = useCallback(() => updateState({}), []); */
-
+    const [likes, setLikes] = useState({});
 
     const user_id = localStorage.getItem('idLogged');
 
@@ -28,8 +25,6 @@ export function PostWall() {
         user_id: user_id,
     });
 
-
-    const [createdPublications, setCreatedPublications] = useState([]);
 
 
     /* --------------------consultar en la tabla users el nombre del usuario que hizo cada publicación usando publication.user_id---------------------- */
@@ -52,66 +47,6 @@ export function PostWall() {
         };
         fetchUsersNames().catch(console.error);
     }, [createdPublications]);
-
-    /* const isFirstRender = useRef(true); */
-
-    /*     const fetchUsersNames = async (fetchUsersNames) => {
-            try {
-                const url = new URL('http://localhost:3001/${name}');
-    
-                const response = await fetch(url, {
-                    method: "GET"
-                });
-                const data = await response.json();
-                console.log(data);
-                setUsersName(data);
-                console.log(namesWriters)
-            } catch (error) {
-                console.error('Error al consultar el nombre del usuario: ', error)
-            }
-        }; */
-
-    /*    const fetchUsersNames = useCallback( async () => {
-           try {
-               const url = new URL('http://localhost:3001/${name}');
-   
-               const response = await fetch(url, {
-                   method: "GET"
-               });
-               const data = await response.json();
-               console.log(data);
-               setUsersName(data);
-               console.log(namesWriters)
-           } catch (error) {
-               console.error('Error al consultar el nombre del usuario: ', error)
-           }
-       }, []);
-   
-       useEffect(() => {
-           if (isFirstRender.current) {
-               fetchUsersNames().catch(console.error);
-           }
-       }, [fetchUsersNames]);
-   
-       useEffect(() => {
-           if (isFirstRender.current || !createdPublications.length) {
-             fetchUsersNames().catch(console.error);
-           }
-         }, [createdPublications, fetchUsersNames, isFirstRender]); */
-
-    /* useEffect(() => {
-        if (createdPublications.length === 0) {
-            fetchUsersNames(fetchUsersNames).catch(console.error);
-        }
-    }, [createdPublications]); */
-
-    /* useEffect(() => { */
-    // El código que se ejecuta cuando se actualiza la lista de publicaciones
-    /* }, [createdPublications]); */
-
-
-
-
 
 
     /* ----------Crear publicaciones------------------------------------------- */
@@ -136,9 +71,7 @@ export function PostWall() {
             const data = await response.json();
             console.log(data);
             setCreatedPublications([...createdPublications, { ...data }]);//para que renderice las publicaciones recién creadas
-            /* forceUpdate(); */
-            /* fetchUsersNames() */
-            //probando
+
             setFormData({
                 textArea: '',
                 formattedDateTime: '',
@@ -147,8 +80,7 @@ export function PostWall() {
                 comments: '',
                 user_id: user_id,
             });
-            /* isFirstRender.current = false; */
-            //hasta aqui la pru
+
 
         } catch (error) {
             console.error('Error al crear la publicación: ', error);
@@ -176,7 +108,7 @@ export function PostWall() {
             comments: formData.comments,
             user_id: user_id,
         };
-        /* setFormData(updatedFormData); */
+
         createPublication(updatedFormData, user_id);
 
         setFormData({
@@ -187,103 +119,13 @@ export function PostWall() {
             comments: '',
             user_id: user_id,
         });
-        /* isFirstRender.current = false; *///prueba
+
     };
 
 
     /* ----------------------adaptar formato fecha para el renderizado----------------------------------------------------------------------------- */
     const postCreationDate = moment(namesWriters.post_creation_date).toDate();
     const formatedCreationDate = moment(postCreationDate).format('YYYY-MM-DD [a las] HH:mm:ss');
-
-
-
-    /* -------------Fetch de todas las publicaciones , indicando a qué usuario pertenece---------------------------------------------------------------- */
-
-    /*     useEffect(() => {
-            const fetchPublications = async () => {
-                try {
-                    const url = new URL("http://localhost:3001/allPublications");
-                    const response = await fetch(url, {
-                        method: "GET",
-                    });
-                    const data = await response.json();
-                    console.log(data);
-                    console.log(data.posts);
-                    setPublications(data.posts);
-                } catch (error) {
-                    console.error("Error al cargar la publicación: ", error);
-                }
-            };
-            fetchPublications().catch(console.error);
-        }, []); */
-
-
-
-
-
-    /* -------Funcionalidad a los botones de Likes y Comentarios de las publicaciones-------------------------------------------- */
-
-    /* ------Botón LIKES--------------------------------------------------------------------- */
-    //nuevo
-    /*         const ComponentePublicaciones = ({ }) => {
-                const [likes, setLikes] = useState({});
-                const [fingerUp, setFingerUp] = useState(0);
-                const [likesByPublication, setLikesByPublication] = useState(
-                    publications.reduce((acc, pub) => acc + pub.likes, 0)
-                );
-                const likeButtonRef = useRef(null);
-        
-                const handleLikeClick = (postId) => {
-                    addLikes(postId);
-                    const likeButton = likeButtonRef.current;
-        
-                    if (likes[postId] && likes[postId] % 2 === 1) {
-                        likeButton.textContent = fingerUp;
-                        likeButton.classList.remove("clickedLike");
-                    } else {
-                        likeButton.textContent = fingerUp;
-                        likeButton.classList.add("clickedLike");
-                    }
-                }; */
-
-    //fin
-
-
-    /*  const addLikes = (postId) => { */
-    /* fetchUpdateLikes(postId, (likes[postId] || 0) + 1); *///DEJAR ESTO COMENTADO
-    /* const fetchUpdateLikes = async (postId, newLikes) => { */
-    // Lógica para actualizar los 'likes' en el servidor
-    /*                  likes[postId] = +1
-                 };
-     
-                 setLikes((prevLikes) => ({
-                     ...prevLikes,
-                     [postId]: (prevLikes[postId] || 0) + 1,
-                 }));
-     
-                 setLikesByPublication((prevLikes) => {
-                     const newLikes = prevLikes.map((likeCount) =>
-                         likeCount.includes(postId) ? likeCount + 1 : likeCount
-                     );
-                     return newLikes;
-                 }); */
-
-
-    //NUEVO
-    /* const updatedLikes = {
-        ...likes,
-        [postId]: (likes[postId] || 0) + 1,
-      };
-    
-      setLikes(updatedLikes);
-      setLikesByPublication((prevLikes) => {
-        return prevLikes.map((likeCount) =>
-          likeCount.includes(postId) ? likeCount + 1 : likeCount
-        );
-      });
-};
- 
-} */
 
 
 
@@ -382,15 +224,6 @@ export function PostWall() {
                                                 alt="" />
                                         </div>
                                         <div class="col-10">
-                                            {/* <form action="/createPublications" method="post" id="publiForm"> */}
-                                            {/* <form onSubmit={(e) => handleSubmit(e, formValues, setLoggedPost)} id="publiForm">
-                                                <textarea class="form-control" type="text" rows="3" name="loggedPost" value={formValues.loggedPost} id="myPublications" placeholder="Hola, ¿qué tal ha ido tu día?" onChange={(e) => handleChange(e, setLoggedPost)}></textarea>
-                                                <div id="buttonAndPubli">
-                                                    <p id="parrafoPubli"></p>
-                                                    <button id="publication" type="submit"
-                                                        class="btn btn-primary float-right">Publicar</button>
-                                                </div>
-                                            </form> */}
 
                                             <form onSubmit={handleFormSubmit} id="publiForm">
                                                 <textarea class="form-control" type="text" rows="3" name="loggedPost" value={formData.textArea} id="myPublications" placeholder="Hola, ¿qué tal ha ido tu día?" onChange={(e) => setFormData({ ...formData, textArea: e.target.value })}></textarea>
@@ -401,15 +234,6 @@ export function PostWall() {
                                                 </div>
                                             </form>
 
-
-                                            {/* {formValues.loggedPost ? (<div className='divPublication2'>{formValues.loggedPost}cachuete</div>
-                                            ) : (
-                                                <div className='App'>no esta funcionando</div>
-                                            )} */}
-                                            {/* {formSubmitted ? (<div className='divPublication2'>{formValues.loggedPost} </div>
-                                            ) : (
-                                                <div className='App'>no esta funcionando</div>
-                                            )} */}
                                         </div>
                                     </div>
                                 </div>
@@ -423,60 +247,12 @@ export function PostWall() {
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-2">
-                                            {/* <!-- <img class="friends rounded-circle mx-auto d-block"
-                                        src="https://pbs.twimg.com/media/FoP9W1BXkAAUC4o?format=jpg&name=small"
-                                        class="comentaAmigo" alt=""> --> */}
+
                                         </div>
 
                                         <div class="col-10" id="commentFather">
 
 
-                                            {/*  {loggedPost ? (
-                                                <div key={publication.post_id} className='divPublication'>
-                                                    <p>ID de usuario: {user_id}</p>
-                                                    <div className='textPublication' >
-                                                        <p>{loggedPost}</p>
-                                                        {<p>{publication.post_creation_date}</p>}
-                                                        <div class="float-right" id="div">
-                                                            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                                                <div id="reactions" class="btn-group mr-2" role="group"
-                                                                    aria-label="First group">
-                                                                    <div id="likeAnch" class="butonDiv">
-                                                                        <div id="totalLikes" class="totalLikes">{{publication.likes}}0</div><button type="button"
-                                                                            id="likeButton" class="btn btn-primary likeButton"><img
-                                                                                class="img-fluid"
-                                                                                src="https://cdn-icons-png.flaticon.com/512/9970/9970200.png"
-                                                                                alt="" /></button>
-                                                                    </div>
-                                                                    <div><button type="button" id="commentButton"
-                                                                        class="btn btn-primary commentButton butonDiv"><img
-                                                                            class="img-fluid"
-                                                                            src="https://cdn-icons-png.flaticon.com/512/7198/7198933.png"
-                                                                            alt="" /></button></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div>{{publication.comments}}</div>
-                                                </div>
-                                            ) : (
-                                                <div className='postWall'></div>
-                                            )} */}
-
-
-
-
-                                            {/* ---------------publicaciones traidas de la base de datos---------------------------------------------------------------------------------------------------- */}
-
-                                            {/* --------------------------publicaciones del usuario logueado-------------------------------------------------- */}
-
-                                            {/* <div>
-                                                {publications && publications.map((publication) => (
-                                                    <div key={publication.post_id} className='divPublication'>
-                                                        <p>{publication.post_content}</p>
-                                                    </div>
-                                                ))}
-                                            </div> */}
 
                                             {/* -----------publicaciones recien creadas-------------------------------------------- */}
 
@@ -489,25 +265,7 @@ export function PostWall() {
                                                             <div className='textPublication' >
                                                                 <p>{publication.post_content}</p>
                                                                 <p>{publication.post_creation_date}</p>
-                                                                {/* <div class="float-right" id="div">
-                                                                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                                                        <div id="reactions" class="btn-group mr-2" role="group"
-                                                                            aria-label="First group">
-                                                                            <div id="likeAnch" class="butonDiv">
-                                                                                <div id="totalLikes" class="totalLikes">{publication.likes}</div><button type="button"
-                                                                                    id="likeButton" ref={likeButtonRef} class="btn btn-primary likeButton"><img
-                                                                                        class="img-fluid"
-                                                                                        src="https://cdn-icons-png.flaticon.com/512/9970/9970200.png"
-                                                                                        alt="" /></button>
-                                                                            </div>
-                                                                            <div><button type="button" id="commentButton"
-                                                                                class="btn btn-primary commentButton butonDiv"><img
-                                                                                    class="img-fluid"
-                                                                                    src="https://cdn-icons-png.flaticon.com/512/7198/7198933.png"
-                                                                                    alt="" />{publication.likes}</button></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> */}
+
                                                             </div>
                                                             <div>{publication.comments}</div>
                                                         </div>
@@ -526,29 +284,18 @@ export function PostWall() {
                                                         <p><small className='postWritter'>{namesWriters.name}</small> escribió:</p>
                                                         <div className='textPublication' >
                                                             <p>{namesWriters.post_content}</p>
-                                                   
+
                                                             <div class="float-right" id="div">
                                                                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                                                     <div id="reactions" class="btn-group mr-2" role="group"
                                                                         aria-label="First group">
-                                                                        {/* <div id="likeAnch" class="butonDiv">
-                                                                            <div id="totalLikes" class="totalLikes">{namesWriters.likes}</div><button type="button"
-                                                                                id="likeButton" ref={likeButtonRef} class="btn btn-primary likeButton" onClick={() => handleLikeClick(namesWriters.user_id)}><img
-                                                                                    class="img-fluid"
-                                                                                    src="https://cdn-icons-png.flaticon.com/512/9970/9970200.png"
-                                                                                    alt="" /></button>
-                                                                        </div> */}
-                                                                        <div><button type="button" id="commentButton"
-                                                                            class="btn btn-primary commentButton butonDiv"><img
-                                                                                class="img-fluid"
-                                                                                src="https://cdn-icons-png.flaticon.com/512/7198/7198933.png"
-                                                                                alt="" /></button></div>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className='postDateDiv'><p className='postTimeStamp'><small>publicado el: {formatedCreationDate} </small></p></div>
                                                             {/* <div><p className='postTimeStamp'><small>publicado el: {namesWriters.} </small></p></div> */}
-                                                           
+
                                                         </div>
                                                         <div>{namesWriters.comments}</div>
                                                     </div>
