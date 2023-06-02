@@ -1,10 +1,39 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
 import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
+import { AvatarComponent } from '../AvatarComponent/AvatarComponent';
 import { edadValidator } from "./validators";
 import "./formulario.css"
 
 const Formulario = () => {
+
+    const handleSaveSelectedImage = async (selectedImage) => {
+        try {
+          const formData = new FormData();
+          formData.append('avatar', selectedImage);
+      
+          // Código para enviar la solicitud POST con el formData
+          const response = await fetch('http://localhost:3001/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+          });
+      
+          const data = await response.json();
+          const { result, message } = data;
+
+          if (result) {
+              alert(message)
+          } else {
+              alert(message)
+              window.location.href = "/public/index.html"
+          }
+        } catch (error) {
+          console.error('Error al enviar la solicitud: ', error);
+        }
+      };      
+
+//fin de cosas de Avataar Component
+
 
     const { register, formState: { errors }, watch, handleSubmit } = useForm();
     const onSubmit = (data) => {
@@ -159,10 +188,14 @@ const Formulario = () => {
                                     <label htmlFor="formFile" className="form-label">CV</label>
                                     <input className="form-control" type="file" id="formFile" />
                                 </li>
-                                <li>
-                                    <label htmlFor="formFileimg" className="form-label">Imagen de perfil</label>
-                                    <input className="form-control" type="file" id="formFileimg" />
-                                </li>
+                                {/* <li>
+                                    <label htmlFor="formFileimg" className="form-label">Avatar de usuario</label>
+                                    <AvatarComponent 
+                                       initialSelectedImage={ selectedImage }
+                                       handleSaveSelectedImage={handleSaveSelectedImage}
+                                    />
+
+                                </li> */}
                                 <li>
                                     <button type="submit" className="btn btn-primary" id="submit">Acceder</button>
                                     <button type="reset" className="btn btn-primary">Borrar</button><br />

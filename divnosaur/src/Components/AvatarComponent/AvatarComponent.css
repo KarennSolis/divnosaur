@@ -1,0 +1,18 @@
+.avatarContainer {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+   
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.avatar:hover {
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.6);
+}
