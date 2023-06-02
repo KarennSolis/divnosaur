@@ -55,7 +55,7 @@ export function Followers() {
             }
 
             //Haciendo combinación de info de users + status_friendship  para almacenarla en el estado global
-            const combinedUsers = dataUser.map((user)=> {
+            const combinedUsers = dataUser.map((user) => {
                 const followedUser = followedData.find((followed) => followed.user_id === user.user_id);
                 return followedUser ? { ...user, status_friendship: followedUser.status_friendship } : user;
             });
@@ -94,7 +94,7 @@ export function Followers() {
                 },
                 body: JSON.stringify({
                     friend: userData.user_id,
-                    status_friendship: updatedStatus 
+                    status_friendship: updatedStatus
                 })
             })
 
@@ -113,11 +113,12 @@ export function Followers() {
     }
 
     return (
+        
         <>
-            <Navbar2 />
+{/*             <Navbar2 />
 
             <div className='postsDiv'>
-                {users ? (  
+                {users ? (
                     users.map((user) => (
                         <div key={user.user_id}>
                             <img src={userImages[user.user_id]} alt="User" />
@@ -135,15 +136,19 @@ export function Followers() {
                 ) : (
                     <p>Cargando...</p>
                 )}
-            </div>
+            </div> */}
 
 
-            {/*  -----------------------Con BOOTSTRAP--------------------------------------------------------  */}
+            {/*      -------------------------------BOOTSTRAP-------------------------------------------------------------------------------- */}
 
 
-            {/* <div>
+
+            {/*  -----------------------Con GRID--------------------------------------------------------  */}
+
+
+            <div>
                 <Navbar2 />
-                <div className="columnaA-f">
+{/*                 <div className="columnaA-f">
                     <div className="newFeeds-f">
                         <p className="feedTit-f">New Feeds</p>
                         <ul className="feeds-f">
@@ -186,7 +191,7 @@ export function Followers() {
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> */}
                 <div className="friends_container-f">
                     <div className="search_friends-f">
                         <h2>Tu red</h2>
@@ -208,11 +213,32 @@ export function Followers() {
                         </div>
                     </div>
                     <div id="followersContainer" className="container-f">
+                        {/* ------------------INSERTANDO EL DIV DE FOLLOWERS------------------ */}
+                        {/* <div className='postsDiv'> */}
+                            {users ? (
+                                users.map((user) => (
+                                    <div key={user.user_id}>
+                                        <img src={userImages[user.user_id]} alt="User" />
+                                        <h4>{user.name}</h4>
+                                        <p>{user.email}</p>
+                                        <button
+                                            className={user.status_friendship === 1 ? 'following' : 'users'}
+                                            onClick={() => handleButtonClick(user)}
+                                        >
+                                            {user.status_friendship === 1 ? 'Siguiendo' : 'Seguir'}
+                                        </button>
+                                    </div>
+                                ))
+
+                            ) : (
+                                <p>Cargando...</p>
+                            )}
+                        {/* </div> */}
 
                     </div>
                 </div>
             </div>
- */}
+
 
 
 
