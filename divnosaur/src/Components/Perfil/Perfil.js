@@ -30,6 +30,7 @@ export function Perfil() {
         setIsEditingAge(false);
         setIsEditingExperience(false);
         setIsEditingHobbies(false);
+        setEditingEmail(false);
         setErrorMessage("");
         setErrorMessageEmail("");
         setNewUser({ ...user });
@@ -71,25 +72,29 @@ export function Perfil() {
             if (!value) {
                 // Mostrar mensaje de error si el campo está vacío
                 setErrorMessageEmail("El correo electrónico es requerido");
-                return;
+                // return;
             }
             if (!validator.isEmail(value)) {
                 // Mostrar mensaje de error si el correo electrónico no cumple el formato esperado
                 setErrorMessageEmail("El correo electrónico no es válido");
-                return;
-            }
+                // return;
+                
+            }else {
+                setErrorMessageEmail("")
+            };
         }
         if (name === "name") {
             if (value.length < 8) {
                 // Mostrar mensaje de error
                 setErrorMessage("El campo de nombre debe tener mínimo 8 caracteres");
-                return;
-            }
-            if (value.length > 50) {
+                // return;
+            }else if (value.length > 50) {
                 // Mostrar mensaje de error
                 setErrorMessage("El campo de nombre debe tener máximo 50 caracteres");
-                return;
-            }
+                // return;
+            }else{
+                setErrorMessage("")
+            };
         }
         switch (name) {
             case "name":
@@ -170,10 +175,12 @@ export function Perfil() {
             setSuccessMessage("Sus cambios se han guardado con éxito");
             resetFields();
         }
+       
 
 
     }
-
+   
+    
     return (
         <div>
             <Navbar2></Navbar2>
@@ -439,7 +446,7 @@ export function Perfil() {
                             ) : (
                                 <p id="profileName" className="p-perfil-b">{user.name}</p>
                             )}
-                            {errorMessage && <p>{errorMessage}</p>}
+                            {errorMessage && <p className="warnings-z" >{errorMessage}</p>}
                     </div>
                     <div className="col-2"></div>
                     <div className="col-5">
@@ -497,7 +504,7 @@ export function Perfil() {
                                 {user.email}
                             </p>
                         )}
-                        {errorMessageEmail && <p>{errorMessageEmail}</p>}
+                        {errorMessageEmail && <p className="warnings-z">{errorMessageEmail}</p>}
                     </div>
                     <div className="col-2"></div>
                     <div className="col-5">
@@ -515,7 +522,7 @@ export function Perfil() {
 
 
                 </div>
-                <button className="a-perfil-b btn btn-outline-info" id="guardar-Cancelar-Cambios" onClick={setNewDataUser}>Guardar cambios</button>
+                <button className="a-perfil-b btn btn-outline-info" id="guardar-Cancelar-Cambios" onClick={setNewDataUser} disabled={errorMessage||errorMessageEmail}>Guardar cambios</button>
                 {successMessage && <p className="warningMensaje">{successMessage}</p>}
 
                 <button onClick={handleCancel} className="a-perfil-b btn cancelar-Cambios" id="rech-button" >Cancelar cambios</button>
