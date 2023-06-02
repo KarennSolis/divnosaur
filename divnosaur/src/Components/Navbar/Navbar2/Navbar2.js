@@ -31,16 +31,10 @@ export function Navbar2(props) {
                         
                         
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="cuentaBoton">
                                 Mi cuenta
                             </a>
                             <ul className="dropdown-menu">
-
-                                {/* <li className="dropdown-item">Mi cuenta</li> */}
-                                {/* <li><hr className="dropdown-divider" />
-                                    <li><a className="dropdown-item " href="#">Ajustes y preferencias</a></li>
-                                    <li><a className="dropdown-item " href="#">Idioma</a></li>
-                                </li> */}
                                 <li><hr className="dropdown-divider" />
                                     <Link to="/profile" ><li><a className="dropdown-item" href="#">Mi Perfil</a></li></Link>
                                 </li>
