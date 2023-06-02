@@ -1,3 +1,4 @@
+
 .navbar{
     padding: 5px;
     background: #EAEAE8;
@@ -15,6 +16,13 @@
     margin-right: 80px;
   }
   
+  #cuentaBoton{
+    padding-top: 32px;
+  }
+
+  #search{
+    padding: 25px 0px;
+  }
   
   @media (max-width: 576px){
     a.navbar-brand img{

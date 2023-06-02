@@ -1,6 +1,6 @@
 
 /*----------NAVBAR-----------------------------------------------------------------------------------------------------*/
-.navbar{
+/* .navbar{
     padding: 5px;
     background: #EAEAE8;
     position: sticky;
@@ -47,7 +47,7 @@
     a.navbar-brand img{
       margin-left: 5px;
     }
-  }
+  } */
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 
@@ -183,4 +183,31 @@
   height: 300px;
   width: 300px;
   
+}
+
+#guardar-Cancelar-Cambios{
+  width: 180px;
+ /* margin-left: 560px; */
+ /* margin-left: 43.5%; */
+ margin: 1rem;
+ margin-left: 43.5%;
+ 
+}
+
+.cancelar-Cambios{
+  width: 180px;
+  /* margin-left: 560px; */
+  margin-left: 43.5%;
+}
+
+.warningMensaje{
+  
+    width: 1200px;
+    text-align: center;
+    /* margin: auto; */
+   
+    color: #11bd08;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
 }

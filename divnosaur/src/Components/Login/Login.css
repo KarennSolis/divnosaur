@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-.navbar{
+/* .navbar{
     padding: 5px;
     background: #EAEAE8;
     position: sticky;
@@ -74,7 +74,7 @@ a:link, a:visited, a:active {
         width: 15%;
     }
 
-}
+} */
 
 #buttonSession{
 justify-content: center;

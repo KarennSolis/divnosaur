@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { changefields, updateAge, updateCountry, updateEmail, updateExperience, updateHobbies, updateName } from "../../redux/userSlice";
 import { useState } from "react";
+import validator from "validator";
 
 export function Perfil() {
     const dispatch = useDispatch();
@@ -22,9 +23,74 @@ export function Perfil() {
     //     // const fieldValue = event.target.value; // Obtener el valor del campo actualizado
     //     dispatch(changefields({ field:name,value })); // Despachar la acción correspondiente para actualizar el campo
     // }
+    const [successMessage, setSuccessMessage] = useState("");
+    const resetFields = () => {
+        setIsEditingName(false);
+        setIsEditingCountry(false);
+        setIsEditingAge(false);
+        setIsEditingExperience(false);
+        setIsEditingHobbies(false);
+        setErrorMessage("");
+        setErrorMessageEmail("");
+        setNewUser({ ...user });
+      };
+      
+    const handleCancel = () => {
+        window.location.reload(); // Recargar la página del perfil
+    };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
+        // if (name === "email") {
+        //     if (!value) {
+        //         // Mostrar mensaje de error si el campo está vacío
+        //         alert("El correo electrónico es requerido");
+        //         return;
+        //     }
+
+        //     if (!validator.isEmail(value)) {
+        //         // Mostrar mensaje de error si el correo electrónico no cumple el formato esperado
+        //         alert("El correo electrónico no es válido");
+        //         return;
+        //     }
+        // }
+        // if (name === "name") {
+        //     if (value.length < 8) {
+        //         // Mostrar mensaje de error
+        //         alert("El campo de nombre debe tener mínimo 8 caracteres");
+        //         return;
+        //     }
+        //     if (value.length > 50) {
+        //         // Mostrar mensaje de error
+        //         console.log("El campo de nombre debe tener máximo 50 caracteres");
+        //         return;
+        //     }
+        // }
+
+        if (name === "email") {
+            if (!value) {
+                // Mostrar mensaje de error si el campo está vacío
+                setErrorMessageEmail("El correo electrónico es requerido");
+                return;
+            }
+            if (!validator.isEmail(value)) {
+                // Mostrar mensaje de error si el correo electrónico no cumple el formato esperado
+                setErrorMessageEmail("El correo electrónico no es válido");
+                return;
+            }
+        }
+        if (name === "name") {
+            if (value.length < 8) {
+                // Mostrar mensaje de error
+                setErrorMessage("El campo de nombre debe tener mínimo 8 caracteres");
+                return;
+            }
+            if (value.length > 50) {
+                // Mostrar mensaje de error
+                setErrorMessage("El campo de nombre debe tener máximo 50 caracteres");
+                return;
+            }
+        }
         switch (name) {
             case "name":
                 dispatch(updateName(value));
@@ -52,16 +118,17 @@ export function Perfil() {
 
 
     const [isEditingName, setIsEditingName] = useState(false);
-
-
     const [isEditingCountry, setIsEditingCountry] = useState(false);
     const [isEditingAge, setIsEditingAge] = useState(false);
     const [isEditingExperience, setIsEditingExperience] = useState(false);
     const [isEditingHobbies, setIsEditingHobbies] = useState(false);
+
+    const [errorMessage, setErrorMessage] = useState("");
+    const [errorMessageEmail, setErrorMessageEmail] = useState("");
     // const [isEditingEmail, setIsEditingEmail] = useState(false);
 
     const [editingEmail, setEditingEmail] = useState(false);
-const [newUser,setNewUser ] = useState({...user})
+    const [newUser, setNewUser] = useState({ ...user })
     const handleNameEdit = () => {
         setIsEditingName(true);
     };
@@ -82,25 +149,27 @@ const [newUser,setNewUser ] = useState({...user})
         setIsEditingHobbies(true);
     };
 
-    const setNewData = (e) =>{
-        
-        const {name,value}= e.target
-        setNewUser({...newUser,[name]:value})
+    const setNewData = (e) => {
+
+        const { name, value } = e.target
+        setNewUser({ ...newUser, [name]: value })
     }
 
-    async function setNewDataUser (){
+    async function setNewDataUser() {
         const idLogged = localStorage.getItem('idLogged');
-     const response = await fetch(`http://localhost:3001/profile/${idLogged}`, {
-        method: "PATCH",
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(user)
-     })
-     const result = response.json()
-     if (result.error){
-        console.log(result.error)
-     }else {
-        console.log("success")
-     }
+        const response = await fetch(`http://localhost:3001/profile/${idLogged}`, {
+            method: "PATCH",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(user)
+        })
+        const result = response.json()
+        if (result.error) {
+            console.log(result.error)
+        } else {
+            console.log("success");
+            setSuccessMessage("Sus cambios se han guardado con éxito");
+            resetFields();
+        }
 
 
     }
@@ -121,7 +190,7 @@ const [newUser,setNewUser ] = useState({...user})
                 <div id="foto-b"></div>
 
                 {/* <!-------------------MODAL que muestra el CV al pulsar el botón "VER CV"---------------------------------------------------------> */}
-                <div className="section full-height" id="modal-section">
+                {/* <div className="section full-height" id="modal-section">
                     <input className="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
                     <label for="modal-btn">VER CV<i className="uil uil-expand-arrows"></i></label>
                     <div className="modal">
@@ -227,17 +296,16 @@ const [newUser,setNewUser ] = useState({...user})
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
             {/* <!-------------------PERFIL de Usuario-------------------------------------------------------------------------------------------> */}
-            <div className=" mothership-b">
+            <div className="container mothership-b">
                 <h1 className="tecler-perfil-b">Perfil de usuario</h1>
-                <div className="row perfil-row-b">
+                {/* <div className="row perfil-row-b">
                     <div className="col-5 exception colum-dat-usu">
                         <div className="name-usu-b">
                             <i className="bi bi-person-fill bs-icon-b"></i>
-                            {/* <!-- <p id="profileName" className="p-perfil">Tiranius Rexis</p> --> */}
-                            {/* <p id="profileName" className="p-perfil-b">{user.name}</p> */}
+                           
 
                             {isEditingName ? (
                                 <textarea
@@ -246,23 +314,22 @@ const [newUser,setNewUser ] = useState({...user})
                                     value={user.name}
                                     name="name"
                                     onChange={handleChange}
+                                    required
+                                    minLength={8}
+                                    maxLength={50}
+
                                 />
                             ) : (
                                 <p id="profileName" className="p-perfil-b">{user.name}</p>
                             )}
-                            {/* <label id="profileName" className="p-perfil-b">{user.name}</label> */}
-                            {/* <!-- <textarea id="profileName" className="p-perfil"></textarea> //KAREN 1.2// --> */}
+                            {errorMessage && <p>{errorMessage}</p>}
                         </div>
                     </div>
                     <div className="col-2 col-central-b">
                     </div>
                     <div className="col-5 exception-b">
-                        {/* <a href="" id="nameChange" className="a-perfil-b">Editar Nombre de Usuario</a> */}
-                        {/* <a href="" id="nameChange" className="a-perfil-b" type="name" value={user.name} onSubmit={handleChange}>Editar Nombre de Usuario</a> */}
-
-                        {/* <a href="" id="nameChange" className="a-perfil-b" type="name" value={user.name} onSubmit={handleChange}>Editar Nombre de Usuario</a>  */}
                         <button
-                            className="a-perfil-b btn"
+                            className="btn-inicio btn btn-inicio btn btn-outline-primary"
                             onClick={handleNameEdit}
                         >
                             Editar Nombre de Usuario
@@ -270,7 +337,7 @@ const [newUser,setNewUser ] = useState({...user})
 
                         <div id="profileInput" className="d-none-b" type="text"></div>
                     </div>
-                </div>
+                </div> */}
                 <div className="row perfil-row-b">
                     <div className="col-5 colum-dat-usu">
                         <i className="bi bi-geo-alt-fill bs-icon-b"></i>
@@ -292,7 +359,7 @@ const [newUser,setNewUser ] = useState({...user})
                     <div className="col-5">
                         {/* <a href="" className="a-perfil-b" type="country" value={user.country} onSubmit={handleChange}>Editar localización</a> */}
                         <button
-                            className="a-perfil-b btn"
+                            className="a-perfil-b btn btn-inicio btn btn-outline-primary"
                             onClick={handleCountryEdit}
                         >
                             Editar localización
@@ -319,7 +386,7 @@ const [newUser,setNewUser ] = useState({...user})
                     <div className="col-5">
                         {/* <a href="" className="a-perfil-b" type="age" value={user.age} onSubmit={handleChange}>Editar edad</a> */}
                         <button
-                            className="a-perfil-b btn"
+                            className="a-perfil-b btn btn-inicio btn btn-outline-primary"
                             onClick={handleAgeEdit}
                         >
                             Editar edad
@@ -346,7 +413,7 @@ const [newUser,setNewUser ] = useState({...user})
                     <div className="col-5">
                         {/* <a href="" className="a-perfil-b" type="experience" value={user.experience} onSubmit={handleChange}>Editar experiencia </a> */}
                         <button
-                            className="a-perfil-b btn"
+                            className="a-perfil-b btn btn-inicio btn btn-outline-primary"
                             onClick={handleExperienceEdit}
                         >
                             Editar experiencia
@@ -356,11 +423,33 @@ const [newUser,setNewUser ] = useState({...user})
                 <div className="row perfil-row-b">
                     <div className="col-5 colum-dat-usu">
                         <i className="bi bi-translate bs-icon-b"></i>
-                        <p id="profileLang" className="p-perfil-b">B1 Inglés</p>
+                        {/* <p id="profileLang" className="p-perfil-b">B1 Inglés</p> */}
+                        {isEditingName ? (
+                                <textarea
+                                    id="profileName"
+                                    className="p-perfil-b"
+                                    value={user.name}
+                                    name="name"
+                                    onChange={handleChange}
+                                    required
+                                    minLength={8}
+                                    maxLength={50}
+
+                                />
+                            ) : (
+                                <p id="profileName" className="p-perfil-b">{user.name}</p>
+                            )}
+                            {errorMessage && <p>{errorMessage}</p>}
                     </div>
                     <div className="col-2"></div>
                     <div className="col-5">
-                        <a href="" className="a-perfil-b">Editar idiomas</a>
+                        {/* <a href="" className="a-perfil-b">Editar idiomas</a> */}
+                        <button
+                            className="btn-inicio btn btn-inicio btn btn-outline-primary"
+                            onClick={handleNameEdit}
+                        >
+                            Editar Nombre de Usuario
+                        </button>
                     </div>
                 </div>
                 <div className="row perfil-row-b">
@@ -383,7 +472,7 @@ const [newUser,setNewUser ] = useState({...user})
                     <div className="col-5">
                         {/* <a href="" className="a-perfil-b" type="hobbies" value={user.hobbies} onSubmit={handleChange}>Editar hobbies</a> */}
                         <button
-                            className="a-perfil-b btn"
+                            className="a-perfil-b btn btn-inicio btn btn-outline-primary"
                             onClick={handleHobbiesEdit}
                         >
                             Editar hobbies
@@ -408,14 +497,14 @@ const [newUser,setNewUser ] = useState({...user})
                                 {user.email}
                             </p>
                         )}
-
+                        {errorMessageEmail && <p>{errorMessageEmail}</p>}
                     </div>
                     <div className="col-2"></div>
                     <div className="col-5">
                         {/* <a href="" className="a-perfil-b" type="email" value={user.email} onSubmit={handleChange}>Editar correo</a> */}
                         {/* <button href="" className="a-perfil-b btn" type="email" value={user.email} onSubmit={handleChange}>Editar correo</button> */}
                         <button
-                            className="a-perfil-b btn"
+                            className="a-perfil-b btn btn-inicio btn btn-outline-primary"
                             onClick={() => setEditingEmail(true)}
                         >
                             Editar correo
@@ -426,8 +515,10 @@ const [newUser,setNewUser ] = useState({...user})
 
 
                 </div>
-                <button className="a-perfil-b btn" onClick={setNewDataUser} >Guardar cambios</button>
-                <button href="/profile" className="a-perfil-b btn" >Cancelar cambios</button>
+                <button className="a-perfil-b btn btn-outline-info" id="guardar-Cancelar-Cambios" onClick={setNewDataUser}>Guardar cambios</button>
+                {successMessage && <p className="warningMensaje">{successMessage}</p>}
+
+                <button onClick={handleCancel} className="a-perfil-b btn cancelar-Cambios" id="rech-button" >Cancelar cambios</button>
 
             </div>
         </div>

@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { Login } from "./Components/Login/Login";
 import { PostWall } from "./Components/PostWall/PostWall";
+import { Error404 } from './Components/Error404/Error404';
 // import { Register } from "./Components/Register/Register";
 import Formulario from './Components/RegisterFinal/Formulario';
 import { Perfil } from "./Components/Perfil/Perfil";
@@ -28,7 +29,7 @@ const App = () => {
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/profile" element={<AppPerfil />} />
           <Route path="/followers" element={<Followers />} />
-          {/* <Route path="*" element = {<Error404/>}/> */}
+          <Route path="*" element = {<Error404/>}/>
         </Routes>
       </Provider>
     </>

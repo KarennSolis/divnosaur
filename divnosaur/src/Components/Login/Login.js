@@ -172,7 +172,7 @@ export function Login() {
 
 
 
-                <div id="footer-start">
+                {/* <div id="footer-start">
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-12 col-sm-12">
@@ -189,7 +189,7 @@ export function Login() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div id="g_id_onload"
                     data-client_id="950930800316-89b2reruqh07kqvv975hjabjmaq0egrt.apps.googleusercontent.com"

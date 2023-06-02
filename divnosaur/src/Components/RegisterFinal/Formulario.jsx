@@ -1,17 +1,22 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
-import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
+import { Navbar1 } from '../Navbar/Navbar1/Navbar1';
 import { edadValidator } from "./validators";
 import "./formulario.css"
 
 const Formulario = () => {
 
-    const { register, formState: { errors }, watch, handleSubmit } = useForm();
-    const onSubmit = (data) => {
-        console.log(data);
+    const { register, formState: { errors }, watch, handleSubmit, reset } = useForm();
+    // const onSubmit = (data) => {
+    //     console.log(data);
 
-        asyncPostCall(data)
-    }
+    //     asyncPostCall(data)
+    // }
+    const onSubmit = async (data) => {
+        console.log(data);
+        await asyncPostCall(data);
+        reset(); // Resetear los campos del formulario después de enviarlo
+      };
     const incluirTelefono = watch('incluirTelefono')
     const incluirHobbies = watch('incluirHobbies')
     const anadirExp = watch('anadirExp')
@@ -41,7 +46,7 @@ const Formulario = () => {
     }
 
     return <div>
-        <Navbar2 />
+        <Navbar1 />
         <div id="login" className="container-fluid">
             <div className="row">
                 <h1 className="text-center">Registrate, es muy fácil</h1>
