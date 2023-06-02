@@ -181,13 +181,13 @@ export function Perfil() {
                 Prueba
             </button> */}
             {/* <!-- <div className="photo-container"> --> */}
-            <div className="photo-container-b" id="fotoCont">
+            {/* <div className="photo-container-b" id="fotoCont"> */}
                 {/* <!-- <img src="https://img.freepik.com/vector-premium/ilustracion-dibujos-animados-dinosaurio-traje-trabajando-computadora_49924-196.jpg?w=2000"
                 className="perfil-img" id="dinoFoto" alt=""> --> */}
-                <div>
+                {/* <div>
                     <a href="" className="a-perfil-b" id="enlaceFoto">Editar foto de perfil </a>
                 </div>
-                <div id="foto-b"></div>
+                <div id="foto-b"></div> */}
 
                 {/* <!-------------------MODAL que muestra el CV al pulsar el botón "VER CV"---------------------------------------------------------> */}
                 {/* <div className="section full-height" id="modal-section">
@@ -297,10 +297,10 @@ export function Perfil() {
                         </div>
                     </div>
                 </div> */}
-            </div>
+            {/* </div> */}
             {/* <!-------------------PERFIL de Usuario-------------------------------------------------------------------------------------------> */}
             <div className="container mothership-b">
-                <h1 className="tecler-perfil-b">Perfil de usuario</h1>
+                <h1 className="tecler-perfil-b" id="perfilDeUsuario">Perfil de usuario</h1>
                 {/* <div className="row perfil-row-b">
                     <div className="col-5 exception colum-dat-usu">
                         <div className="name-usu-b">
