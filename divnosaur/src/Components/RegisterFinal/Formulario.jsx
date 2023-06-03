@@ -14,7 +14,7 @@ const Formulario = () => {
         /* await asyncPostCall(data); */
         asyncPostCall(data);
         /* reset(); */ // Resetear los campos del formulario después de enviarlo
-      };
+    };
     const incluirTelefono = watch('incluirTelefono')
     const incluirHobbies = watch('incluirHobbies')
     const anadirExp = watch('anadirExp')
@@ -54,11 +54,11 @@ const Formulario = () => {
             const response = await fetch('http://localhost:3001/register', {
                 method: 'POST',
                 /* headers: { 'Content-Type': 'application/json' },  */
-                headers:{ 'Content-Type': 'multipart/form-data'},
+                headers: { 'Content-Type': 'multipart/form-data' },
                 body: formData,
                 /* body: JSON.stringify(formData) */
             });
-            
+
             const data = await response.json();
             const { result, message } = data;
             console.log("enstoy en handleSaveSelectedImage, despues del fetch")

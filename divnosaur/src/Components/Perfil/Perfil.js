@@ -34,8 +34,8 @@ export function Perfil() {
         setErrorMessage("");
         setErrorMessageEmail("");
         setNewUser({ ...user });
-      };
-      
+    };
+
     const handleCancel = () => {
         window.location.reload(); // Recargar la página del perfil
     };
@@ -78,8 +78,8 @@ export function Perfil() {
                 // Mostrar mensaje de error si el correo electrónico no cumple el formato esperado
                 setErrorMessageEmail("El correo electrónico no es válido");
                 // return;
-                
-            }else {
+
+            } else {
                 setErrorMessageEmail("")
             };
         }
@@ -88,11 +88,11 @@ export function Perfil() {
                 // Mostrar mensaje de error
                 setErrorMessage("El campo de nombre debe tener mínimo 8 caracteres");
                 // return;
-            }else if (value.length > 50) {
+            } else if (value.length > 50) {
                 // Mostrar mensaje de error
                 setErrorMessage("El campo de nombre debe tener máximo 50 caracteres");
                 // return;
-            }else{
+            } else {
                 setErrorMessage("")
             };
         }
@@ -175,176 +175,20 @@ export function Perfil() {
             setSuccessMessage("Sus cambios se han guardado con éxito");
             resetFields();
         }
-       
+
 
 
     }
-   
-    
+
+
     return (
         <div>
             <Navbar2></Navbar2>
-            {/* <button className="btn-warning btn">
-                Prueba
-            </button> */}
-            {/* <!-- <div className="photo-container"> --> */}
-            {/* <div className="photo-container-b" id="fotoCont"> */}
-                {/* <!-- <img src="https://img.freepik.com/vector-premium/ilustracion-dibujos-animados-dinosaurio-traje-trabajando-computadora_49924-196.jpg?w=2000"
-                className="perfil-img" id="dinoFoto" alt=""> --> */}
-                {/* <div>
-                    <a href="" className="a-perfil-b" id="enlaceFoto">Editar foto de perfil </a>
-                </div>
-                <div id="foto-b"></div> */}
 
-                {/* <!-------------------MODAL que muestra el CV al pulsar el botón "VER CV"---------------------------------------------------------> */}
-                {/* <div className="section full-height" id="modal-section">
-                    <input className="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
-                    <label for="modal-btn">VER CV<i className="uil uil-expand-arrows"></i></label>
-                    <div className="modal">
-                        <div className="modal-wrap">
-                            <div className="cv-main">
-                                <div className="container cabecera" id="cv-container">
-                                    <div className="row cv-row">
-                                        <div className="col-12 tecler-cv">
-                                            <img src="https://img.freepik.com/fotos-premium/diversion-trex-ilustracion-3d_183364-111286.jpg"
-                                                className="fotoTecler" alt="fotoTecler" />
-                                            <div className="divCabecera">
-                                                <h1 id="h1-cabecera">Tiranius <br /> Rexis</h1>
-                                                <p id="p-cabecera">FULLSTACK DEVELOPER</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="container" id="cv-container">
-                                    <div className="row cv-row">
-                                        <div className="col-4 par">
-                                            <h4 className="cv-h4"><u>CONT</u>ACTO</h4>
-                                            <div className="cv-contacto">
-                                                <img src="https://w7.pngwing.com/pngs/581/810/png-transparent-graphy-a-large-collection-of-small-telephone-icon-photography-logo-black.png"
-                                                    className="cv-icono" alt="phone" />
-                                                <p>(+34) 666777888</p>
-                                            </div>
-                                            <div className="cv-contacto">
-                                                <img src="https://w7.pngwing.com/pngs/333/868/png-transparent-mail-computer-icons-email-graphy-e-mail-miscellaneous-angle-rectangle-thumbnail.png"
-                                                    className="cv-icono" alt="mail" />
-                                                <p>tiranius@gmail.com</p>
-                                            </div>
-                                            <div className="cv-contacto">
-                                                <img src="https://w7.pngwing.com/pngs/555/1002/png-transparent-computer-icons-linkedin-resume-curriculum-vitae-social-media-social-media-template-text-rectangle.png"
-                                                    className="cv-icono" alt="linkedin" />
-                                                <p>tiraniusrex</p>
-                                            </div>
-                                            <div className="cv-contacto">
-                                                <img src="https://img2.freepng.es/20180716/tza/kisspng-github-computer-icons-clip-art-gits-5b4d20ab1f4131.145288281531781291128.jpg"
-                                                    className="cv-icono" alt="github" />
-                                                <p>rextex</p>
-                                            </div>
-                                        </div>
-                                        <div className="col-8 impar">
-                                            <h4 className="cv-h4"><u>ACER</u>CA DE MI</h4>
-                                            <p>Soy Ingeniero Informático desde hace 6 años. He trabajado en
-                                                diferentes campos, como desarrollo web, analítica digital, ciencia
-                                                de datos... Me gusta trabajar en ambientes que supongan un desafío
-                                                intelectual, no tengo miedo a los retos y me adapto bien a los
-                                                cambios y a las situaciones nuevas.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="row cv-row">
-                                        <div className="col-4 par">
-                                            <h4 className="cv-h4"><u>HABI</u>LIDADES</h4>
-                                            <ul>
-                                                <li>Liderazgo</li>
-                                                <li>Comunicación asertiva</li>
-                                                <li>Resolución de problemas</li>
-                                                <li>Elaboración de informes</li>
-                                                <li>Trabajo en equipo</li>
-                                            </ul>
-                                        </div>
-                                        <div className="col-8 impar">
-                                            <h4 className="cv-h4"><u>EXPE</u>RIENCIA LABORAL</h4>
-                                            <ul>
-                                                <li>
-                                                    <p><strong>Front-end Developer</strong></p>
-                                                    <p>RURTU S.A. - 2016-2017</p>
-                                                </li>
-                                                <li>
-                                                    <p><strong>Fullstack Developer</strong></p>
-                                                    <p>TRIADADEV - 2017-2019</p>
-                                                </li>
-                                                <li>
-                                                    <p><strong>Data Analyst</strong></p>
-                                                    <p>Aliada Consultores - 2019-2021</p>
-                                                </li>
-                                                <li>
-                                                    <p><strong>Data Scientist</strong></p>
-                                                    <p>TRIUM SOFT - 2021-2023</p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div className="row cv-row">
-                                        <div className="col-4 par">
-                                            <h4 className="cv-h4"><u>EDUC</u>ACIÓN</h4>
-                                            <ul>
-                                                <li>
-                                                    <p><strong>Ingeniería en Informática</strong><br />Universidad de
-                                                        Oviedo<br />2012-2016</p>
-                                                </li>
-                                                <li>
-                                                    <p><strong>Bootcamp de Programación</strong><br />Tecla Coding
-                                                        Academy<br />2018-2019</p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div className="col-8 impar"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-            {/* </div> */}
             {/* <!-------------------PERFIL de Usuario-------------------------------------------------------------------------------------------> */}
             <div className="container mothership-b">
                 <h1 className="tecler-perfil-b" id="perfilDeUsuario">Perfil de usuario</h1>
-                {/* <div className="row perfil-row-b">
-                    <div className="col-5 exception colum-dat-usu">
-                        <div className="name-usu-b">
-                            <i className="bi bi-person-fill bs-icon-b"></i>
-                           
 
-                            {isEditingName ? (
-                                <textarea
-                                    id="profileName"
-                                    className="p-perfil-b"
-                                    value={user.name}
-                                    name="name"
-                                    onChange={handleChange}
-                                    required
-                                    minLength={8}
-                                    maxLength={50}
-
-                                />
-                            ) : (
-                                <p id="profileName" className="p-perfil-b">{user.name}</p>
-                            )}
-                            {errorMessage && <p>{errorMessage}</p>}
-                        </div>
-                    </div>
-                    <div className="col-2 col-central-b">
-                    </div>
-                    <div className="col-5 exception-b">
-                        <button
-                            className="btn-inicio btn btn-inicio btn btn-outline-primary"
-                            onClick={handleNameEdit}
-                        >
-                            Editar Nombre de Usuario
-                        </button>
-
-                        <div id="profileInput" className="d-none-b" type="text"></div>
-                    </div>
-                </div> */}
                 <div className="row perfil-row-b">
                     <div className="col-5 colum-dat-usu">
                         <i className="bi bi-geo-alt-fill bs-icon-b"></i>
@@ -432,21 +276,21 @@ export function Perfil() {
                         <i className="bi bi-translate bs-icon-b"></i>
                         {/* <p id="profileLang" className="p-perfil-b">B1 Inglés</p> */}
                         {isEditingName ? (
-                                <textarea
-                                    id="profileName"
-                                    className="p-perfil-b"
-                                    value={user.name}
-                                    name="name"
-                                    onChange={handleChange}
-                                    required
-                                    minLength={8}
-                                    maxLength={50}
+                            <textarea
+                                id="profileName"
+                                className="p-perfil-b"
+                                value={user.name}
+                                name="name"
+                                onChange={handleChange}
+                                required
+                                minLength={8}
+                                maxLength={50}
 
-                                />
-                            ) : (
-                                <p id="profileName" className="p-perfil-b">{user.name}</p>
-                            )}
-                            {errorMessage && <p className="warnings-z" >{errorMessage}</p>}
+                            />
+                        ) : (
+                            <p id="profileName" className="p-perfil-b">{user.name}</p>
+                        )}
+                        {errorMessage && <p className="warnings-z" >{errorMessage}</p>}
                     </div>
                     <div className="col-2"></div>
                     <div className="col-5">
@@ -522,7 +366,7 @@ export function Perfil() {
 
 
                 </div>
-                <button className="a-perfil-b btn btn-outline-info" id="guardar-Cancelar-Cambios" onClick={setNewDataUser} disabled={errorMessage||errorMessageEmail}>Guardar cambios</button>
+                <button className="a-perfil-b btn btn-outline-info" id="guardar-Cancelar-Cambios" onClick={setNewDataUser} disabled={errorMessage || errorMessageEmail}>Guardar cambios</button>
                 {successMessage && <p className="warningMensaje">{successMessage}</p>}
 
                 <button onClick={handleCancel} className="a-perfil-b btn cancelar-Cambios" id="rech-button" >Cancelar cambios</button>

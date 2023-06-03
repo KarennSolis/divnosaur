@@ -11,8 +11,6 @@ const { updateFriendshipStatus } = require('./routes/friendsPrueba')
 const postFriends = require('./routes/friendsBack')
 const { getUser } = require("./routes/usersBack");
 const { allUser, namesUsers } = require("./routes/allUsersback");
-// const { allUser} = require("./routes/usersBack");
-// const followers = require('./routes/followBack');
 const { followers } = require('./routes/followBack');
 const { getUserDataById } = require('./routes/perfilBack')
 const { updateUserDataById } = require('./routes/perfilBack')
@@ -53,7 +51,6 @@ app.post('/login', postLogin);
 
 //PUBLICACIONES :  cargar y crear en la página de inicio
 
-/* app.get('/publications', getPublications);  */
 
 app.get('/allPublications', getAllPublications);
 
@@ -94,8 +91,6 @@ app.get('/:user_id', getUser); //ahora mismo no funciona
 
 //Seguidores y Solicitudes de Seguimiento
 //KAREN//
-/* app.route("/changeStatus/:user_id")
-    .patch(updateFriendshipStatus); */
 app.patch("/changeStatus/:user_id", updateFriendshipStatus);
 
 //Amigos
@@ -106,27 +101,10 @@ app.get('/friends', async (req, res) => {
 app.post('/friends', postFriends);
 
 //Followers//
-// app.get('/followed/:user_id', async (req, res) => {
-//     res.status(200).send('Render followers')})
-// app.post('/followed/:user_id', followers);
-
-/* app.route("/followed/:user_id", async (req, res) => {
-    res.status(200).send('Render follow')
-})
-    .get(followers) */
 
 app.route("/followed/:user_id")
     .get(followers);
 
-
-//Recoger datos usuarios//
-// app.use("/", userRouter);
-
-// router.route("/:user_id")
-// 	.get(getUser) 
-
-// app.route("/renderUsers")
-// 	.get(allUser) 
 
 
 app.listen(port, () => {

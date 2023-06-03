@@ -2,6 +2,7 @@ import React from "react";
 import "./Navbar1.css";
 
 export  function Navbar1(props) {
+
     return (
 
         <nav className="navbar-1 navbar-expand-lg bg-body-tertiary sticky-top">

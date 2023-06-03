@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import "./Navbar2.css";
 
 export function Navbar2(props) {
+
+    const logout = () => {
+        const user_id = localStorage.getItem('idLogged');
+        localStorage.clear(user_id);
+    }
+
+
     return (
 
         <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
@@ -23,13 +30,13 @@ export function Navbar2(props) {
                             <button className="btn btn-outline-primary me-2" type="submit">Buscar</button>
                         </form>
                         <li className="nav-item">
-                            <Link to="/postWall"><a className="nav-link" aria-current="page" href="#">Inicio</a></Link> 
+                            <Link to="/postWall"><a className="nav-link" aria-current="page" href="#">Inicio</a></Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/followers"><a className="nav-link" href="#">Mis amigos</a></Link> 
+                            <Link to="/followers"><a className="nav-link" href="#">Mis amigos</a></Link>
                         </li>
-                        
-                        
+
+
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="cuentaBoton">
                                 Mi cuenta
@@ -39,7 +46,7 @@ export function Navbar2(props) {
                                     <Link to="/profile" ><li><a className="dropdown-item" href="#">Mi Perfil</a></li></Link>
                                 </li>
                                 <li><hr className="dropdown-divider" />
-                                    <Link to="/"><li><a className="dropdown-item" href="#">Cerrar sesión</a></li></Link> 
+                                    <Link to="/"><li><a className="dropdown-item" href="#" onClick={logout}>Cerrar sesión</a></li></Link>
                                 </li>
                             </ul>
                         </li>

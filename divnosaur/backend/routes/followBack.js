@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const sequelize = require('../conexion-base-datos')
 
-// app.get('/followed/:user_id', 
+
 const followers = async function (req, res) {
 	const user_id = req.params.user_id
 	try {
@@ -17,5 +17,5 @@ const followers = async function (req, res) {
 	}
 };
 
-//   module.exports = followers
+
 module.exports.followers = followers
