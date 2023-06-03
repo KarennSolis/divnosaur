@@ -74,25 +74,26 @@ export function Login() {
                     alert(message);
 
                 } else {
-                    const userId = data.result.userId;
-                    const userName = data.result.userName;
-                    const userEmail = data.result.userEmail;
-                    const userAge = data.result.userAge;
-                    const userPhone = data.result.userPhone;
-                    const userCity = data.result.userCity;
-                    const userCountry = data.result.userCountry;
-                    const userHobbies = data.result.userHobbies;
-                    const userExperience = data.result.userExperience;
+                    
+                    const { userId, userName, userEmail, userAge, userPhone, userCity, userCountry, userHobbies, userExperience } = data.result;
 
-                    localStorage.setItem('idLogged', userId);
-                    localStorage.setItem('userName', userName);
-                    localStorage.setItem('userEmail', userEmail);
-                    localStorage.setItem('userAge', userAge);
-                    localStorage.setItem('userPhone', userPhone);
-                    localStorage.setItem('userCity', userCity);
-                    localStorage.setItem('userCountry', userCountry);
-                    localStorage.setItem('userHobbies', userHobbies);
-                    localStorage.setItem('userExperience', userExperience);
+                    const userData = {
+                        idLogged: userId,
+                        userName,
+                        userEmail,
+                        userAge,
+                        userPhone,
+                        userCity,
+                        userCountry,
+                        userHobbies,
+                        userExperience
+                    };
+
+                    for (const [key, value] of Object.entries(userData)) {
+                        localStorage.setItem(key, value);
+                    }
+
+
 
                     emailRef.current.value = '';
                     passwordRef.current.value = '';
@@ -151,45 +152,19 @@ export function Login() {
                                     {/* <p id="warnings" className="warnings"></p> */}
                                     {/* {warnings && <p id="warnings">{warnings}</p>}
                                     {parrafo && <p id="warnings">{parrafo}</p>} */}
-                                    {/* <!-- <a href="./inicio.html"><button type="" className="btn btn-primary butSession">Entra a Divnosaur</button></a> --> */}
-                                    {/* <!-- <a href="./registro.html"><button className="btn-inicio btn btn-outline-primary">Unirse ahora</button></a> --> */}
+                                   
 
                                 </div>
                             </form>
 
                             <div className="divider"></div>
-                            {/* <div>
-                                <div className="col-12 d-inline "> */}
-                            {/* <!-- <a className="d-inline" href=""><button className="btn btn-outline-info d-inline"id="buttonDiv"><h4><img src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" alt=""> Iniciar sesión con google</h4></button></a> */}
-                            {/* </div>  */}
-                            {/* <div id="butGoogle" className="butGoogle"></div> */}
+
                             <div className="col-12" id="homeRegBot">
                                 <Link to="/register"><a href="./registro.html"><button className="btn btn-outline-info" id="regBot"><h4>Regístrate ahora</h4></button></a></Link>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
-                {/* <div id="footer-start">
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-12 col-sm-12">
-                                <ul className="d-flex justify-content-between">
-                                    <li><img className="img-fluid" src="https://cdn-icons-png.flaticon.com/512/1903/1903496.png" alt="" /></li>
-                                    <li><a href=""> <h5>Acerca de</h5></a></li>
-                                    <li><a href=""> <h5>Accesibilidad</h5></a></li>
-                                    <li><a href=""> <h5>Condiciones de uso</h5></a></li>
-                                    <li><a href=""> <h5>Política de privacidad</h5></a></li>
-                                    <li><a href=""> <h5>Política de cookies</h5></a></li>
-                                    <li><a href=""> <h5>Política de copyright</h5></a></li>
-                                    <li><a href=""> <h5>Política de marca</h5></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
 
                 <div id="g_id_onload"
                     data-client_id="950930800316-89b2reruqh07kqvv975hjabjmaq0egrt.apps.googleusercontent.com"

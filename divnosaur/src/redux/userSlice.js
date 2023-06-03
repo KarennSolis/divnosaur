@@ -50,7 +50,7 @@ export const userSlice = createSlice({
         updateEmail: (state, action) => {
             state.email = action.payload;
         },
-       
+
     },
 },
 )

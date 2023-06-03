@@ -6,19 +6,14 @@
     position: sticky;
 
   }
-  /* nav div#start-button
-  a.navbar-brand img{
-    margin-left: 50px;
-  } */
+ 
   
   #start-button{
-    margin-left: -210px;
-    /* background-color: red; */
+    margin-left: -50px;  
   }
 
 
   #iconDivnosaur{
-    /* background-color: purple; */
     width: 15%;
   }
   
@@ -30,9 +25,7 @@
     .navbar img{
       margin-left: 10px;
     }
-    /* button.navbar-toggler{
-      margin-right: 15px;
-    } */
+
     button.btn-inicio{
       width: 70px;
     }

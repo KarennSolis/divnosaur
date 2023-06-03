@@ -11,8 +11,8 @@ const postRegister = async function (req, res) {
   /* const { name, email, password, age, phone, city, country, hobbies, experience } = req.body; */
   const { name, email, password, age, phone, city, country, hobbies, experience, image } = req.body; //probando
   console.log("no llega el body")
-  console.log(req.body); 
- 
+  console.log(req.body);
+
   if (name) {
     try {
       // Comprobar si ya existe el usuario

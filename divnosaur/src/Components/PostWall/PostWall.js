@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 export function PostWall() {
-    
+
     const [namesWriters, setUsersName] = useState([]);
 
     const [createdPublications, setCreatedPublications] = useState([]);
