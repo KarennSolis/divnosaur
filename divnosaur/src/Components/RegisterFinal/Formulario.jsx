@@ -8,12 +8,14 @@ import "./formulario.css"
 
 const Formulario = () => {
     const [selectedImage, setSelectedImage] = useState(null);//modificacion
-    const { register, formState: { errors }, watch, handleSubmit } = useForm();
+    const [formData, setFormData] = useState({});
+    const { register, formState: { errors }, watch, handleSubmit, reset } = useForm();
     const onSubmit = (data) => {
         console.log(data);
-        /* await asyncPostCall(data); */
+        // await asyncPostCall(data); 
+        setFormData(data);
         asyncPostCall(data);
-        /* reset(); */ // Resetear los campos del formulario después de enviarlo
+        reset();  // Resetear los campos del formulario después de enviarlo
     };
     const incluirTelefono = watch('incluirTelefono')
     const incluirHobbies = watch('incluirHobbies')
@@ -39,7 +41,7 @@ const Formulario = () => {
                 alert(message)
                 window.location.href = "/public/index.html"
             }
-
+            setFormData({});
         } catch (error) {
             console.error('Error al enviar la solicitud: ', error)
         }
@@ -201,7 +203,7 @@ const Formulario = () => {
                                 </li> */}
                                 <li>
                                     <button type="submit" className="btn btn-primary" id="submit">Acceder</button>
-                                    <button type="reset" className="btn btn-primary">Borrar</button><br />
+                                    <button type="reset" className="btn btn-primary" id='borrar-form-bot-f'>Borrar</button><br />
                                     <p className="warnings-z" id="warnings"></p>
                                 </li>
 
