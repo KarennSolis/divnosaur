@@ -2,25 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLoggedUserId, setUsers, updateFriendshipStatus } from '../../redux/followerSlice';
 import { setFollowedUsers } from '../../redux/followerSlice';
-import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
-import { FriendsSuggests } from './FriendsSuggst';
 import { FollowButton } from './FollowButton';
 import './Followers.css';
 import './FriendsSuggst.css';
 
-
-
-
-export function Followers() {
+export function FriendsSuggests() {
     const dispatch = useDispatch();
     const loggedUserId = useSelector((state) => state.user.loggedUserId);
-    /* const users = useSelector((state) => state.follower.users); */
-    const users = useSelector((state) => state.follower.users.filter((user) => user.status_friendship === 1));
-    const numberUsers = users.length
+    const users = useSelector((state) => state.follower.users);
+    const filteredUsers = users.filter((user) => !user.status_friendship || user.status_friendship === 0);
+
+
     const [userImages, setUserImages] = useState([]); //se guardan en el estado local, no en el global de redux
 
     const idLogged = localStorage.getItem('idLogged');
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -54,55 +49,43 @@ export function Followers() {
 
             dispatch(setUsers(combinedUsers));
             dispatch(setLoggedUserId(idLogged));
-
         };
 
         fetchData();
-    }, [dispatch, loggedUserId]);
+    }, [dispatch, idLogged]);
 
+    console.log(users);
 
     return (
-
         <>
            
-                <Navbar2 />
-                <div className="container fContainer">
 
-                    <p className='numberFollowers'>Tienes <span className='numberUsers'>{numberUsers}</span>  contactos en tu red</p>
+                <div className="container fContainer"  /* className="col-10 container-fluid" */>
+                   
+                    <h5>Haz nuevos contactos</h5>
                     <div id="followersContainer" className=" row ">
 
-                        {users ? (
-                            users.map((user) => (
+                        {filteredUsers ? (
+                            filteredUsers.map((user) => (
+
                                 <div key={user.user_id} className='col-4 ' id='divFollower'>
-                                    <img src='' alt='foto' />
-                                    <div className=' followDetails'>
-                                        
+                                    <div>
                                         <h6>{user.name}</h6>
                                         <p>{user.email}</p>
+                                        {/* <p>Contactos en común:</p> */}
+                                    </div>
 
-                                    </div>
-                                    <div></div>
-                                    <div className=''>
-                                        <FollowButton key={user.user_id} user={user} />
-                                    </div>
-                                    
+                                    <FollowButton key={user.user_id} user={user} />
                                 </div>
                             ))
-
                         ) : (
-                            <p>Cargando...</p>
+                            <p>No hay usuarios disponibles.</p>
                         )}
 
+
                     </div>
-
-
-
                 </div>
-                <FriendsSuggests />
-           
-
+            
         </>
     );
-
 }
-

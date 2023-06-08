@@ -348,3 +348,27 @@ div#reactions button{
 .listaPerfil{
     list-style: none;
 }
+
+/* ------------------------Carrousel--------------------------------------------------------------- */
+.carrContnrTitle{
+    margin-bottom: 16px;
+    display: flex;
+}
+.carrouselTitle{
+    color: #757577;
+}
+.to-full-suggests{
+    margin-top: 20px;
+    display: flex;
+    color: aliceblue;
+}
+.to-full-suggests a{
+    font-style: italic;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #5eb1fa;
+}
+.to-full-suggests a:hover{
+    
+    color: #1f5cc4;
+}

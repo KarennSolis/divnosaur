@@ -1,6 +1,7 @@
 * {
     margin: 0 auto;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Ffondo&psig=AOvVaw2fhX_UDbPN6fy4YEiDr21I&ust=1686342148886000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCMiAqpjAtP8CFQAAAAAdAAAAABAE');
 }
 
 
@@ -131,13 +132,16 @@ main {
 
 }
 
-.search_friends-f {
+/* .search_friends-f {
     display: flex;
     align-items: center;
     padding: 10px;
     background-color: rgb(255, 255, 255);
     margin: 10px;
     border-radius: 1em;
+} */
+.search_friends-f p {
+    margin-bottom: 30px 0px;
 }
 
 #nav_friend {
@@ -170,44 +174,79 @@ main {
 
 
 /*-----MAQUETADO DE GRID-------------------------------------------------------------*/
-.container-f {
-    padding: 10px;
-    color: rgb(8, 8, 8);
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    /* grid-template-rows: repeat(3, 35%); */
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+.fContainer {
+    margin: 0px;
+    /* background-color: rgb(166, 200, 248); */
+    background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Ffondo&psig=AOvVaw2fhX_UDbPN6fy4YEiDr21I&ust=1686342148886000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCMiAqpjAtP8CFQAAAAAdAAAAABAE);
+
+    padding-top: 10px;
+}
+#followersContainer{
+  /* background-color: rgb(88, 127, 220); */
+  border-top: 2px solid rgb(12, 147, 116);
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.numberFollowers{
+    margin: 20px 0px
 }
 
+#divFollower{
+    display: flex;
+    font-size: 13px;
+    border: 1px solid rgb(159, 158, 158);
+    border-radius: 0.3em;
+    margin: 20px ;
+    padding: 20px;
+    background-color: white;
+    /* text-align: center; */
+    word-wrap: break-word;
+    /* box-shadow: 2px 5px 5px gray; */
+}
+.followDetails{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    word-wrap: break-word;
+}
+#divFollower h6{
+    margin: 5px;
+}
+#divFollower p{
+    margin: 5px;
+    font-size: 12px;
+    font-style: italic;
+}
 .postsDiv{
     display: flex;
     width: 100vw;
     height: 100vh;
 }
 
-.item-1 {
+/* .item-1 {
     grid-row: 1;
     grid-column: 1;
-}
+} */
 
-.item {
+/* .item {
     width: 100%;
     height: 100%;
     padding: 5%;
     background-color: rgb(255, 255, 255);
     border-radius: 0.5em;
-}
+} */
 
-.item img {
+/* .item img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     margin-bottom: 5px;
+} */
+.numberUsers{
+    color: rgb(12, 147, 116);
 }
-
-.add_friend,
+/* .add_friend,
 .just_friend, .following, .users {
     margin-top: 10px;
     height: 30px;
@@ -216,7 +255,7 @@ main {
     color: rgb(255, 255, 255);
     font-weight: bold;
     border: none;
-}
+} */
 
 .add_friend, .users{
     background-color: rgb(29, 207, 29);
@@ -235,7 +274,7 @@ main {
 }
 
 
-@media (max-width: 996px) {
+/* @media (max-width: 996px) {
     .container-f {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -243,9 +282,9 @@ main {
         grid-column-gap: 10px;
         grid-row-gap: 10px;
     }
-  }
+  } */
 
-@media (max-width: 730px) {
+/* @media (max-width: 730px) {
     .container-f {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -253,9 +292,9 @@ main {
         grid-column-gap: 10px;
         grid-row-gap: 10px;
     }
-  }
+  } */
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
     .container-f {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -269,7 +308,7 @@ main {
     .columnaA-f ul li i.bi{
         width: 80px;
     }
-  }
+  } */
 
 
 /* -----Barra Búsqueda y filtro----------------------------------------------------------- */

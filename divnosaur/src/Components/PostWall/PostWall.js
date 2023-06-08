@@ -27,6 +27,7 @@ export function PostWall() {
 
 
 
+
     /* --------------------consultar en la tabla users el nombre del usuario que hizo cada publicación usando publication.user_id---------------------- */
 
     useEffect(() => {
@@ -48,7 +49,7 @@ export function PostWall() {
 
         getAllPosts().catch(console.error);
 
-        },[createdPublications]);
+    }, [createdPublications]);
 
 
     /* ----------Crear publicaciones------------------------------------------- */
@@ -304,6 +305,7 @@ export function PostWall() {
                             <div className="solicitud">
 
                                 <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
+                                    <div className='carrContnrTitle'><h4 className='carrouselTitle'>Añade a tu red:</h4></div>
                                     <div className="carousel-inner">
                                         <div className="carousel-item active">
                                             <img className="profile rounded-circle mx-auto d-block d-block w-10 fotoSolicitud"
@@ -338,7 +340,6 @@ export function PostWall() {
                                             </div>
                                         </div>
                                     </div>
-
                                     <a className="carousel-control-prev" href="#carouselExampleControls" role="button"
                                         data-slide="prev">
                                         <span className="carousel-control-prev-icon dark" aria-hidden="true"></span>
@@ -349,10 +350,13 @@ export function PostWall() {
                                         <span className="carousel-control-next-icon dark" aria-hidden="true"></span>
                                         <span className="sr-only">Siguiente</span>
                                     </a>
+                                    <Link to="/friendssuggests"><div className='to-full-suggests'><a href="#">Ver personas en tu entorno <img src='clic.png'  width={32}/> </a></div></Link>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
 
