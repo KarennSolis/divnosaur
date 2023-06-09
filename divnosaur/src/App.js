@@ -8,6 +8,8 @@ import { Error404 } from './Components/Error404/Error404';
 import Formulario from './Components/RegisterFinal/Formulario';
 import { Perfil } from "./Components/Perfil/Perfil";
 import { Followers } from "./Components/Followers/Followers";
+import { FriendsSuggests } from './Components/Followers/FriendsSuggst';
+
 
 /* import { IngProject } from "./Components/Projects/IngProject/IngProject";
 import { InmoProject } from "./Components/Projects/InmoProject/InmoProject";
@@ -33,6 +35,7 @@ const App = () => {
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/profile" element={<AppPerfil />} />
           <Route path="/followers" element={<Followers />} />
+          <Route path="/friendssuggests" element={<FriendsSuggests />} />
           <Route path="*" element={<Error404 />} />
 
         </Routes>

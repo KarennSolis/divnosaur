@@ -1,4 +1,4 @@
-const express = require('express');
+/* const express = require('express');
 const app = express();
 const sequelize = require('./conexion-base-datos');
 
@@ -12,4 +12,4 @@ async function newPost() {
 	})
 }
 
-newPost();
+newPost(); */

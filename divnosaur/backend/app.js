@@ -8,7 +8,7 @@ const cors = require('cors');
 const sequelize = require('./conexion-base-datos');
 const postRegister = require('./routes/registroBack');
 const postLogin = require('./routes/loginBack');
-const { getPublications, getAllPublications, postPublications } = require('./routes/publicatBack')
+const { getPublications, getAllPublications, getPublicationsWritters , postPublications } = require('./routes/publicatBack')
 const { updateFriendshipStatus } = require('./routes/friendsPrueba')
 const postFriends = require('./routes/friendsBack')
 const { getUser } = require("./routes/usersBack");
@@ -25,7 +25,6 @@ app.use(requestTransfer);
 app.use(express.json());
 app.use(cors());
 app.locals.JWT_SECRET = process.env.JWT_SECRET;
-
 
 
 //Rutas
@@ -54,31 +53,9 @@ app.post('/login', postLogin);
 
 
 //PUBLICACIONES :  cargar y crear en la página de inicio
-
-
-app.get('/allPublications', getAllPublications);
-
-app.get('/publications', async function (req, res) {
-    const user_id = req.query.user_id;
-    console.log(req.query.user_id)
-    if (user_id) {
-        sequelize.query('SELECT * FROM posts WHERE user_id = :user_user', { replacements: { user_user: user_id }, type: sequelize.QueryTypes.SELECT })
-            .then(posts => {
-                console.log(posts.length);
-                console.log(posts)
-                res.status(200).send({ posts })
-                /* if (Object.keys(posts).length === 0) {
-                    console.log('No existen publicaciones para este usuario')
-                    res.status(200).send({ result: false, message: "No existen publicaciones para este usuario" })
-                } else {
-                    console.log('Si existen publicaciones para este usuario')
-                    res.status(200).send({ result: posts, message: 'Si existen publicaciones para este usuario' })
-                } */
-            })
-    }
-});
-
+app.get('/allPublications/:user_id', getAllPublications);
 app.post('/createPublications', postPublications);
+
 
 //USUARIOS
 
