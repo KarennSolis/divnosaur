@@ -161,10 +161,14 @@ export function Perfil() {
     }
 
     async function setNewDataUser() {
-        const idLogged = localStorage.getItem('idLogged');
-        const response = await fetch(`http://localhost:3001/profile/${idLogged}`, {
+        // const idLogged = localStorage.getItem('idLogged');
+        // const response = await fetch(`http://localhost:3001/profile/${idLogged}`, {
+        const response = await fetch(`http://localhost:3001/profile`, {
             method: "PATCH",
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("Token")}`,
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(user)
         })
         const result = response.json()
@@ -184,192 +188,205 @@ export function Perfil() {
     return (
         <div>
             <Navbar2></Navbar2>
+            <div className="container "> </div>
+
 
             {/* <!-------------------PERFIL de Usuario-------------------------------------------------------------------------------------------> */}
-            <div className="container mothership-b">
+            <div className="container  mothership-b">
                 <h1 className="tecler-perfil-b" id="perfilDeUsuario">Perfil de usuario</h1>
+                <div className="card p-0 w-100 rounded-5 bg-primary-subtle border border-primary-subtle shadow">
+                    <div className="row perfil-row-b">
+                        <div className="col-5  colum-dat-usu">
+                            <i className="bi bi-geo-alt-fill bs-icon-b fs-4"></i>
+                            {/* <!-- <p id="profileLocal" className="p-perfil">Gijón (Asturias)</p> --> */}
 
-                <div className="row perfil-row-b">
-                    <div className="col-5 colum-dat-usu">
-                        <i className="bi bi-geo-alt-fill bs-icon-b"></i>
-                        {/* <!-- <p id="profileLocal" className="p-perfil">Gijón (Asturias)</p> --> */}
+                            {isEditingCountry ? (
+                                <textarea
+                                    id="locationUser"
+                                    className="p-perfil-b textareaPerfil"
+                                    value={user.country}
+                                    name="country"
+                                    onChange={handleChange}
+                                />
+                            ) : (
+                                <p id="locationUser" className="p-perfil-b">{user.country}</p>
+                            )}
+                        </div>
+                        <div className="col-2">
+                            {/* {isEditingCountry && <div className="animated-bar" />} */}
+                        </div>
+                        <div className="col-5">
 
-                        {isEditingCountry ? (
-                            <textarea
-                                id="locationUser"
-                                className="p-perfil-b"
-                                value={user.country}
-                                name="country"
-                                onChange={handleChange}
-                            />
-                        ) : (
-                            <p id="locationUser" className="p-perfil-b">{user.country}</p>
-                        )}
+                            {/* <a href="" className="a-perfil-b" type="country" value={user.country} onSubmit={handleChange}>Editar localización</a> */}
+                            <button
+                                className="a-perfil-b btn btn-inicio btn btn-outline-primary shadow"
+                                onClick={handleCountryEdit}
+                            >
+                                Editar localización
+                            </button>
+                        </div>
                     </div>
-                    <div className="col-2"></div>
-                    <div className="col-5">
-                        {/* <a href="" className="a-perfil-b" type="country" value={user.country} onSubmit={handleChange}>Editar localización</a> */}
-                        <button
-                            className="a-perfil-b btn btn-inicio btn btn-outline-primary"
-                            onClick={handleCountryEdit}
-                        >
-                            Editar localización
-                        </button>
+                    <div className="row perfil-row-b">
+                        <div className="col-5 colum-dat-usu">
+                            <i className="bi bi-calendar bs-icon-b fs-4"></i>
+                            {/* <p id="profileBirth" className="p-perfil-b">{user.age}</p> */}
+                            {isEditingAge ? (
+                                <textarea
+                                    id="profileBirth"
+                                    className="p-perfil-b textareaPerfil"
+                                    value={user.age}
+                                    name="age"
+                                    onChange={handleChange}
+                                />
+                            ) : (
+                                <p id="profileBirth" className="p-perfil-b">{user.age}</p>
+                            )}
+                        </div>
+                        <div className="col-2"></div>
+                        <div className="col-5">
+                            {/* <a href="" className="a-perfil-b" type="age" value={user.age} onSubmit={handleChange}>Editar edad</a> */}
+                            <button
+                                className="a-perfil-b btn btn-inicio btn btn-outline-primary shadow"
+                                onClick={handleAgeEdit}
+                            >
+                                Editar edad
+                            </button>
+                        </div>
+                    </div>
+                    <div className="row perfil-row-b">
+                        <div className="col-5 colum-dat-usu">
+                            <i className="bi bi-book-fill bs-icon-b fs-4"></i>
+                            {/* <p id="profileStudy" className="p-perfil-b">{user.experience}</p> */}
+                            {isEditingExperience ? (
+                                <textarea
+                                    id="profileStudy"
+                                    className="p-perfil-b textareaPerfil"
+                                    value={user.experience}
+                                    name="experience"
+                                    onChange={handleChange}
+                                />
+                            ) : (
+                                <p id="profileStudy" className="p-perfil-b">{user.experience}</p>
+                            )}
+                        </div>
+                        <div className="col-2"></div>
+                        <div className="col-5">
+                            {/* <a href="" className="a-perfil-b" type="experience" value={user.experience} onSubmit={handleChange}>Editar experiencia </a> */}
+                            <button
+                                className="a-perfil-b btn btn-inicio btn btn-outline-primary shadow"
+                                onClick={handleExperienceEdit}
+                            >
+                                Editar experiencia
+                            </button>
+                        </div>
+                    </div>
+                    <div className="row perfil-row-b">
+                        <div className="col-5 colum-dat-usu">
+                            <i className="bi bi-person bs-icon-b fs-4"></i>
+                            {/* <p id="profileLang" className="p-perfil-b">B1 Inglés</p> */}
+                            {isEditingName ? (
+                                <textarea
+                                    id="profileName"
+                                    className="p-perfil-b textareaPerfil"
+                                    value={user.name}
+                                    name="name"
+                                    onChange={handleChange}
+                                    required
+                                    minLength={8}
+                                    maxLength={50}
+
+                                />
+                            ) : (
+                                <p id="profileName" className="p-perfil-b">{user.name}</p>
+                            )}
+                            {/* {errorMessage && <p className="warnings-z" >{errorMessage}</p>} */}
+                        </div>
+                        <div className="col-2"></div>
+                        <div className="col-5">
+                            {/* <a href="" className="a-perfil-b">Editar idiomas</a> */}
+                            <button
+                                className="btn-inicio btn btn-inicio btn btn-outline-primary shadow"
+                                onClick={handleNameEdit}
+                            >
+                                Editar Nombre de Usuario
+                            </button>
+                        </div>
+                    </div>
+                    <div className="row perfil-row-b">
+                        <div className="col-5 colum-dat-usu">
+                            <i className="bi bi-bicycle bs-icon-b fs-3"></i>
+                            {/* <p id="profileHobbies" className="p-perfil-b">{user.hobbies}</p> */}
+                            {isEditingHobbies ? (
+                                <textarea
+                                    id="profileHobbies"
+                                    className="p-perfil-b textareaPerfil"
+                                    value={user.hobbies}
+                                    name="hobbies"
+                                    onChange={handleChange}
+                                />
+                            ) : (
+                                <p id="profileHobbies" className="p-perfil-b">{user.hobbies}</p>
+                            )}
+                        </div>
+                        <div className="col-2"></div>
+                        <div className="col-5">
+                            {/* <a href="" className="a-perfil-b" type="hobbies" value={user.hobbies} onSubmit={handleChange}>Editar hobbies</a> */}
+                            <button
+                                className="a-perfil-b btn btn-inicio btn btn-outline-primary shadow"
+                                onClick={handleHobbiesEdit}
+                            >
+                                Editar hobbies
+                            </button>
+                        </div>
+                    </div>
+                    <div className="row perfil-row-b justify-content-between">
+                        <div className="col-5 colum-dat-usu">
+                            <i className="bi bi bi-envelope bs-icon-b fs-4"></i>
+                            {/* <!-- <p id="profileLinkedin" className="p-perfil">/in/tiraniusrex</p> --> */}
+                            {/* <p id="mailUser" className="p-perfil-b">{user.email}</p> */}
+                            {editingEmail ? (
+                                <textarea
+                                    id="mailUser"
+                                    className="p-perfil-b textareaPerfil"
+                                    value={user.email}
+                                    name="email"
+                                    onChange={handleChange}
+                                ></textarea>
+                            ) : (
+                                <p id="mailUser" className="p-perfil-b">
+                                    {user.email}
+                                </p>
+                            )}
+
+                            {/* {errorMessageEmail && <h6 className="row warningPerfil" >{errorMessageEmail}</h6>} */}
+
+                        </div>
+
+                        <div className="col-2"></div>
+                        <div className="col-5">
+                            {/* <a href="" className="a-perfil-b" type="email" value={user.email} onSubmit={handleChange}>Editar correo</a> */}
+                            {/* <button href="" className="a-perfil-b btn" type="email" value={user.email} onSubmit={handleChange}>Editar correo</button> */}
+                            <button
+                                className="a-perfil-b btn btn-inicio btn btn-outline-primary shadow"
+                                onClick={() => setEditingEmail(true)}
+                            >
+                                Editar correo
+                            </button>
+                        </div>
+
+
+
+
                     </div>
                 </div>
-                <div className="row perfil-row-b">
-                    <div className="col-5 colum-dat-usu">
-                        <i className="bi bi-calendar bs-icon-b"></i>
-                        {/* <p id="profileBirth" className="p-perfil-b">{user.age}</p> */}
-                        {isEditingAge ? (
-                            <textarea
-                                id="profileBirth"
-                                className="p-perfil-b"
-                                value={user.age}
-                                name="age"
-                                onChange={handleChange}
-                            />
-                        ) : (
-                            <p id="profileBirth" className="p-perfil-b">{user.age}</p>
-                        )}
-                    </div>
-                    <div className="col-2"></div>
-                    <div className="col-5">
-                        {/* <a href="" className="a-perfil-b" type="age" value={user.age} onSubmit={handleChange}>Editar edad</a> */}
-                        <button
-                            className="a-perfil-b btn btn-inicio btn btn-outline-primary"
-                            onClick={handleAgeEdit}
-                        >
-                            Editar edad
-                        </button>
-                    </div>
-                </div>
-                <div className="row perfil-row-b">
-                    <div className="col-5 colum-dat-usu">
-                        <i className="bi bi-book-fill bs-icon-b"></i>
-                        {/* <p id="profileStudy" className="p-perfil-b">{user.experience}</p> */}
-                        {isEditingExperience ? (
-                            <textarea
-                                id="profileStudy"
-                                className="p-perfil-b"
-                                value={user.experience}
-                                name="experience"
-                                onChange={handleChange}
-                            />
-                        ) : (
-                            <p id="profileStudy" className="p-perfil-b">{user.experience}</p>
-                        )}
-                    </div>
-                    <div className="col-2"></div>
-                    <div className="col-5">
-                        {/* <a href="" className="a-perfil-b" type="experience" value={user.experience} onSubmit={handleChange}>Editar experiencia </a> */}
-                        <button
-                            className="a-perfil-b btn btn-inicio btn btn-outline-primary"
-                            onClick={handleExperienceEdit}
-                        >
-                            Editar experiencia
-                        </button>
-                    </div>
-                </div>
-                <div className="row perfil-row-b">
-                    <div className="col-5 colum-dat-usu">
-                        <i className="bi bi-translate bs-icon-b"></i>
-                        {/* <p id="profileLang" className="p-perfil-b">B1 Inglés</p> */}
-                        {isEditingName ? (
-                            <textarea
-                                id="profileName"
-                                className="p-perfil-b"
-                                value={user.name}
-                                name="name"
-                                onChange={handleChange}
-                                required
-                                minLength={8}
-                                maxLength={50}
-
-                            />
-                        ) : (
-                            <p id="profileName" className="p-perfil-b">{user.name}</p>
-                        )}
-                        {errorMessage && <p className="warnings-z" >{errorMessage}</p>}
-                    </div>
-                    <div className="col-2"></div>
-                    <div className="col-5">
-                        {/* <a href="" className="a-perfil-b">Editar idiomas</a> */}
-                        <button
-                            className="btn-inicio btn btn-inicio btn btn-outline-primary"
-                            onClick={handleNameEdit}
-                        >
-                            Editar Nombre de Usuario
-                        </button>
-                    </div>
-                </div>
-                <div className="row perfil-row-b">
-                    <div className="col-5 colum-dat-usu">
-                        <i className="bi bi-bicycle bs-icon-b"></i>
-                        {/* <p id="profileHobbies" className="p-perfil-b">{user.hobbies}</p> */}
-                        {isEditingHobbies ? (
-                            <textarea
-                                id="profileHobbies"
-                                className="p-perfil-b"
-                                value={user.hobbies}
-                                name="hobbies"
-                                onChange={handleChange}
-                            />
-                        ) : (
-                            <p id="profileHobbies" className="p-perfil-b">{user.hobbies}</p>
-                        )}
-                    </div>
-                    <div className="col-2"></div>
-                    <div className="col-5">
-                        {/* <a href="" className="a-perfil-b" type="hobbies" value={user.hobbies} onSubmit={handleChange}>Editar hobbies</a> */}
-                        <button
-                            className="a-perfil-b btn btn-inicio btn btn-outline-primary"
-                            onClick={handleHobbiesEdit}
-                        >
-                            Editar hobbies
-                        </button>
-                    </div>
-                </div>
-                <div className="row perfil-row-b">
-                    <div className="col-5 colum-dat-usu">
-                        <i className="bi bi-linkedin bs-icon-b"></i>
-                        {/* <!-- <p id="profileLinkedin" className="p-perfil">/in/tiraniusrex</p> --> */}
-                        {/* <p id="mailUser" className="p-perfil-b">{user.email}</p> */}
-                        {editingEmail ? (
-                            <textarea
-                                id="mailUser"
-                                className="p-perfil-b"
-                                value={user.email}
-                                name="email"
-                                onChange={handleChange}
-                            ></textarea>
-                        ) : (
-                            <p id="mailUser" className="p-perfil-b">
-                                {user.email}
-                            </p>
-                        )}
-                        {errorMessageEmail && <p className="warnings-z">{errorMessageEmail}</p>}
-                    </div>
-                    <div className="col-2"></div>
-                    <div className="col-5">
-                        {/* <a href="" className="a-perfil-b" type="email" value={user.email} onSubmit={handleChange}>Editar correo</a> */}
-                        {/* <button href="" className="a-perfil-b btn" type="email" value={user.email} onSubmit={handleChange}>Editar correo</button> */}
-                        <button
-                            className="a-perfil-b btn btn-inicio btn btn-outline-primary"
-                            onClick={() => setEditingEmail(true)}
-                        >
-                            Editar correo
-                        </button>
-                    </div>
-
-
-
-
+                <div className="row">
+                    {errorMessageEmail && <h6 className="warningPerfil text-center mt-2" >{errorMessageEmail}</h6>}
+                    {errorMessage && <h6 className="warningPerfil text-center mt-2" >{errorMessage}</h6>}
                 </div>
                 <button className="a-perfil-b btn btn-outline-info" id="guardar-Cancelar-Cambios" onClick={setNewDataUser} disabled={errorMessage || errorMessageEmail}>Guardar cambios</button>
                 {successMessage && <p className="warningMensaje">{successMessage}</p>}
 
-                <button onClick={handleCancel} className="a-perfil-b btn cancelar-Cambios" id="rech-button" >Cancelar cambios</button>
+                <button onClick={handleCancel} className="a-perfil-b btn btn-outline-secondary cancelar-Cambios " id="boton-cancelar-cambios" >Cancelar cambios</button>
 
             </div>
         </div>

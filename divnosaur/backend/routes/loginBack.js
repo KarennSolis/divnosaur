@@ -41,10 +41,12 @@ const postLogin = async function (req, res) {
 
                     /* ------------generando el TOKEN--------------------------------------------------------------- */
 
-                    const payload = { userId: users[0].user_id, userName: users[0].name, userEmail: users[0].email, userAge: users[0].age, userPhone: users[0].telephone_number, userCity: users[0].city, userCountry: users[0].country, userHobbies: users[0].hobbies, userExperience: users[0].experience };
+                    let payload = { userId: users[0].user_id, userName: users[0].name, userEmail: users[0].email, userAge: users[0].age, userPhone: users[0].telephone_number, userCity: users[0].city, userCountry: users[0].country, userHobbies: users[0].hobbies, userExperience: users[0].experience };
                     const token = generateAccessToken(payload);
+                    payload.token = token
                     console.log(token)
                     console.log(payload)
+                    console.log(payload.token) 
                     res.status(200).send({ result: payload, message: 'Usuario loggeado con éxito' });
 
                 } else {

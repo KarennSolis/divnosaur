@@ -3,8 +3,8 @@ const mysql2 = require('mysql2');
 
 const getUserDataById = async (req, res) => {
   try {
-    const user_id = req.params.user_id
-
+    const user_id = req.jwtInfo.userId;
+    console.log(user_id);
     sequelize.query('SELECT * FROM users WHERE user_id = :id', { replacements: { id: user_id }, type: sequelize.QueryTypes.SELECT })
       .then(async users => {
         res.status(200).send(users[0]);
@@ -20,7 +20,9 @@ const getUserDataById = async (req, res) => {
 
 const updateUserDataById = async (req, res) => {
   try {
-    const user_id = req.params.user_id;
+
+    const user_id = req.jwtInfo.userId;
+    console.log(user_id);
     const { name, country, age, experience, hobbies, email } = req.body;
 
     const updateQuery = `

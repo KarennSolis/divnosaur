@@ -9,7 +9,7 @@ export function Login() {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
     const navigate = useNavigate();
-
+    const localstorage = localStorage
     const [formData, setFormData] = useState({
         warnings: '',
         parrafo: '',
@@ -66,6 +66,7 @@ export function Login() {
                     body: JSON.stringify({ email, password }),
                 });
                 const data = await response.json();
+                localstorage.setItem("Token", data.result.token);
                 const { result, message } = data;
                 console.log(data)
                 console.log(data.result)

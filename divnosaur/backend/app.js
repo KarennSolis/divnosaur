@@ -1,5 +1,7 @@
-require('dotenv').config()
 const express = require('express');
+const app = express();
+require('dotenv').config()
+
 const requestTransfer = require('express-request-transfer');
 const moment = require('moment');
 const cors = require('cors');
@@ -14,13 +16,15 @@ const { allUser, namesUsers } = require("./routes/allUsersback");
 const { followers } = require('./routes/followBack');
 const { getUserDataById } = require('./routes/perfilBack')
 const { updateUserDataById } = require('./routes/perfilBack')
-const app = express();
+
 // const port = process.env.PORT || 3000;
 const port = 3001;
+// import { isLogged } from './routes/middlewareToke';
+const {isLogged} = require('./routes/middlewareToke')
 app.use(requestTransfer);
 app.use(express.json());
 app.use(cors());
-
+app.locals.JWT_SECRET = process.env.JWT_SECRET;
 
 
 
@@ -35,10 +39,10 @@ app.get('/register', async (req, res) => {
 
 app.post('/register', postRegister);
 
-//Perfil//
-app.route("/profile/:user_id")
-    .get(getUserDataById)
-    .patch(updateUserDataById)
+// Perfil//
+app.route("/profile")
+    .get(isLogged, getUserDataById)
+    .patch(isLogged, updateUserDataById)
 
 //Login
 app.get('/login', async (req, res) => {
