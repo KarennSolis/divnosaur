@@ -12,17 +12,7 @@ import validator from "validator";
 export function Perfil() {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user)
-    // const { name, email, age, experience, country, hobbies} = useSelector((state) => state.user);
 
-    // const handleChange = (event) => {
-    //     // event.preventDefault()
-    //     const {name, value}= event.target
-
-    //     // const fieldName = event.target.name; // Obtener el nombre del campo actualizado
-
-    //     // const fieldValue = event.target.value; // Obtener el valor del campo actualizado
-    //     dispatch(changefields({ field:name,value })); // Despachar la acción correspondiente para actualizar el campo
-    // }
     const [successMessage, setSuccessMessage] = useState("");
     const resetFields = () => {
         setIsEditingName(false);
@@ -42,32 +32,6 @@ export function Perfil() {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        // if (name === "email") {
-        //     if (!value) {
-        //         // Mostrar mensaje de error si el campo está vacío
-        //         alert("El correo electrónico es requerido");
-        //         return;
-        //     }
-
-        //     if (!validator.isEmail(value)) {
-        //         // Mostrar mensaje de error si el correo electrónico no cumple el formato esperado
-        //         alert("El correo electrónico no es válido");
-        //         return;
-        //     }
-        // }
-        // if (name === "name") {
-        //     if (value.length < 8) {
-        //         // Mostrar mensaje de error
-        //         alert("El campo de nombre debe tener mínimo 8 caracteres");
-        //         return;
-        //     }
-        //     if (value.length > 50) {
-        //         // Mostrar mensaje de error
-        //         console.log("El campo de nombre debe tener máximo 50 caracteres");
-        //         return;
-        //     }
-        // }
-
         if (name === "email") {
             if (!value) {
                 // Mostrar mensaje de error si el campo está vacío
@@ -130,7 +94,6 @@ export function Perfil() {
 
     const [errorMessage, setErrorMessage] = useState("");
     const [errorMessageEmail, setErrorMessageEmail] = useState("");
-    // const [isEditingEmail, setIsEditingEmail] = useState(false);
 
     const [editingEmail, setEditingEmail] = useState(false);
     const [newUser, setNewUser] = useState({ ...user })

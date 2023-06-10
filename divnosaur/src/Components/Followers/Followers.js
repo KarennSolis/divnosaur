@@ -7,6 +7,7 @@ import { FriendsSuggests } from './FriendsSuggst';
 import { FollowButton } from './FollowButton';
 import './Followers.css';
 import './FriendsSuggst.css';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -20,7 +21,7 @@ export function Followers() {
     const [userImages, setUserImages] = useState([]); //se guardan en el estado local, no en el global de redux
 
     const idLogged = localStorage.getItem('idLogged');
-
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -64,42 +65,45 @@ export function Followers() {
     return (
 
         <>
-           
-                <Navbar2 />
-                <div className="container fContainer">
 
-                    <p className='numberFollowers'>Tienes <span className='numberUsers'>{numberUsers}</span>  contactos en tu red</p>
-                    <div id="followersContainer" className=" row ">
+            <Navbar2 />
+            <div className="container fContainer">
 
-                        {users ? (
-                            users.map((user) => (
-                                <div key={user.user_id} className='col-4 ' id='divFollower'>
-                                    <img src='' alt='foto' />
-                                    <div className=' followDetails'>
-                                        
-                                        <h6>{user.name}</h6>
-                                        <p>{user.email}</p>
+                <p className='numberFollowers'>Tienes <span className='numberUsers'>{numberUsers}</span>  contactos en tu red</p>
+                <div id="followersContainer" className=" row ">
 
-                                    </div>
-                                    <div></div>
-                                    <div className=''>
-                                        <FollowButton key={user.user_id} user={user} />
-                                    </div>
-                                    
+                    {users ? (
+                        users.map((user) => (
+                            <div key={user.user_id} className='col-4 ' id='divFollower'>
+                                <img src='' alt='foto' />
+                                <div className=' followDetails'>
+
+                                    <h6>{user.name}</h6>
+                                    <p>{user.email}</p>
+
                                 </div>
-                            ))
+                                <div></div>
+                                <div className=''>
+                                    <FollowButton key={user.user_id} user={user} />
+                                    <button className='btn btn-outline-success' onClick={() => navigate(`/profile?user_id=${encodeURIComponent(JSON.stringify(user.user_id))}`)}>
+                                        <i className="bi bi-person bs-icon-b fs-4"></i>
+                                    </button>
+                                </div>
 
-                        ) : (
-                            <p>Cargando...</p>
-                        )}
+                            </div>
+                        ))
 
-                    </div>
-
-
+                    ) : (
+                        <p>Cargando...</p>
+                    )}
 
                 </div>
-                <FriendsSuggests />
-           
+
+
+
+            </div>
+            <FriendsSuggests />
+
 
         </>
     );
