@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export function PostWall() {
 
     const [posts, setPosts] = useState([]);
-    const [namesWritters, setNamesWritters] = useState([]);
+    /* const [namesWritters, setNamesWritters] = useState([]); */
     const [createdPublications, setCreatedPublications] = useState([]);
 
     const [likes, setLikes] = useState({});
