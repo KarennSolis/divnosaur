@@ -107,7 +107,12 @@ div.aceptar-rechazar button{
 
 /* ------------------Publicaciones de usuario---------------------------------- */
 
-
+.imgNameUser{
+    display: flex;
+    align-items: baseline;
+    margin: 0px 70px 0px -70px;
+    /* border: 2px solid red; */
+}
 .postItem, .newPost {
     width: 95%;
     background-color: rgb(244, 10, 10);
