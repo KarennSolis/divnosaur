@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export function PostWall() {
 
     const [posts, setPosts] = useState([]);
-    const [namesWritters, setNamesWritters] = useState([]);
+    /* const [namesWritters, setNamesWritters] = useState([]); */
     const [createdPublications, setCreatedPublications] = useState([]);
 
     const [likes, setLikes] = useState({});
@@ -217,7 +217,7 @@ export function PostWall() {
                                     <div className="row">
                                         <div className="col-2">
                                             <img className="friends rounded-circle mx-auto d-block comentaUsuario"
-                                                src="https://www.soy502.com/sites/default/files/styles/full_node/public/2023/Feb/05/dinosaurios_profesiones_viral.png"
+                                                src={localStorage.getItem('userImage')}
                                                 alt="" />
                                         </div>
                                         <div className="col-10">
@@ -254,7 +254,10 @@ export function PostWall() {
                                             <div>
                                                 {posts.map((post) => (
                                                     <div key={post.post_id} className='divPublication'>
+                                                        <div className='imgNameUser'>
+                                                        <img className="friends rounded-circle mx-auto d-block comentaUsuario" src={post.user_image} alt="" />
                                                         <p><small className='postWritter'>{post.user_name}</small> escribió:</p>
+                                                        </div>
                                                         <div className='textPublication' >
                                                             <p>{post.post_content}</p>
 
@@ -294,7 +297,8 @@ export function PostWall() {
                                 <ul>
                                     <li className="listaPerfil">
                                         <img id="divnosaurImg" className=" fotoUsuario profile rounded-circle mx-auto d-block"
-                                            src="https://www.soy502.com/sites/default/files/styles/full_node/public/2023/Feb/05/dinosaurios_profesiones_viral.png"
+                                            /* src="https://www.soy502.com/sites/default/files/styles/full_node/public/2023/Feb/05/dinosaurios_profesiones_viral.png" */
+                                            src={localStorage.getItem('userImage')}
                                             alt="usuario" />
                                         {/* <!-- <h3 className="text-center">Rodri Rex</h3> --> */}
                                         <h3 className="text-center" id="idNameMuro">{localStorage.getItem('userName')}</h3>
@@ -350,7 +354,7 @@ export function PostWall() {
                                         <span className="carousel-control-next-icon dark" aria-hidden="true"></span>
                                         <span className="sr-only">Siguiente</span>
                                     </a>
-                                    <Link to="/friendssuggests"><div className='to-full-suggests'><a href="#">Ver personas en tu entorno <img src='clic.png'  width={32}/> </a></div></Link>
+                                    <Link to="/friendssuggests"><div className='to-full-suggests'><a href="#">Ver personas en tu entorno <img src='clic.png' width={32} /> </a></div></Link>
                                 </div>
                             </div>
                         </div>

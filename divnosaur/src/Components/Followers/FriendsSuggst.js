@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setLoggedUserId, setUsers, updateFriendshipStatus } from '../../redux/followerSlice';
+import { setLoggedUserId, setUsers } from '../../redux/followerSlice';
 import { setFollowedUsers } from '../../redux/followerSlice';
 import { FollowButton } from './FollowButton';
 import './Followers.css';
@@ -11,9 +11,6 @@ export function FriendsSuggests() {
     const loggedUserId = useSelector((state) => state.user.loggedUserId);
     const users = useSelector((state) => state.follower.users);
     const filteredUsers = users.filter((user) => !user.status_friendship || user.status_friendship === 0);
-
-
-    const [userImages, setUserImages] = useState([]); //se guardan en el estado local, no en el global de redux
 
     const idLogged = localStorage.getItem('idLogged');
 
@@ -67,15 +64,16 @@ export function FriendsSuggests() {
 
                         {filteredUsers ? (
                             filteredUsers.map((user) => (
-
                                 <div key={user.user_id} className='col-4 ' id='divFollower'>
+                                    <img src={user.image} alt='foto' className='imagPerson'/>
                                     <div>
                                         <h6>{user.name}</h6>
                                         <p>{user.email}</p>
                                         {/* <p>Contactos en común:</p> */}
+                                        <FollowButton key={user.user_id} user={user} />
                                     </div>
 
-                                    <FollowButton key={user.user_id} user={user} />
+                                    
                                 </div>
                             ))
                         ) : (

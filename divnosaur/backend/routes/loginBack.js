@@ -41,7 +41,7 @@ const postLogin = async function (req, res) {
 
                     /* ------------generando el TOKEN--------------------------------------------------------------- */
 
-                    let payload = { userId: users[0].user_id, userName: users[0].name, userEmail: users[0].email, userAge: users[0].age, userPhone: users[0].telephone_number, userCity: users[0].city, userCountry: users[0].country, userHobbies: users[0].hobbies, userExperience: users[0].experience };
+                    let payload = { userId: users[0].user_id, userName: users[0].name, userEmail: users[0].email, userAge: users[0].age, userPhone: users[0].telephone_number, userCity: users[0].city, userCountry: users[0].country, userHobbies: users[0].hobbies, userExperience: users[0].experience, userImage: users[0].image };
                     const token = generateAccessToken(payload);
                     payload.token = token
                     console.log(token)

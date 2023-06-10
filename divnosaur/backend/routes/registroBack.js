@@ -8,8 +8,7 @@ const bcrypt = require('bcrypt');
 
 
 const postRegister = async function (req, res) {
-  /* const { name, email, password, age, phone, city, country, hobbies, experience } = req.body; */
-  const { name, email, password, age, phone, city, country, hobbies, experience, image } = req.body; //probando
+  const { name, email, password, age, phone, city, country, hobbies, experience, image } = req.body; 
   console.log("no llega el body")
   console.log(req.body);
 
@@ -24,10 +23,8 @@ const postRegister = async function (req, res) {
             const hashedPassword = await bcrypt.hash(password, 10);
 
             // Crear usuario
-            /* sequelize.query('INSERT INTO users (name,email,age,password,telephone_number,city,country,hobbies,experience) VALUES (?,?,?,?,?,?,?,?,?)', */
             sequelize.query('INSERT INTO users (name,email,age,password,telephone_number,city,country,hobbies,experience,image) VALUES (?,?,?,?,?,?,?,?,?,?)',
-              /* { replacements: [name ?? "", email ?? "", age ?? "", hashedPassword ?? "", phone ?? "", city ?? "", country ?? "", hobbies ?? "", experience ?? ""], type: sequelize.QueryTypes.INSERT }); */
-              { replacements: [name ?? "", email ?? "", age ?? "", hashedPassword ?? "", phone ?? "", city ?? "", country ?? "", hobbies ?? "", experience ?? "", image?.data ?? ""], type: sequelize.QueryTypes.INSERT });
+              { replacements: [name ?? "", email ?? "", age ?? "", hashedPassword ?? "", phone ?? "", city ?? "", country ?? "", hobbies ?? "", experience ?? "", image ?? ""], type: sequelize.QueryTypes.INSERT });
 
             console.log('No existe el usuario');
             res.status(200).send({ result: true, message: "Usuario creado con éxito, inicie sesión" });

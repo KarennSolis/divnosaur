@@ -76,7 +76,7 @@ export function Login() {
 
                 } else {
                     
-                    const { userId, userName, userEmail, userAge, userPhone, userCity, userCountry, userHobbies, userExperience } = data.result;
+                    const { userId, userName, userEmail, userAge, userPhone, userCity, userCountry, userHobbies, userExperience, userImage } = data.result;
 
                     const userData = {
                         idLogged: userId,
@@ -87,7 +87,8 @@ export function Login() {
                         userCity,
                         userCountry,
                         userHobbies,
-                        userExperience
+                        userExperience,
+                        userImage
                     };
 
                     for (const [key, value] of Object.entries(userData)) {
