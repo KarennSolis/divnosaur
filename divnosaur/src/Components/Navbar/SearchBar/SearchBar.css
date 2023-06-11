@@ -1,0 +1,17 @@
+.results{
+    width: 400px;
+    background-color: rgb(236, 151, 203);
+    z-index: 10000000;
+    margin: 30px 15px 0px 0px;
+    padding: 4px 10px;
+    color: blue;
+    border-radius: 0.25em; 
+}
+.modalContainer{
+    display: flex;
+}
+.buttonModal{
+    width: 30px;
+    border-radius: 0.3em;
+    margin-bottom: 35px;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setLoggedUserId, setUsers, updateFriendshipStatus } from '../../redux/followerSlice';
+import { setLoggedUserId, setUsers } from '../../redux/followerSlice';
 import { setFollowedUsers } from '../../redux/followerSlice';
 import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
 import { FriendsSuggests } from './FriendsSuggst';
@@ -65,7 +65,6 @@ export function Followers() {
     return (
 
         <>
-
             <Navbar2 />
             <div className="container fContainer">
 
@@ -75,15 +74,10 @@ export function Followers() {
                     {users ? (
                         users.map((user) => (
                             <div key={user.user_id} className='col-4 ' id='divFollower'>
-                                <img src='' alt='foto' />
+                                <img src={user.image} alt='foto' className='imagPerson' />
                                 <div className=' followDetails'>
-
                                     <h6>{user.name}</h6>
                                     <p>{user.email}</p>
-
-                                </div>
-                                <div></div>
-                                <div className=''>
                                     <FollowButton key={user.user_id} user={user} />
                                     <button className='btn btn-outline-success pt-1 ms-2' onClick={() => navigate(`/profile?user_id=${encodeURIComponent(JSON.stringify(user.user_id))}`)}>
                                         {/* <i className="bi bi-person bs-icon-b fs-4">ver perfil</i> */}
@@ -99,8 +93,6 @@ export function Followers() {
                     )}
 
                 </div>
-
-
 
             </div>
             <FriendsSuggests />

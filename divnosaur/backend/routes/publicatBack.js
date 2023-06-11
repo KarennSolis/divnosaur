@@ -2,13 +2,13 @@ const sequelize = require('../conexion-base-datos');
 
 
 
-/* --------------seleccionar las publicaciones de la tabla hechas por los seguidores del usuario logueado y por el usuario logueado y mostrar tb el nombre del autor------------------------ */
+/* --------------seleccionar las publicaciones de la tabla hechas por los seguidores del usuario logueado y por el usuario logueado y mostrar tb el nombre y la imagen del autor------------------------ */
 
 
 const getAllPublications = async function (req, res, user) {
   const userId = req.params.user_id;
   sequelize.query(`
-    SELECT posts.*, users.name as user_name
+    SELECT posts.*, users.name as user_name, users.image as user_image
     FROM posts
     INNER JOIN users ON posts.user_Id = users.user_id
     WHERE posts.user_Id = ${userId}

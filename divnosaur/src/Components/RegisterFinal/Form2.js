@@ -7,7 +7,7 @@ import { edadValidator } from "./validators";
 import "./formulario.css"
 
 const Formulario = () => {
-    const [selectedImageUrl, setSelectedImageUrl] = useState(null);//prueba
+    /* const [selectedImage, setSelectedImage] = useState(null); *///prueba
     const [formData, setFormData] = useState({});
     const { register, formState: { errors }, watch, handleSubmit, reset } = useForm();
     const onSubmit = (data) => {
@@ -21,15 +21,18 @@ const Formulario = () => {
     const incluirHobbies = watch('incluirHobbies')
     const anadirExp = watch('anadirExp')
 
-    const asyncPostCall = async (formData) => { //prueba
+    const asyncPostCall = async (imageUrl) /* (formData) */  => { //prueba
         try {
-
+            const formData = new FormData();//prueba
+            formData.append('image', imageUrl); // prueba
             const response = await fetch('http://localhost:3001/register', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    /* 'Content-Type': 'application/json' */
+                    'Content-Type': 'multipart/form-data' //prueba
                 },
-                body: JSON.stringify({ ...formData, image: selectedImageUrl ? selectedImageUrl : "" })
+                /* body: JSON.stringify(formData) */
+                body: formData //prueba
             });
             const data = await response.json();
             const { result, message } = data;
@@ -46,6 +49,34 @@ const Formulario = () => {
         }
     }
 
+    /* const handleSaveSelectedImage = async (selectedImage) => {
+
+        const formData = new FormData();
+        formData.append('image', selectedImage);
+        try { */
+            // Código para enviar la solicitud POST con el formData
+            /* const response = await fetch('http://localhost:3001/register', { */
+                /* method: 'POST', */
+                /* headers: { 'Content-Type': 'application/json' },  */
+                /* headers: { 'Content-Type': 'multipart/form-data' }, */
+                /* body: formData, */
+                /* body: JSON.stringify(formData) */
+/*             });
+
+            const data = await response.json();
+            const { result, message } = data;
+            console.log("enstoy en handleSaveSelectedImage, despues del fetch")
+
+            if (result) {
+                alert(message)
+            } else {
+                alert(message)
+                window.location.href = "/public/index.html"
+            }
+        } catch (error) {
+            console.error('Error al enviar la solicitud: ', error);
+        }
+    }; */
 
     return <div>
         <Navbar1 />
@@ -158,12 +189,18 @@ const Formulario = () => {
                                             placeholder="Describa aquí su experiencia laboral" {...register('experience')}></textarea>
                                     </li>
                                 )}
-
+                                {/* <li>
+                                    <label htmlFor="formFile" className="form-label">CV</label>
+                                    <input className="form-control" type="file" id="formFile" />
+                                </li> */}
                                 <li>
-                                    <label htmlFor="formFileimg" className="form-label avatarLabel">Elige tu avatar</label>
-                                   
+                                    <label htmlFor="formFileimg" className="form-label">Elige tu avatar</label>
                                     <AvatarComponent
-                                        setSelectedImageUrl={setSelectedImageUrl}
+                                        /* initialSelectedImage={selectedImage}
+                                        handleSaveSelectedImage={handleSaveSelectedImage}
+                                        setSelectedImage={setSelectedImage} */
+                                        asyncPostCall={asyncPostCall} //prueba
+
                                     />
 
                                 </li>

@@ -1,4 +1,4 @@
-/* .avatarContainer {
+.avatarContainer {
     margin: 20px;
     display: flex;
     justify-content: center;
@@ -15,4 +15,4 @@
 .avatar:hover {
     transition: transform 0.2s ease-in-out;
     transform: scale(1.6);
-} */
+}
