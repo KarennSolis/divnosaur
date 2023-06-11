@@ -85,8 +85,9 @@ export function Followers() {
                                 <div></div>
                                 <div className=''>
                                     <FollowButton key={user.user_id} user={user} />
-                                    <button className='btn btn-outline-success' onClick={() => navigate(`/profile?user_id=${encodeURIComponent(JSON.stringify(user.user_id))}`)}>
-                                        <i className="bi bi-person bs-icon-b fs-4"></i>
+                                    <button className='btn btn-outline-success pt-1 ms-2' onClick={() => navigate(`/profile?user_id=${encodeURIComponent(JSON.stringify(user.user_id))}`)}>
+                                        {/* <i className="bi bi-person bs-icon-b fs-4">ver perfil</i> */}
+                                        <i className="bi bi-eye fs-5 "></i>
                                     </button>
                                 </div>
 

@@ -8,7 +8,7 @@ const cors = require('cors');
 const sequelize = require('./conexion-base-datos');
 const postRegister = require('./routes/registroBack');
 const postLogin = require('./routes/loginBack');
-const { getPublications, getAllPublications, getPublicationsWritters , postPublications } = require('./routes/publicatBack')
+const { getPublications, getAllPublications, getPublicationsWritters, postPublications } = require('./routes/publicatBack')
 const { updateFriendshipStatus } = require('./routes/friendsPrueba')
 const postFriends = require('./routes/friendsBack')
 const { getUser } = require("./routes/usersBack");
@@ -16,11 +16,12 @@ const { allUser, namesUsers } = require("./routes/allUsersback");
 const { followers } = require('./routes/followBack');
 const { getUserDataById } = require('./routes/perfilBack')
 const { updateUserDataById } = require('./routes/perfilBack')
-
+const { getRecomendacion } = require('./routes/recomendacionBack');
+const { updateRecomendacion } = require('./routes/recomendacionBack');
 // const port = process.env.PORT || 3000;
 const port = 3001;
 // import { isLogged } from './routes/middlewareToke';
-const {isLogged} = require('./routes/middlewareToke')
+const { isLogged } = require('./routes/middlewareToke')
 app.use(requestTransfer);
 app.use(express.json());
 app.use(cors());
@@ -43,6 +44,13 @@ app.route("/profile")
     .get(isLogged, getUserDataById)
     .patch(isLogged, updateUserDataById)
 
+// Recomendaciones// 
+app.route("/profile/recomendaciones/:user_id")
+    .get(getRecomendacion)
+
+app.route("/profile/recomendaciones/new")
+    .post(updateRecomendacion)
+    
 //Login
 app.get('/login', async (req, res) => {
     console.log(res)
@@ -66,7 +74,7 @@ app.get('/users', allUser);
 app.get('/:name', namesUsers);
 
 //por id de usuario
-app.get('/:user_id', getUser); //ahora mismo no funciona
+app.get('/user/:user_id', getUser); //ahora mismo no funciona
 
 
 

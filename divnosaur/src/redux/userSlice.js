@@ -7,6 +7,7 @@ const initialState = {
     experience: "",
     hobbies: "",
     email: "",
+    user_id: "",
 };
 
 export const userSlice = createSlice({
@@ -14,13 +15,14 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         addUser: (state, action) => {
-            const { name, country, age, experience, hobbies, email } = action.payload;
+            const { name, country, age, experience, hobbies, email, user_id } = action.payload;
             state.name = name;
             state.country = country;
             state.age = age;
             state.experience = experience;
             state.hobbies = hobbies;
             state.email = email;
+            state.user_id = user_id;
         },
         changefields: (state, action) => {
             state.name = action.payload;
@@ -29,6 +31,7 @@ export const userSlice = createSlice({
             state.experience = action.payload;
             state.hobbies = action.payload;
             state.email = action.payload;
+            state.user_id = action.payload;
         },
 
         updateName: (state, action) => {
@@ -51,9 +54,13 @@ export const userSlice = createSlice({
             state.email = action.payload;
         },
 
+        updateUser_id: (state, action) => {
+            state.user_id = action.payload;
+        },
+
     },
 },
 )
 
-export const { addUser, changefields, updateAge, updateCountry, updateEmail, updateExperience, updateHobbies, updateName } = userSlice.actions;
+export const { addUser, changefields, updateAge, updateCountry, updateEmail, updateExperience, updateHobbies, updateName, user_id } = userSlice.actions;
 export default userSlice.reducer; 
