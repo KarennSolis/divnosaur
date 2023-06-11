@@ -292,15 +292,6 @@ export function Perfil(props) {
                                 </button>
                             </div>
                             <div className="col-5">
-                                {/* {recomendaciones.map((recomendacion, index) => (
-                                    <div className=" text-center border-primary rounded-5 shadow recoCard" key={recomendacion.recomendacion_id}style={{ display: index === recomendacionActual ? 'block' : 'none' }}>
-                                        <p className="bi bi-person-heart fw-bold"> {recomendacion.name}</p>
-                                        <p className="bi bi-chat-left-quote fst-italic"> {recomendacion.contenido}</p>
-                                        <button className="btn btn-outline-primary bi bi-caret-left-square-fill" onClick={handlePrevRecomendacion}></button>
-                                        <button className="btn btn-outline-primary ms-5 bi bi-caret-right-square-fill"onClick={handleNextRecomendacion}></button>
-                                    </div>
-
-                                ))} */}
                                 {recomendaciones.length === 0 ? (
                                     <p className="bi bi-emoji-frown-fill fw-bold text-center">Aún no tiene recomendaciones</p>
                                 ) : (
@@ -369,6 +360,7 @@ export function Perfil(props) {
                             </div>
                             <div className="col-5">
                                 {/* <button className="textareaPerfil rounded-5 shadow fw-bold text-center" onClick={handleGuardarRecomendacion}>Enviar recomendación </button> */}
+                                {/* <button className="textareaPerfil rounded-5 shadow fw-bold text-center" type="submit">Guardar Recomendación</button> */}
                             </div>
                         </div>
                         <div className="row perfil-row-b justify-content-between">
