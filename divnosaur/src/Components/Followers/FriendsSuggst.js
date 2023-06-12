@@ -76,7 +76,8 @@ export function FriendsSuggests() {
 
                         {filteredUsers ? (
                             filteredUsers.map((user) => (
-                                <div key={user.user_id} className='col-4 rounded-2 border-dark border-opacity-50 border-2 bg-body-secondary p-2' id='divFollower'>
+                                <div key={user.user_id} className='col-3 rounded-2 border-dark border-opacity-50 border-2 bg-body-secondary p-2 shadow' id='divFollower'>
+                                {/* // <div key={user.user_id} className='col-4 rounded-2 border-dark border-opacity-50 border-2 bg-success bg-opacity-10 p-2 shadow' id='divFollower'> */}
                                     <img src={user.image} alt='foto' className='imagPerson'/>
                                     <div>
                                         <h6>{user.name}</h6>

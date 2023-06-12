@@ -44,7 +44,7 @@ export function FollowButton({ user }) {
 
     return (
         <button type="button" 
-            className= {user.status_friendship === 1 ? 'following btn btn-outline-danger' : 'users btn btn-outline-primary bi bi-person-fill-add ps-1'}
+            className= {user.status_friendship === 1 ? 'following btn btn-outline-danger shadow' : 'users btn btn-outline-primary bi bi-person-fill-add ps-1 shadow'}
             onClick={() => handleButtonClick(user)}
         >
             {user.status_friendship === 1 ? 'eliminar' : 'seguir'}
