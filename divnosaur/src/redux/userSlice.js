@@ -69,19 +69,31 @@ export const userSlice = createSlice({
         /* updateSearchTerm: (state, action) => {
             state.searchTerm = action.payload;
         }, */
+        // userSlice.js
+
+        // ...
+
         filterUsers: (state, action) => {
-            const searchTerm = action.payload.toLowerCase();
-            const filteredUsers = state.users.filter((user) => {
-                return (
-                    user.name.toLowerCase().includes(searchTerm) ||
-                    user.email.toLowerCase().includes(searchTerm)
-                );
-            });
-            state.filteredUsers = filteredUsers;
+            /* const searchTerm = action.payload.toLowerCase(); */
+            const searchTerm = action.payload.toString();
+            if (searchTerm.trim() !== "") {
+                const filteredUsers = state.users.filter((user) => {
+                    return (
+                        user.name.toLowerCase().includes(searchTerm) ||
+                        user.email.toLowerCase().includes(searchTerm)
+                    );
+                });
+                state.filteredUsers = filteredUsers;
+            } else {
+                state.filteredUsers = [];
+            }
         },
 
+        // ...
+
+
         updateSearchTerm: (state, action) => {
-            const searchTerm = action.payload.toLowerCase();
+            const searchTerm = action.payload;
             const filteredUsers = state.users.filter((user) => {
                 return (
                     user.name.toLowerCase().includes(searchTerm) ||
@@ -99,9 +111,9 @@ export const userSlice = createSlice({
     },
 
 
-    
+
 },
 )
 
-export const { addUser, changefields, updateAge, updateCountry, updateEmail, updateExperience, updateHobbies, updateImage, updateName } = userSlice.actions;
+export const { addUser, changefields, updateAge, updateCountry, updateEmail, updateExperience, updateHobbies, updateImage, updateName, setInUsers, filterUsers, updateSearchTerm, updateUser_id } = userSlice.actions;
 export default userSlice.reducer; 

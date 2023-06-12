@@ -1,9 +1,9 @@
 .results{
-    width: 400px;
-    background-color: rgb(236, 151, 203);
-    z-index: 10000000;
-    margin: 30px 15px 0px 0px;
-    padding: 4px 10px;
+    /* width: 400px; */
+    background-color: rgb(241, 195, 224);
+    /* z-index: 10000000; */
+    /* margin: 30px 15px 0px 0px; */
+    padding: 4px 40px 4px 10px;
     color: blue;
     border-radius: 0.25em; 
 }
@@ -12,6 +12,7 @@
 }
 .buttonModal{
     width: 30px;
+    height: 30px;
     border-radius: 0.3em;
     margin-bottom: 35px;
 }

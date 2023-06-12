@@ -32,8 +32,8 @@ export function Navbar2(props) {
                             <input className="form-control me-4" type="search" placeholder="nombre, especialidad ..." aria-label="Search" />
                             <button className="btn btn-outline-primary me-2" type="submit">Buscar</button>
                         </form> */}
-                        <SearchBar2 />
-                        {/* <SearchBar /> */}
+                        {/* <SearchBar2 /> */}
+                        <SearchBar />
                         <li className="nav-item">
                             <Link to="/postWall"><a className="nav-link" aria-current="page" href="#">Inicio</a></Link>
                         </li>

@@ -23,7 +23,7 @@ const Formulario = () => {
     const incluirHobbies = watch('incluirHobbies')
     const anadirExp = watch('anadirExp')
 
-    const asyncPostCall = async (formData) => { //prueba
+    const asyncPostCall = async (formData) => { 
         try {
 
             const response = await fetch('http://localhost:3001/register', {
