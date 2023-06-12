@@ -342,8 +342,8 @@ export function Perfil(props) {
                                     <button type="submit">Guardar Recomendación</button>
                                 </form> */}
                                 <form onSubmit={handleSubmitContenido}>
-                                    <textarea value={contenido} onChange={handleContenidoChange} />
-                                    <button type="submit">Guardar Recomendación</button>
+                                    <input className="text-center w-100 pb-4 border border-primary border border-3 rounded-3" value={contenido} onChange={handleContenidoChange} />
+                                    {/* <button className="textareaPerfil rounded-5 shadow fw-bold text-center" type="submit">Guardar Recomendación</button> */}
                                 </form>
 
                             </div>
@@ -359,6 +359,9 @@ export function Perfil(props) {
                                 </button>
                             </div>
                             <div className="col-5">
+                                <form onSubmit={handleSubmitContenido}>
+                                    <button className="textareaPerfil rounded-5 shadow fw-bold text-center" type="submit">Guardar Recomendación</button>
+                                </form>
                                 {/* <button className="textareaPerfil rounded-5 shadow fw-bold text-center" onClick={handleGuardarRecomendacion}>Enviar recomendación </button> */}
                                 {/* <button className="textareaPerfil rounded-5 shadow fw-bold text-center" type="submit">Guardar Recomendación</button> */}
                             </div>
@@ -510,7 +513,6 @@ export function Perfil(props) {
                         <div className="row perfil-row-b">
                             <div className="col-5 colum-dat-usu">
                                 <i className="bi bi-person bs-icon-b fs-4"></i>
-                                {/* <p id="profileLang" className="p-perfil-b">B1 Inglés</p> */}
                                 {isEditingName ? (
                                     <textarea
                                         id="profileName"
@@ -541,7 +543,6 @@ export function Perfil(props) {
                         <div className="row perfil-row-b">
                             <div className="col-5 colum-dat-usu">
                                 <i className="bi bi-bicycle bs-icon-b fs-3"></i>
-                                {/* <p id="profileHobbies" className="p-perfil-b">{user.hobbies}</p> */}
                                 {isEditingHobbies ? (
                                     <textarea
                                         id="profileHobbies"

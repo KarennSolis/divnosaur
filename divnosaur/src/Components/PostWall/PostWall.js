@@ -36,7 +36,11 @@ export function PostWall() {
             try {
                 const url = new URL(`http://localhost:3001/allPublications/${user_id}`);
                 const response = await fetch(url, {
-                    method: "GET"
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('Token')}`,
+                        'Content-Type': 'application/json',
+                    },
                 });
                 const data = await response.json();
                 console.log(data);
@@ -60,6 +64,7 @@ export function PostWall() {
             const response = await fetch('http://localhost:3001/createPublications', {
                 method: 'POST',
                 headers: {
+                    Authorization: `Bearer ${localStorage.getItem('Token')}`,
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
