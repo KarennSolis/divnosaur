@@ -61,8 +61,8 @@ app.post('/login', postLogin);
 
 
 //PUBLICACIONES :  cargar y crear en la página de inicio
-app.get('/allPublications/:user_id', getAllPublications);
-app.post('/createPublications', postPublications);
+app.get('/allPublications/:user_id',isLogged, getAllPublications);
+app.post('/createPublications',isLogged, postPublications);
 
 
 //USUARIOS
@@ -99,3 +99,4 @@ app.route("/followed/:user_id")
 app.listen(port, () => {
     console.log(`Server Started at http://localhost:${port}`)
 });
+
