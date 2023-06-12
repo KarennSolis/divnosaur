@@ -15,8 +15,12 @@ export function FollowButton({ user }) {
 
             const response = await fetch(`http://localhost:3001/changeStatus/${idLogged}`, {
                 method: 'PATCH',
+                // headers: {
+                //     'Content-Type': 'application/json'
+                // },
                 headers: {
-                    'Content-Type': 'application/json'
+                    Authorization: `Bearer ${localStorage.getItem("Token")}`,
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     friend: userData.user_id,
@@ -40,7 +44,7 @@ export function FollowButton({ user }) {
 
     return (
         <button type="button" 
-            className= {user.status_friendship === 1 ? 'following btn btn-outline-danger' : 'users btn btn-outline-primary'}
+            className= {user.status_friendship === 1 ? 'following btn btn-outline-danger shadow' : 'users btn btn-outline-primary bi bi-person-fill-add ps-1 shadow'}
             onClick={() => handleButtonClick(user)}
         >
             {user.status_friendship === 1 ? 'eliminar' : 'seguir'}
