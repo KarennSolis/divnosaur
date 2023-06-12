@@ -73,6 +73,7 @@ export function PostWall() {
             });
             const data = await response.json();
             console.log(data);
+
             setCreatedPublications([...createdPublications, { ...data }]);//para que renderice las publicaciones recién creadas
 
             setFormData({

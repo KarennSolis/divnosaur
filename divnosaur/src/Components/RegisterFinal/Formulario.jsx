@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Navbar1 } from '../Navbar/Navbar1/Navbar1';
 import { AvatarComponent } from '../AvatarComponent/AvatarComponent';
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
 import { edadValidator } from "./validators";
 import "./formulario.css"
 

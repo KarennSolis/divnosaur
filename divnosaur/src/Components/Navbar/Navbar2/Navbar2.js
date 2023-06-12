@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar2.css";
 import { SearchBar } from "../SearchBar/SearchBar";
+import { SearchBar2 } from "../SearchBar/SearchBar2";
+
 
 export function Navbar2(props) {
 
@@ -30,7 +32,8 @@ export function Navbar2(props) {
                             <input className="form-control me-4" type="search" placeholder="nombre, especialidad ..." aria-label="Search" />
                             <button className="btn btn-outline-primary me-2" type="submit">Buscar</button>
                         </form> */}
-                        <SearchBar />
+                        <SearchBar2 />
+                        {/* <SearchBar /> */}
                         <li className="nav-item">
                             <Link to="/postWall"><a className="nav-link" aria-current="page" href="#">Inicio</a></Link>
                         </li>

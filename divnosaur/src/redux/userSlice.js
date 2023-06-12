@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const initialState = {
+    users: [],
     name: "",
     country: "",
     age: "",
@@ -8,6 +10,8 @@ const initialState = {
     hobbies: "",
     email: "",
     image: "",
+    searchTerm: "",
+    filteredUsers: [],
 };
 
 export const userSlice = createSlice({
@@ -56,10 +60,39 @@ export const userSlice = createSlice({
         updateImage: (state, action) => {
             state.image = action.payload;
         },
-
-    },
+        setInUsers: (state, action) => {
+            state.users = action.payload
+        },
+        /* updateSearchTerm: (state, action) => {
+            state.searchTerm = action.payload;
+        }, */
+        filterUsers: (state, action) => {
+            const searchTerm = action.payload.toLowerCase();
+            const filteredUsers = state.users.filter((user) => {
+              return (
+                user.name.toLowerCase().includes(searchTerm) ||
+                user.email.toLowerCase().includes(searchTerm)
+              );
+            });
+            state.filteredUsers = filteredUsers;
+          },
+              
+          updateSearchTerm: (state, action) => {
+            const searchTerm = action.payload.toLowerCase();
+            const filteredUsers = state.users.filter((user) => {
+              return (
+                user.name.toLowerCase().includes(searchTerm) ||
+                user.email.toLowerCase().includes(searchTerm)
+              );
+            });
+            state.searchTerm = action.payload;
+            state.filteredUsers = filteredUsers;
+          },
+                
+    }
+    
 },
 )
 
-export const { addUser, changefields, updateAge, updateCountry, updateEmail, updateExperience, updateHobbies, updateImage, updateName } = userSlice.actions;
+export const { addUser, changefields, updateAge, updateCountry, updateEmail, updateExperience, updateHobbies, updateImage, updateName, setInUsers, updateSearchTerm, filterUsers } = userSlice.actions;
 export default userSlice.reducer; 

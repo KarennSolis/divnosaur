@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./userSlice";
+import userReducer, { filterUsers, updateSearchTerm } from "./userSlice";
 import followerReducer from "./followerSlice";
 
 
@@ -17,3 +17,6 @@ export const store = configureStore({
 store.subscribe(() => {
     console.log(store.getState());
 });
+
+/* console.log(store.dispatch(filterUsers()))
+console.log(store.dispatch(updateSearchTerm())) */
