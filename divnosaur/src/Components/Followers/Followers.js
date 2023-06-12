@@ -18,7 +18,7 @@ export function Followers() {
     /* const users = useSelector((state) => state.follower.users); */
     const users = useSelector((state) => state.follower.users.filter((user) => user.status_friendship === 1));
     const numberUsers = users.length
-    
+
 
     const idLogged = localStorage.getItem('idLogged');
     const navigate = useNavigate()
@@ -38,74 +38,86 @@ export function Followers() {
                 console.log(dataUser);
             }
 
-            const followedResponse = await fetch(`http://localhost:3001/followed/${idLogged}`);
+            /* const followedResponse = await fetch(`http://localhost:3001/followed/${idLogged}`); */
+            //
+            const followedResponse = await fetch(`http://localhost:3001/followed/${idLogged}`, {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("Token")}`,
+                    "Content-Type": "application/json"
+                }
+            });//HASTA AQUI
             let followedData = [];
 
-        if (followedResponse.ok) {
-            followedData = await followedResponse.json();
-            dispatch(
-                setFollowedUsers(
-                    followedData.map((friend) => ({
-                        ...friend,
-                        status_friendship: 1,
-                    }))
-                )
-            );
-        }
+            if (followedResponse.ok) {
+                followedData = await followedResponse.json();
+                dispatch(
+                    setFollowedUsers(
+                        followedData.map((friend) => ({
+                            ...friend,
+                            status_friendship: 1,
+                        }))
+                    )
+                );
+            }
 
-        //Haciendo combinación de info de users + status_friendship  para almacenarla en el estado global
-        const combinedUsers = dataUser.map((user) => {
-            const followedUser = followedData.find((followed) => followed.user_id === user.user_id);
-            return followedUser ? { ...user, status_friendship: followedUser.status_friendship } : user;
-        });
+            //Haciendo combinación de info de users + status_friendship  para almacenarla en el estado global
+            const combinedUsers = dataUser.map((user) => {
+                const followedUser = followedData.find((followed) => followed.user_id === user.user_id);
+                return followedUser ? { ...user, status_friendship: followedUser.status_friendship } : user;
+            });
 
-        dispatch(setUsers(combinedUsers));
-        dispatch(setLoggedUserId(idLogged));
+            dispatch(setUsers(combinedUsers));
+            dispatch(setLoggedUserId(idLogged));
 
-    };
+        };
 
-    useEffect(() => {
+        //
         fetchData();
-    }, [dispatch, loggedUserId]);
+    }, [dispatch, loggedUserId]);//HASTA AQUI
 
-console.log(users)
-    return (
+        /* useEffect(() => {
+            fetchData();
+        }, [dispatch, loggedUserId]); */
 
-        <>
-            <Navbar2 />
-            <div className="container fContainer">
+        console.log(users)
+        return (
 
-                <h5 className='numberFollowers'>Tienes <span className='numberUsers'>{numberUsers}</span>  contactos en tu red</h5>
-                <div id="followersContainer" className=" row ">
+            <>
+                <Navbar2 />
+                <div className="container fContainer">
 
-                    {users ? (
-                        users.map((user) => (
-                            <div key={user.user_id} className='col-4 rounded-2 border-success border-opacity-50 border-2 bg-success bg-opacity-10 p-2 shadow' id='divFollower'>
-                                <img src={user.image} alt='foto' className='imagPerson' />
-                                <div className=' followDetails'>
-                                    <h6>{user.name}</h6>
-                                    <p>{user.email}</p>
-                                    <FollowButton key={user.user_id} user={user} />
-                                    <button className='btn btn-outline-success pt-0 ps-3 ms-2 shadow' onClick={() => navigate(`/profile?user_id=${encodeURIComponent(JSON.stringify(user.user_id))}`)}>
-                                        ver
-                                        {/* <i className="bi bi-person bs-icon-b fs-4">ver perfil</i> */}
-                                        <i className="bi bi-eye px-2 fs-5"></i>
-                                    </button>
+                    <h5 className='numberFollowers'>Tienes <span className='numberUsers'>{numberUsers}</span>  contactos en tu red</h5>
+                    <div id="followersContainer" className=" row ">
+
+                        {users ? (
+                            users.map((user) => (
+                                <div key={user.user_id} className='col-4 rounded-2 border-success border-opacity-50 border-2 bg-success bg-opacity-10 p-2 shadow' id='divFollower'>
+                                    <img src={user.image} alt='foto' className='imagPerson' />
+                                    <div className=' followDetails'>
+                                        <h6>{user.name}</h6>
+                                        <p>{user.email}</p>
+                                        <FollowButton key={user.user_id} user={user} />
+                                        <button className='btn btn-outline-success pt-0 ps-3 ms-2 shadow' onClick={() => navigate(`/profile?user_id=${encodeURIComponent(JSON.stringify(user.user_id))}`)}>
+                                            ver
+                                            {/* <i className="bi bi-person bs-icon-b fs-4">ver perfil</i> */}
+                                            <i className="bi bi-eye px-2 fs-5"></i>
+                                        </button>
+                                    </div>
+
                                 </div>
+                            ))
 
-                            </div>
-                        ))
+                        ) : (
+                            <p>Cargando...</p>
+                        )}
 
-                    ) : (
-                        <p>Cargando...</p>
-                    )}
+                    </div>
 
                 </div>
+                <FriendsSuggests />
+            </>
+        );
 
-            </div>
-            <FriendsSuggests />
-        </>
-    );
-
-}
+    }
 

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setLoggedUserId, setUsers } from '../../redux/followerSlice';
 import { setFollowedUsers } from '../../redux/followerSlice';
 import { FollowButton } from './FollowButton';
+import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
 import './Followers.css';
 import './FriendsSuggst.css';
 
@@ -68,7 +69,7 @@ export function FriendsSuggests() {
     return (
         <>
            
-
+                <Navbar2 />
                 <div className="container fContainer"  /* className="col-10 container-fluid" */>
                    
                     <h5>Haz nuevos contactos</h5>

@@ -1,8 +1,16 @@
 import React from "react";
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Modal from 'react-modal';
+import { updateSearchTerm, filterUsers } from '../../../redux/userSlice';
+import '../SearchBar/SearchBar.css';
+import { FilteredUser } from '../SearchBar/FilteredUsers';
+import { FollowButton } from '../../Followers/FollowButton';
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import "./Navbar2.css";
 import { SearchBar } from "../SearchBar/SearchBar";
-import { SearchBar2 } from "../SearchBar/SearchBar2";
+
 
 
 export function Navbar2(props) {
@@ -28,11 +36,7 @@ export function Navbar2(props) {
                 <div className="collapse navbar-collapse flex-row justify-content-end" id="navbarSupportedContent">
 
                     <ul className="navbar-nav">
-                        {/* <form id="search" className="d-flex" role="search">
-                            <input className="form-control me-4" type="search" placeholder="nombre, especialidad ..." aria-label="Search" />
-                            <button className="btn btn-outline-primary me-2" type="submit">Buscar</button>
-                        </form> */}
-                        {/* <SearchBar2 /> */}
+                       
                         <SearchBar />
                         <li className="nav-item">
                             <Link to="/postWall"><a className="nav-link" aria-current="page" href="#">Inicio</a></Link>

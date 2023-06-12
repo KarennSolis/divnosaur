@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment/moment';
 import "./PostWall.css";
 import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
+import { SearchBar } from '../Navbar/SearchBar/SearchBar';
 import { Link } from "react-router-dom";
 
 

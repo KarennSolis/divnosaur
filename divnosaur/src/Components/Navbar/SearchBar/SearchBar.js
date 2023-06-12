@@ -99,9 +99,9 @@ export function SearchBar() {
                     {searchTerm.length > 0 && filteredUsers.length > 0 && (
                         <ul style={{ maxHeight: 'calc(100vh - 10px)', overflowY: 'auto' }}>
                             {filteredUsers.map((user) => (
-                                <li key={user.id} id="divFollower">
-                                    <img src={user.image} alt='foto' className='imagPerson' />
-                                    <div className=' followDetails'>
+                                <li key={user.id} id="divFollower2">
+                                    <img src={user.image} alt='foto' className='imagPerson2' />
+                                    <div className=' followDetails2'>
                                         <h6>{user.name}</h6>
                                         <p>{user.email}</p>
                                         {followers && user.status_friendship === 1 ? (
