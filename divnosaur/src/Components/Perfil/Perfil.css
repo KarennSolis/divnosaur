@@ -189,28 +189,6 @@
   margin-bottom: 50px;
 }
 
-/* .animated-bar {
-  position: relative;
-  width: 1px;
-  height: 30%;
-  background-color: #000;
-  animation: bar-animation 1s infinite;
-}
-
-@keyframes bar-animation {
-  0% {
-    opacity: 0;
-    transform: scaleY(0);
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: scaleY(1);
-  }
-} */
-
 .warningPerfil{
   /* text-align: left; Alineación a la izquierda */
   /* color: rgb(255, 30, 30); Color de texto rojo neón */
@@ -305,9 +283,7 @@ margin-top: 50px;
   margin-bottom: 2%;
 }
 
-/* #boton-cancelar-cambios{
- 
-    background-color:rgba(175, 175, 175, 0.999); 
-    
-background-color: rgb(213, 6, 6)
-} */
+.recoCard{
+  background-color: #ffffff9d;
+  
+}

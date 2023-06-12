@@ -9,6 +9,7 @@ const initialState = {
     experience: "",
     hobbies: "",
     email: "",
+    user_id: "",
     image: "",
     searchTerm: "",
     filteredUsers: [],
@@ -19,13 +20,14 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         addUser: (state, action) => {
-            const { name, country, age, experience, hobbies, email, image } = action.payload;
+            const { name, country, age, experience, hobbies, email, user_id, image } = action.payload;
             state.name = name;
             state.country = country;
             state.age = age;
             state.experience = experience;
             state.hobbies = hobbies;
             state.email = email;
+            state.user_id = user_id;
             state.image = image;
         },
         changefields: (state, action) => {
@@ -35,6 +37,7 @@ export const userSlice = createSlice({
             state.experience = action.payload;
             state.hobbies = action.payload;
             state.email = action.payload;
+            state.user_id = action.payload;
             state.image = action.payload;
         },
 
@@ -69,30 +72,36 @@ export const userSlice = createSlice({
         filterUsers: (state, action) => {
             const searchTerm = action.payload.toLowerCase();
             const filteredUsers = state.users.filter((user) => {
-              return (
-                user.name.toLowerCase().includes(searchTerm) ||
-                user.email.toLowerCase().includes(searchTerm)
-              );
+                return (
+                    user.name.toLowerCase().includes(searchTerm) ||
+                    user.email.toLowerCase().includes(searchTerm)
+                );
             });
             state.filteredUsers = filteredUsers;
-          },
-              
-          updateSearchTerm: (state, action) => {
+        },
+
+        updateSearchTerm: (state, action) => {
             const searchTerm = action.payload.toLowerCase();
             const filteredUsers = state.users.filter((user) => {
-              return (
-                user.name.toLowerCase().includes(searchTerm) ||
-                user.email.toLowerCase().includes(searchTerm)
-              );
+                return (
+                    user.name.toLowerCase().includes(searchTerm) ||
+                    user.email.toLowerCase().includes(searchTerm)
+                );
             });
             state.searchTerm = action.payload;
             state.filteredUsers = filteredUsers;
-          },
-                
-    }
+
+        },
+        updateUser_id: (state, action) => {
+            state.user_id = action.payload;
+        },
+
+    },
+
+
     
 },
 )
 
-export const { addUser, changefields, updateAge, updateCountry, updateEmail, updateExperience, updateHobbies, updateImage, updateName, setInUsers, updateSearchTerm, filterUsers } = userSlice.actions;
+export const { addUser, changefields, updateAge, updateCountry, updateEmail, updateExperience, updateHobbies, updateImage, updateName } = userSlice.actions;
 export default userSlice.reducer; 

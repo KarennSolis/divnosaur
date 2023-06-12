@@ -4,19 +4,18 @@ const mysql2 = require('mysql2');
 const getUserDataById = async (req, res) => {
   try {
     const user_id = req.jwtInfo.userId;
-    console.log(user_id);
-    sequelize.query('SELECT * FROM users WHERE user_id = :id', { replacements: { id: user_id }, type: sequelize.QueryTypes.SELECT })
-      .then(async users => {
-        res.status(200).send(users[0]);
-      });
+    console.log("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII" + user_id);
+    
+    const userData = await sequelize.query('SELECT * FROM users WHERE user_id = :id', { replacements: { id: user_id }, type: sequelize.QueryTypes.SELECT })
+    console.log(userData)
+
+    res.status(200).json(userData[0])
 
   } catch (error) {
     console.error(error);
-    throw new Error('Error al obtener los datos del usuario');
+    res.status(500).json({message: `Error al obtener los datos del usuario. ${error}`})
   }
 };
-
-
 
 const updateUserDataById = async (req, res) => {
   try {

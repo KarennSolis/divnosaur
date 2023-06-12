@@ -36,7 +36,11 @@ export function PostWall() {
             try {
                 const url = new URL(`http://localhost:3001/allPublications/${user_id}`);
                 const response = await fetch(url, {
-                    method: "GET"
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('Token')}`,
+                        'Content-Type': 'application/json',
+                    },
                 });
                 const data = await response.json();
                 console.log(data);
@@ -60,6 +64,7 @@ export function PostWall() {
             const response = await fetch('http://localhost:3001/createPublications', {
                 method: 'POST',
                 headers: {
+                    Authorization: `Bearer ${localStorage.getItem('Token')}`,
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
@@ -391,7 +396,7 @@ export function PostWall() {
             {/* <!--JS de bootstrap 5.0--> */}
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-                crossorigin="anonymous"></script>
+                crossOrigin="anonymous"></script>
 
             {/* <!-- ----API DE GOOGLE MAPS------------------------------------------------ --> */}
             <script

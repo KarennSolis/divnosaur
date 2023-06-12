@@ -65,24 +65,28 @@ export function Followers() {
     return (
 
         <>
-                <Navbar2 />
-                <div className="container fContainer">
+            <Navbar2 />
+            <div className="container fContainer">
 
                 <p className='numberFollowers'>Tienes <span className='numberUsers'>{numberUsers}</span>  contactos en tu red</p>
                 <div id="followersContainer" className=" row ">
 
-                        {users ? (
-                            users.map((user) => (
-                                <div key={user.user_id} className='col-4 ' id='divFollower'>
-                                    <img src={user.image} alt='foto' className='imagPerson' />
-                                    <div className=' followDetails'>
-                                        <h6>{user.name}</h6>
-                                        <p>{user.email}</p>
-                                        <FollowButton key={user.user_id} user={user} />
-                                    </div>
-                                    
+                    {users ? (
+                        users.map((user) => (
+                            <div key={user.user_id} className='col-4 ' id='divFollower'>
+                                <img src={user.image} alt='foto' className='imagPerson' />
+                                <div className=' followDetails'>
+                                    <h6>{user.name}</h6>
+                                    <p>{user.email}</p>
+                                    <FollowButton key={user.user_id} user={user} />
+                                    <button className='btn btn-outline-success pt-1 ms-2' onClick={() => navigate(`/profile?user_id=${encodeURIComponent(JSON.stringify(user.user_id))}`)}>
+                                        {/* <i className="bi bi-person bs-icon-b fs-4">ver perfil</i> */}
+                                        <i className="bi bi-eye fs-5 "></i>
+                                    </button>
                                 </div>
-                            ))
+
+                            </div>
+                        ))
 
                     ) : (
                         <p>Cargando...</p>
@@ -90,9 +94,9 @@ export function Followers() {
 
                 </div>
 
-                </div>
-                <FriendsSuggests />
-           
+            </div>
+            <FriendsSuggests />
+
 
         </>
     );
