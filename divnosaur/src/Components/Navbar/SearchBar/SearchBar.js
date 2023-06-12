@@ -62,11 +62,18 @@ export function SearchBar({ /* updateSearchTerm, filterUsers  */}) {
     };
 
 
-    useEffect(() => {
+    /* useEffect(() => {
         if (searchTerm.length > 0 && filteredUsers.length > 0) {
             setModalIsOpen(true);
         }
-    }, [filteredUsers]);
+    }, [filteredUsers]); */
+
+    useEffect(() => {
+        if (searchTerm.length > 0) {
+            setModalIsOpen(true);
+        }
+    }, [searchTerm]);
+    
 
 
 
