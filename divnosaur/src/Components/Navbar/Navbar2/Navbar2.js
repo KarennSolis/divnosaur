@@ -20,6 +20,45 @@ export function Navbar2(props) {
         localStorage.clear(user_id);
     }
 
+   /*  ------------Solución necesaria para que funcione la barra de búsqueda (que usa redux) pueda usarse en PostWall (que no usa redux)----------------- */
+    
+
+/*    const [searchTerm, setSearchTerm] = useState('');
+   const updateSearchTerm = () => {
+    const searchTerm = action.payload;
+    const filteredUsers = state.users.filter((user) => {
+        return (
+            user.name.toLowerCase().includes(searchTerm) ||
+            user.email.toLowerCase().includes(searchTerm)
+        );
+    });
+    state.searchTerm = action.payload;
+    state.filteredUsers = filteredUsers;
+
+}
+
+   const filterUsers = () => {
+       
+       const searchTerm = action.payload.toString();
+       if (searchTerm.trim() !== "") {
+           const filteredUsers = state.users.filter((user) => {
+               return (
+                   user.name.toLowerCase().includes(searchTerm) ||
+                   user.email.toLowerCase().includes(searchTerm)
+               );
+           });
+           state.filteredUsers = filteredUsers;
+       } else {
+           state.filteredUsers = [];
+       }
+   } */
+
+
+/* ---------------------------------------------------------------------------------------------------- */
+
+
+
+
 
     return (
 
@@ -38,6 +77,7 @@ export function Navbar2(props) {
                     <ul className="navbar-nav">
                        
                         <SearchBar />
+                        {/* <SearchBar searchTerm={searchTerm} updateSearchTerm={updateSearchTerm} filterUsers={filterUsers} /> */}
                         <li className="nav-item">
                             <Link to="/postWall"><a className="nav-link" aria-current="page" href="#">Inicio</a></Link>
                         </li>

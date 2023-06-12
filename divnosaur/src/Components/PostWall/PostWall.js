@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment/moment';
 import "./PostWall.css";
 import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
-import { SearchBar } from '../Navbar/SearchBar/SearchBar';
 import { Link } from "react-router-dom";
 
 
@@ -317,7 +316,7 @@ export function PostWall() {
                             <div className="solicitud">
 
                                 <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
-                                    <div className='carrContnrTitle'><h4 className='carrouselTitle'>Añade a tu red:</h4></div>
+                                    {/* <div className='carrContnrTitle'><h4 className='carrouselTitle'>Añade a tu red:</h4></div> */}
                                     <div className="carousel-inner">
                                         <div className="carousel-item active">
                                             <img className="profile rounded-circle mx-auto d-block d-block w-10 fotoSolicitud"
@@ -362,7 +361,7 @@ export function PostWall() {
                                         <span className="carousel-control-next-icon dark" aria-hidden="true"></span>
                                         <span className="sr-only">Siguiente</span>
                                     </a>
-                                    <Link to="/friendssuggests"><div className='to-full-suggests'><a href="#">Ver personas en tu entorno <img src='clic.png' width={32} /> </a></div></Link>
+                                    {/* <Link to="/friendssuggests"><div className='to-full-suggests'><a href="#">Ver personas en tu entorno <img src='clic.png' width={32} /> </a></div></Link> */}
                                 </div>
                             </div>
                         </div>

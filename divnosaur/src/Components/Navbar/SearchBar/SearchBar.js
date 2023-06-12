@@ -9,13 +9,14 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-export function SearchBar() {
+export function SearchBar({ /* updateSearchTerm, filterUsers  */}) {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const users = useSelector((state) => state.follower.users);
     const followers = useSelector((state) => state.follower.users.filter((user) => user.status_friendship === 1));
     const searchTerm = useSelector((state) => state.user.searchTerm);
+
     const filteredUsers = users.filter((user) => {
         return (
             user.name.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -66,7 +67,6 @@ export function SearchBar() {
             setModalIsOpen(true);
         }
     }, [filteredUsers]);
-
 
 
 

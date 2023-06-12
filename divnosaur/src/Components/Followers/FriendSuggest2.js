@@ -1,27 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLoggedUserId, setUsers } from '../../redux/followerSlice';
 import { setFollowedUsers } from '../../redux/followerSlice';
-/* import { FetchData} from '../Functions/FetchData' */
-import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
-
-import { FriendsSuggests2 } from './FriendSuggest2';
 import { FollowButton } from './FollowButton';
+import { Navbar2 } from '../Navbar/Navbar2/Navbar2';
 import './Followers.css';
 import './FriendsSuggst.css';
-import { useNavigate } from 'react-router-dom';
 
-
-export function Followers() {
+export function FriendsSuggests2() {
     const dispatch = useDispatch();
     const loggedUserId = useSelector((state) => state.user.loggedUserId);
-    /* const users = useSelector((state) => state.follower.users); */
-    const users = useSelector((state) => state.follower.users.filter((user) => user.status_friendship === 1));
-    const numberUsers = users.length
-
+    const users = useSelector((state) => state.follower.users);
+    const filteredUsers = users.filter((user) => !user.status_friendship || user.status_friendship === 0);
 
     const idLogged = localStorage.getItem('idLogged');
-    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,15 +30,13 @@ export function Followers() {
                 console.log(dataUser);
             }
 
-            /* const followedResponse = await fetch(`http://localhost:3001/followed/${idLogged}`); */
-            //
             const followedResponse = await fetch(`http://localhost:3001/followed/${idLogged}`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("Token")}`,
                     "Content-Type": "application/json"
                 }
-            });//HASTA AQUI
+            });
             let followedData = [];
 
             if (followedResponse.ok) {
@@ -69,55 +59,45 @@ export function Followers() {
 
             dispatch(setUsers(combinedUsers));
             dispatch(setLoggedUserId(idLogged));
-
         };
 
-        //
         fetchData();
-    }, [dispatch, loggedUserId]);//HASTA AQUI
+    }, [dispatch, idLogged]);
 
-        /* useEffect(() => {
-            fetchData();
-        }, [dispatch, loggedUserId]); */
+    console.log(users);
 
-        console.log(users)
-        return (
-
-            <>
-                <Navbar2 />
-                <div className="container fContainer">
-
-                    <h5 className='numberFollowers'>Tienes <span className='numberUsers'>{numberUsers}</span>  contactos en tu red</h5>
+    return (
+        <>
+           
+                
+                <div className="container fContainer"  /* className="col-10 container-fluid" */>
+                   
+                    <h5>Haz nuevos contactos</h5>
                     <div id="followersContainer" className=" row ">
 
-                        {users ? (
-                            users.map((user) => (
-                                <div key={user.user_id} className='col-4 rounded-2 border-success border-opacity-50 border-2 bg-success bg-opacity-10 p-2 shadow' id='divFollower'>
-                                    <img src={user.image} alt='foto' className='imagPerson' />
-                                    <div className=' followDetails'>
+                        {filteredUsers ? (
+                            filteredUsers.map((user) => (
+                                <div key={user.user_id} className='col-3 rounded-2 border-dark border-opacity-50 border-2 bg-body-secondary p-2 shadow' id='divFollower'>
+                                {/* // <div key={user.user_id} className='col-4 rounded-2 border-dark border-opacity-50 border-2 bg-success bg-opacity-10 p-2 shadow' id='divFollower'> */}
+                                    <img src={user.image} alt='foto' className='imagPerson'/>
+                                    <div>
                                         <h6>{user.name}</h6>
                                         <p>{user.email}</p>
+                                        {/* <p>Contactos en común:</p> */}
                                         <FollowButton key={user.user_id} user={user} />
-                                        <button className='btn btn-outline-success pt-0 ps-3 ms-2 shadow' onClick={() => navigate(`/profile?user_id=${encodeURIComponent(JSON.stringify(user.user_id))}`)}>
-                                            ver
-                                            {/* <i className="bi bi-person bs-icon-b fs-4">ver perfil</i> */}
-                                            <i className="bi bi-eye px-2 fs-5"></i>
-                                        </button>
                                     </div>
 
+                                    
                                 </div>
                             ))
-
                         ) : (
-                            <p>Cargando...</p>
+                            <p>No hay usuarios disponibles.</p>
                         )}
 
+
                     </div>
-
                 </div>
-                <FriendsSuggests2 />
-            </>
-        );
-
-    }
-
+            
+        </>
+    );
+}
