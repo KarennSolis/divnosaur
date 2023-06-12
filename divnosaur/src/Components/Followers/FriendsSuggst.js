@@ -16,14 +16,26 @@ export function FriendsSuggests() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const allUsers = await fetch(`http://localhost:3001/users`);
+            const allUsers = await fetch(`http://localhost:3001/users`, {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("Token")}`,
+                    "Content-Type": "application/json"
+                }
+            });
             let dataUser = [];
             if (allUsers.ok) {
                 dataUser = await allUsers.json();
                 console.log(dataUser);
             }
 
-            const followedResponse = await fetch(`http://localhost:3001/followed/${idLogged}`);
+            const followedResponse = await fetch(`http://localhost:3001/followed/${idLogged}`, {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("Token")}`,
+                    "Content-Type": "application/json"
+                }
+            });
             let followedData = [];
 
             if (followedResponse.ok) {
@@ -64,7 +76,7 @@ export function FriendsSuggests() {
 
                         {filteredUsers ? (
                             filteredUsers.map((user) => (
-                                <div key={user.user_id} className='col-4 ' id='divFollower'>
+                                <div key={user.user_id} className='col-4 rounded-2 border-dark border-opacity-50 border-2 bg-body-secondary p-2' id='divFollower'>
                                     <img src={user.image} alt='foto' className='imagPerson'/>
                                     <div>
                                         <h6>{user.name}</h6>

@@ -177,13 +177,21 @@ main {
 .fContainer {
     margin: 0px;
     /* background-color: rgb(166, 200, 248); */
-    background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Ffondo&psig=AOvVaw2fhX_UDbPN6fy4YEiDr21I&ust=1686342148886000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCMiAqpjAtP8CFQAAAAAdAAAAABAE);
-
+    /* background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Ffondo&psig=AOvVaw2fhX_UDbPN6fy4YEiDr21I&ust=1686342148886000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCMiAqpjAtP8CFQAAAAAdAAAAABAE); */
+    /* background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20190221/ourmid/pngtree-simple-gradient-e-commerce-web-page-image_21200.jpg); */
+    /* background-image: url(https://media.istockphoto.com/id/636471628/es/foto/fondo-plata-brillante.jpg?s=170667a&w=0&k=20&c=kQQ6HFTB92nDNM3zwNF05YpQtCS8pV7J87fuW0tt6LU=);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: rgba(255, 254, 254, 0.881);
     padding-top: 10px;
+    
+    /* border: 2px solid rgba(77, 77, 77, 0.438); */
 }
 #followersContainer{
   /* background-color: rgb(88, 127, 220); */
-  border-top: 2px solid rgb(12, 147, 116);
+  /* border-top: 2px solid rgb(12, 147, 116); */
+  border-top: 2px solid rgba(31, 104, 106, 0.341);
   padding-top: 20px;
   display: flex;
   justify-content: center;
@@ -205,15 +213,16 @@ main {
     word-wrap: break-word;
     /* box-shadow: 2px 5px 5px gray; */
 }
-.followDetails{
+/* .followDetails{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     word-wrap: break-word;
-}
+} */
 .imagPerson{
     width: 8em;
     height: 8em;
+    border-radius: 50%;
 }
 #divFollower h6{
     margin: 5px;

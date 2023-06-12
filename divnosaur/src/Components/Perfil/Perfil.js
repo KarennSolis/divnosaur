@@ -360,7 +360,7 @@ export function Perfil(props) {
                             </div>
                             <div className="col-5">
                                 <form onSubmit={handleSubmitContenido}>
-                                    <button className="textareaPerfil rounded-5 shadow fw-bold text-center" type="submit">Guardar Recomendación</button>
+                                    <button className="textareaPerfil rounded-5 shadow fw-bold text-center" type="submit">Enviar recomendación</button>
                                 </form>
                                 {/* <button className="textareaPerfil rounded-5 shadow fw-bold text-center" onClick={handleGuardarRecomendacion}>Enviar recomendación </button> */}
                                 {/* <button className="textareaPerfil rounded-5 shadow fw-bold text-center" type="submit">Guardar Recomendación</button> */}

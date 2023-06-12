@@ -68,7 +68,7 @@ app.post('/createPublications',isLogged, postPublications);
 //USUARIOS
 
 //todos los usuarios
-app.get('/users', allUser);
+app.get('/users', isLogged, allUser);
 
 //por nombre de usuario
 app.get('/:name', namesUsers);
@@ -80,7 +80,7 @@ app.get('/user/:user_id', getUser); //ahora mismo no funciona
 
 //Seguidores y Solicitudes de Seguimiento
 //KAREN//
-app.patch("/changeStatus/:user_id", updateFriendshipStatus);
+app.patch("/changeStatus/:user_id", isLogged, updateFriendshipStatus);
 
 //Amigos
 
@@ -92,7 +92,7 @@ app.post('/friends', postFriends);
 //Followers//
 
 app.route("/followed/:user_id")
-    .get(followers);
+    .get( isLogged, followers);
 
 
 
