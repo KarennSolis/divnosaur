@@ -1,8 +1,16 @@
 import { useState } from "react";
 
 export function FollowerProfile(props) {
-  const { followerData, recomendaciones, setNewRecomendacion, next, prev, recomendacionActual, user} =
-    props;
+  const {
+    followerData,
+    recomendaciones,
+    setNewRecomendacion,
+    next,
+    prev,
+    recomendacionActual,
+    user,
+  } = props;
+
   const [contenido, setContenido] = useState("");
   const handleContenidoChange = (event) => {
     setContenido(event.target.value);
@@ -10,7 +18,6 @@ export function FollowerProfile(props) {
   };
   const handleSubmitContenido = async (event) => {
     event.preventDefault();
-
     try {
       const userRec_id = user.user_id;
       console.log(userRec_id);

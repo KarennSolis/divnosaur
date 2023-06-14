@@ -18,7 +18,6 @@ import {
 import { useState, useEffect } from "react";
 import validator from "validator";
 
-
 export function Perfil(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -205,38 +204,6 @@ export function Perfil(props) {
 
     obtenerRecomendaciones();
   }, [user_id, newRecomendacion]); // Agrega user_id como dependencia
-
-  //Subir recomendacion//
-  // const [contenido, setContenido] = useState('');
-
-  // const handleContenidoChange = (event) => {
-  //     setContenido(event.target.value);
-  //     console.log(contenido);
-  // };
-  // const handleSubmitContenido = async (event) => {
-  //     event.preventDefault();
-
-  //     try {
-  //         const userRec_id = user.user_id;
-  //         console.log(userRec_id);
-  //         console.log(followerData.user_id);
-  //         const response = await fetch("http://localhost:3001/profile/recomendaciones/new", {
-  //             method: 'POST',
-  //             headers: {
-  //                 Authorization: `Bearer ${localStorage.getItem('Token')}`,
-  //                 'Content-Type': 'application/json',
-  //             },
-  //             body: JSON.stringify({ contenido: contenido, usuario_emisor_ID: userRec_id, usuario_receptor_ID: followerData.user_id }),
-  //         });
-
-  //         const result = await response.json();
-  //         console.log(result);
-  //         setNewRecomendacion(true);
-  //         setContenido("");
-  //     } catch (error) {
-  //         console.log('Error de red:', error);
-  //     }
-  // };
 
   if (followerData) {
     return (
