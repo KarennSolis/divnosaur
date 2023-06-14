@@ -66,15 +66,8 @@ export const userSlice = createSlice({
         setInUsers: (state, action) => {
             state.users = action.payload
         },
-        /* updateSearchTerm: (state, action) => {
-            state.searchTerm = action.payload;
-        }, */
-        // userSlice.js
-
-        // ...
 
         filterUsers: (state, action) => {
-            /* const searchTerm = action.payload.toLowerCase(); */
             const searchTerm = action.payload.toString();
             if (searchTerm.trim() !== "") {
                 const filteredUsers = state.users.filter((user) => {
