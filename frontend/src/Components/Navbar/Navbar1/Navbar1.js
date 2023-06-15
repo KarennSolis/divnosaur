@@ -5,7 +5,7 @@ export  function Navbar1(props) {
 
     return (
 
-        <nav className="navbar-1 navbar-expand-lg bg-body-tertiary sticky-top">
+        <nav className="navbar-1 navbar-expand-lg bg-info bg-opacity-50 sticky-top">
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-4 col-xs-2 col-sm-2" id="iconDivnosaur">

@@ -22,7 +22,7 @@ export function Navbar2(props) {
 
     return (
 
-        <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+        <nav className="navbar navbar-expand-lg bg-info bg-opacity-50 sticky-top">
             <div className="container-fluid">
 
                 <Link to="/postWall"><a className="navbar-brand" href="#"><img className="12-sm img-fluid" src="https://lh6.googleusercontent.com/KW0D-P_DNR2finWvJg-gr0sodT3i1jmcPs5TQ8MfwVZXtWLd19KBAz51BwVBpM34VTs=w2400" alt="" width="170" /></a></Link>
